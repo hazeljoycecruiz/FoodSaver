@@ -89,3 +89,19 @@ body {
   border-radius: 4px;
   padding: 0.5rem 1.5rem;
 }
+
+
+.profile-container {
+  display: flex;
+  align-items: center;
+}
+
+.profile-icon {
+  font-size: 2rem;
+  margin-right: 4px; /* Fine-tune spacing here */
+}
+
+.profile-name {
+  font-size: 0.9rem;
+  margin: 0; /* Remove any extra margins around the text */
+}

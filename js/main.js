@@ -139,4 +139,24 @@ function redirectToSellerSignup() {
 function redirectToAdminSignup() {
     window.location.href = 'signup_admin.html';
 }
+
+// --------------------------------Uriel beginning--------------------------------
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop(); // Get the current page file name
+    const menuItems = document.querySelectorAll(".menu-item a");
+
+    menuItems.forEach((item) => {
+        const linkHref = item.getAttribute("href");
+
+        if (linkHref === currentPage) {
+            item.classList.add("active"); // Add active class to current page link
+            item.style.pointerEvents = "none"; // Disable click
+        }
+    });
+});
+
+// --------------------------------Uriel ending--------------------------------
+
 // ----------------end----------------
