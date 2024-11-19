@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Orders</title>
+  <link rel="stylesheet" href="css/seller_product_order_lists.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome (for the back arrow icon) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="order-dashboard">
+    <header>
+      <!-- Back button with left arrow icon -->
+      <button class="back-btn" onclick="window.location.href='Seller_index.html'">
+        <i class="fas fa-arrow-left"></i> Back
+      </button>
+      <h1>Product Orders</h1>
+    </header>
+
+    <section class="orders">
+      <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#12345</td>
+            <td>Wireless Headphones</td>
+            <td>2</td>
+            <td>$150</td>
+            <td>Pending</td>
+            <td>
+              <button class="approve-btn">Approve</button>
+              <button class="delete-btn">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>#12346</td>
+            <td>Smart Watch</td>
+            <td>1</td>
+            <td>$200</td>
+            <td>Pending</td>
+            <td>
+              <button class="approve-btn">Approve</button>
+              <button class="delete-btn">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>#12347</td>
+            <td>Bluetooth Speaker</td>
+            <td>3</td>
+            <td>$120</td>
+            <td>Pending</td>
+            <td>
+              <button class="approve-btn">Approve</button>
+              <button class="delete-btn">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</body>
+</html>
