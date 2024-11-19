@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Cart</title>
+    <title>Place Order Summary</title>
     <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
@@ -79,7 +79,22 @@
             border-radius: 5px;
         }
 
+        .summary-container {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 20px;
+            border: 2px solid black;
+        }
 
+        .summary-container .btn {
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .summary-container .total {
+            font-size: 20px;
+            font-weight: bold;
+        }
 
         .row-gutter {
             gap: 20px;
@@ -294,12 +309,51 @@
                     </div>
       
                 </div>
-                <div class="summary-container w-25  ">
-                    <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-danger mb-5 w-50 rounded-pill"  onclick="window.location.href='buyer_place_order.html' " style=" color: rgb(255, 255, 255); border-radius: 25px; margin-top: 500px;">Save</button>
+
+                <!-- Summary Section -->
+                <div class="summary-container w-25 ms-3 h-100">
+                    <div>
+                        <input class="form-control" type="text" value="                   Order Summary" 
+                        aria-label="Disabled input example" disabled readonly 
+                        style="background-color: white; color: black; border-radius: 25px; border: 3.5px solid #ffeedd;">
                     </div>
+                    <div class="pt-1"></div>
+                    <div class="d-flex justify-content-between mt-4 mb-3">
+                        <span>Subtotal</span>
+                        <span>Php 000.00</span>
+                    </div>
+
+                    <div class="row mt-4">
+                        <span>Delivery Option:</span>
+                        <div class="col mb-2">
+                            <button class="btn w-100 mt-2" style="background-color: #ffcc66; color: black; border-radius: 25px">Pick-up</button>
+                        </div>
+                        <div class="col mb-3">
+                            <button class="btn w-100 mt-2" style="background-color: #ffcc66; color: black; border-radius: 25px;">Deliver</button>
+                        </div>
+                    </div>
+
+                    <div class="mb-2 w-100">
+                        <input type="email" class="form-control w-100 " style="border-radius: 25px; border: 3.5px solid #ffeedd;" id="address" placeholder="Municipality">
+                    </div>
+                    <div class="mb-2 w-100">
+                        <input type="email" class="form-control w-100 " style="border-radius: 25px; border: 3.5px solid #ffeedd;" id="address" placeholder="Municipality">
+                    </div>
+                    <div class="mb-3 w-100">
+                        <input type="email" class="form-control w-100 " style="border-radius: 25px; border: 3.5px solid #ffeedd;" id="address" placeholder="Municipality">
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>Shipping Fee</span>
+                        <span>Php 000.00</span>
+                    </div>
+                    <div>
+                        <input class="form-control mb-2" type="text" value="Total Product                Php 000.00 " 
+                        aria-label="Disabled input example" disabled readonly 
+                        style="background-color: #ffeedd; color: black; border-radius: 25px; border: 3.5px solid #ffeedd;">
+                    </div>
+             
+                    <button class="btn btn-danger w-100 mt-1" style="border-radius: 25px;">Place Order</button>
                 </div>
-                
             </div>
         </div>
 
