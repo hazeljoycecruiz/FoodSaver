@@ -711,3 +711,27 @@ a:hover {
 
 
 /* --------------------------uriel end----------------------------------------- */
+
+/* seller index */
+.profile-container {
+    display: flex;
+    align-items: center; /* Center the items vertically */
+    justify-content: space-between; /* Space out the items */
+    padding: 10px;
+  }
+  
+  .profile-icon, .bi-box-arrow-right {
+    cursor: pointer;
+    font-size: 2rem; /* Adjust icon size here */
+  }
+  
+  .profile-link {
+    font-size: 20px;
+    text-decoration: none;
+    margin-left: 10px; /* Spacing between icon and name */
+  }
+  
+  .profile-container i:hover {
+    color: #FF6F61; /* Add hover color to icons for interactivity */
+  }
+  

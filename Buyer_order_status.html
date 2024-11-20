@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Order</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="buyer_order_status.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Back Button -->
+    <button class="back-btn" onclick="window.location.href='index.html'">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    <h1 class="title">Product Order</h1>
+
+    <!-- Tab Navigation -->
+    <div class="tabs">
+      <button class="tab active">On Shipping</button>
+      <button class="tab">Arrived</button>
+      <button class="tab">Cancelled</button>
+    </div>
+
+    <!-- Order Card -->
+    <div class="order-card">
+      <div class="estimated-arrival">
+        <span class="label">Estimated Arrival:</span>
+        <span class="value">Tomorrow, 12:00 PM</span>
+      </div>
+      <div class="address-line">
+        <span class="owner">Owner Address</span>
+        <span class="arrow">------------------&gt;</span>
+        <span class="customer">Customer Address</span>
+      </div>
+
+      <div class="product-details">
+        <img class="product-image" src="macarons.jpg" alt="Macarons">
+        <div class="product-info">
+          <p class="product-name">Macarons</p>
+          <p class="product-price">Php 150.00</p>
+        </div>
+      </div>
+
+      <div class="order-footer">
+        <span class="total-label">Total:</span>
+        <button class="details-btn">Details</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
