@@ -129,15 +129,15 @@ document.querySelector('form').addEventListener('submit', function(e) {
 });
 
 function redirectToBuyerSignup() {
-    window.location.href = 'signup_buyer.html';
+    window.location.href = 'Buyer_signup.html';
 }
 
 function redirectToSellerSignup() {
-    window.location.href = 'signup_seller.html';
+    window.location.href = 'Seller_signup.html';
 }
 
 function redirectToAdminSignup() {
-    window.location.href = 'signup_admin.html';
+    window.location.href = 'Admin_signup.html';
 }
 
 // --------------------------------Uriel beginning--------------------------------
