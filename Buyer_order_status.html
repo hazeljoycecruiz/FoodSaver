@@ -3,31 +3,140 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Order</title>
+  <title>Product Order Status</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/seller_product_order_lists.css">
+  <link rel="stylesheet" href="css/profile.css">
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="buyer_order_status.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Heebo', sans-serif;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .tab {
+      padding: 12px 20px;
+      border-radius: 12px;
+      margin: 0 10px;
+      cursor: pointer;
+      background-color: #fff;
+      border: 2px solid #ddd;
+      color: #333;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .tab.active {
+      background-color: #FFEBEB;
+      color: #ff6b6b;
+      border-color: #ff6b6b;
+    }
+
+    .tab:hover {
+      background-color: #f3f3f3;
+    }
+
+    .order-card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      border: 1px solid #f1f1f1;
+    }
+
+    .estimated-arrival,
+    .address-line {
+      margin-bottom: 15px;
+    }
+
+    .address-line .arrow {
+      margin: 0 10px;
+    }
+
+    .product-details {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .product-image {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    .product-info p {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .order-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .total-label {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .details-btn {
+      background-color: #FF6B6B;
+      color: white;
+      padding: 8px 18px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .details-btn:hover {
+      background-color: #ff4949;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Back Button -->
-    <button class="back-btn" onclick="window.location.href='index.html'">
-      <i class="fas fa-arrow-left"></i>
-    </button>
-    <h1 class="title">Product Order</h1>
+  <div class="container py-4">
+    <!-- Back Button aligned with title and content -->
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-10 text-center">
+        <button class="back-btn btn btn-link" onclick="window.location.href='Buyer_index.html'" style="text-decoration: none;">
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+      </div>
+    </div>
 
-    <!-- Tab Navigation -->
+    <!-- Page Title -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-10 text-center">
+        <input class="form-control" type="text" value="       Order Status" aria-label="Disabled input example" disabled readonly style="background-color: white; color: black;">
+      </div>
+    </div>
+
+    <!-- Order Card -->
+    <div class="order-card">
+      <!-- Tab Navigation -->
     <div class="tabs">
       <button class="tab active">On Shipping</button>
       <button class="tab">Arrived</button>
       <button class="tab">Cancelled</button>
     </div>
 
-    <!-- Order Card -->
-    <div class="order-card">
       <div class="estimated-arrival">
         <span class="label">Estimated Arrival:</span>
-        <span class="value">Tomorrow, 12:00 PM</span>
+        <span class="value">Today, 12:00 PM</span>
       </div>
       <div class="address-line">
         <span class="owner">Owner Address</span>
@@ -36,18 +145,23 @@
       </div>
 
       <div class="product-details">
-        <img class="product-image" src="macarons.jpg" alt="Macarons">
+        <img class="product-image" src="img/centurytuna.jpg" alt="Can Good">
         <div class="product-info">
-          <p class="product-name">Macarons</p>
+          <p class="product-name">Century Tuna</p>
+          <p class="product-qty">Qty: 8</p>
           <p class="product-price">Php 150.00</p>
         </div>
       </div>
 
       <div class="order-footer">
-        <span class="total-label">Total:</span>
+        <span class="total-label">Total: Php 150.00</span>
         <button class="details-btn">Details</button>
       </div>
     </div>
+
   </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

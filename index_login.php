@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validate user credentials if no error
     if (empty($error)) {
-        $sql = "SELECT * FROM users WHERE email = ?";
+        $sql = "SELECT * FROM users WHERE email = ?";  // Make sure to replace with your actual table and column names
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -30,8 +30,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Correctly reference 'password_hash' instead of 'password'
             if (password_verify($password, $user['password_hash'])) {
-                // Redirect to the dashboard or homepage
-                header("Location: Buyer_index.html");
+                // Check the user's role and redirect accordingly
+                $role = $user['role'];  // Assuming the role is stored in the 'role' column of your 'users' table
+                
+                if ($role === 'Buyer') {
+                    header("Location: Buyer_index.html");
+                } elseif ($role === 'Seller') {
+                    header("Location: Seller_index.html");
+                } elseif ($role === 'Admin') {
+                    header("Location: Admin_index.html");
+                } else {
+                    $error = "Invalid role.";
+                }
                 exit();
             } else {
                 $error = "Invalid password.";
