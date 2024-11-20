@@ -14,6 +14,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Heebo:wght@400;600;700&display=swap" rel="stylesheet">
+
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -27,107 +29,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-
-        .profile-container {
-            background-color: #ffe6e2;
-            border-radius: 10px;
-            padding: 20px;
-        }
-
-        .sidebar {
-            background-color: #ffe6e2;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .sidebar img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
-
-        .sidebar h5 {
-            font-size: 1.2rem;
-            margin-top: 10px;
-        }
-
-        .sidebar .menu-item {
-            background-color: #fff;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar .menu-item:hover {
-            background-color: #ffdad6;
-        }
-
-        .sidebar .menu-item i {
-            margin-right: 8px;
-            color: #ff6b6b;
-        }
-
-        .favorites-container {
-            background-color: #ffe6e2;
-            border-radius: 10px;
-            padding: 20px;
-        }
-
-        .favorite-item {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 10px 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .favorite-item:hover {
-            background-color: #ffdad6;
-        }
-
-        .favorite-item i {
-            color: #ff6b6b;
-        }
-
-        .form-control-lg.border-danger {
-        box-shadow: none; /* Removes the black shadow */
-    }
-
-    /* Optional: Add a red focus outline */
-    .form-control-lg.border-danger:focus {
-        border-color: #dc3545; /* Bootstrap red color */
-
-    }
-
-    .transparent-border {
-        border-color: transparent; /* Makes the border transparent */
-    }
-
-    .transparent-border:focus {
-        outline: none; /* Removes focus outline */
-        border-color: transparent; /* Ensures no border on focus */
-        box-shadow: none; /* Removes Bootstrap's default box shadow */
-    }
-
-        .hov a:hover,
-        .hov button:hover {
-        background-color: #ffdad6 !important; /* Change background color on hover */
-        color: #000000 !important; /* Optional: Change text color if needed */
-}
-
-    </style>
+    <link rel="stylesheet" href="css/profile.css">
+    
 </head>
 <body>
     <div class="container py-4">
         <!-- Back Button -->
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <button class="btn btn-outline-secondary rounded-circle">
-                <i class="fas fa-arrow-left" ></i>
+            <button class="back-btn" onclick="window.location.href='Buyer_index.html'">
+                <i class="fas fa-arrow-left"></i> Back
             </button>
         </div>
         <div>
@@ -148,7 +58,7 @@
                     <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="previewImage(event)">
                 </div>
 
-                    <h5 class=" pb-4">Hau C.</h5>
+                    <a href="profile.html" class="pb-4 name"><h5>Hau C.</h5></a>
                     <!-- Favorites Menu Item -->
 
 

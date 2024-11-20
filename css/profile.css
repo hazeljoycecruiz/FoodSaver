@@ -1,0 +1,133 @@
+/* Add the desired fonts as a fallback */
+body {
+  font-family: 'Nunito', 'Heebo', sans-serif;
+}
+
+header {
+  display: flex;
+  align-items: center; /* Aligns items vertically to the center */
+  justify-content: space-between; /* Places the back button on the left and title centered */
+  margin-bottom: 20px;
+  position: relative;
+}
+
+header h1 {
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+  flex-grow: 1; /* Makes the title take up remaining space */
+  text-align: center; /* Centers the title */
+}
+
+.profile-container {
+  background-color: #ffe6e2;
+  border-radius: 10px;
+  padding: 20px;
+  font-family: 'Nunito', 'Heebo', sans-serif;
+}
+
+.sidebar {
+  background-color: #ffe6e2;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Nunito', 'Heebo', sans-serif;
+}
+
+.sidebar img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.sidebar h5 {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  font-family: 'Nunito', sans-serif; /* Example: Specific to Nunito */
+}
+
+.sidebar .menu-item {
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Heebo', sans-serif; /* Example: Specific to Heebo */
+}
+
+.sidebar .menu-item:hover {
+  background-color: #ffdad6;
+}
+
+.sidebar .menu-item i {
+  margin-right: 8px;
+  color: #ff6b6b;
+}
+
+.favorites-container {
+  background-color: #ffe6e2;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.favorite-item {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.favorite-item:hover {
+  background-color: #ffdad6;
+}
+
+.favorite-item i {
+  color: #ff6b6b;
+}
+
+.form-control-lg.border-danger {
+  box-shadow: none; /* Removes the black shadow */
+}
+
+/* Optional: Add a red focus outline */
+.form-control-lg.border-danger:focus {
+  border-color: #dc3545; /* Bootstrap red color */
+}
+
+.transparent-border {
+  border-color: transparent; /* Makes the border transparent */
+}
+
+.transparent-border:focus {
+  outline: none; /* Removes focus outline */
+  border-color: transparent; /* Ensures no border on focus */
+  box-shadow: none; /* Removes Bootstrap's default box shadow */
+}
+
+.hov a:hover,
+.hov button:hover {
+  background-color: #ffdad6 !important; /* Change background color on hover */
+  color: #000000 !important; /* Optional: Change text color if needed */
+}
+
+/* Back Button */
+.back-btn {
+  background-color: transparent;
+  border: none;
+  color: #f56a6a;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.back-btn i {
+  margin-right: 8px;
+}
+
+.back-btn:hover {
+  color: #292929;
+}
