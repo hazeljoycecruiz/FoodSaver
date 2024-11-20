@@ -131,3 +131,12 @@ header h1 {
 .back-btn:hover {
   color: #292929;
 }
+
+.profiles-picture-container {
+
+  justify-content: center;
+  align-items: center;
+  width: 200px; /* Adjust as needed */
+  margin: auto; /* Centers the container itself if it's inside a parent */
+
+}
