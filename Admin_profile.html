@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bussiness Profile </title>
+    <link href="img/favicon.ico" rel="icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+
+    <style>
+
+        .profile-container {
+            background-color: #ffe6e2;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .sidebar {
+            background-color: #ffe6e2;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .sidebar img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .sidebar h5 {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .sidebar .menu-item {
+            background-color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar .menu-item:hover {
+            background-color: #ffdad6;
+        }
+
+        .sidebar .menu-item i {
+            margin-right: 8px;
+            color: #ff6b6b;
+        }
+
+        .favorites-container {
+            background-color: #ffe6e2;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .favorite-item {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .favorite-item:hover {
+            background-color: #ffdad6;
+        }
+
+        .favorite-item i {
+            color: #ff6b6b;
+        }
+
+        .form-control-lg.border-danger {
+        box-shadow: none; /* Removes the black shadow */
+    }
+
+    /* Optional: Add a red focus outline */
+    .form-control-lg.border-danger:focus {
+        border-color: #dc3545; /* Bootstrap red color */
+
+    }
+
+    .transparent-border {
+        border-color: transparent; /* Makes the border transparent */
+    }
+
+    .transparent-border:focus {
+        outline: none; /* Removes focus outline */
+        border-color: transparent; /* Ensures no border on focus */
+        box-shadow: none; /* Removes Bootstrap's default box shadow */
+    }
+
+        .hov a:hover,
+        .hov button:hover {
+        background-color: #ffdad6 !important; /* Change background color on hover */
+        color: #000000 !important; /* Optional: Change text color if needed */
+}
+
+    </style>
+</head>
+<body>
+    <div class="container py-4">
+        <!-- Back Button -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <button class="back-btn" onclick="window.location.href='Seller_index.html'">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+        </div>
+        <div>
+            <input class="form-control" type="text" value="       My Profile" 
+            aria-label="Disabled input example" disabled readonly 
+            style="background-color: white; color: black;">
+        </div>
+        <!-- Profile Content -->
+        <div class="row g-3 mt-1 ">
+            <!-- Sidebar -->
+            <div class="col-md-4">
+                <div class="sidebar pt-5">
+                    <!-- Profile Icon -->
+
+                <!-- Display the Profile Picture -->
+                <div class="profile-picture-container">
+                    <img src="img/store.jpg" alt="Profile Picture" id="profile-pic" onclick="document.getElementById('file-input').click();" style="cursor: pointer;">
+                    <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                </div>
+                
+                    <a href="Seller_profile.html" class="pb-4 name" style="text-decoration: none;"><h5>Legarose Convenience Store</h5></a>
+                    <!-- Favorites Menu Item -->
+
+
+                         <!-- Other Menu Items -->
+
+                    <div class="pb-5"></div>
+   
+                    <!-- Other Menu Items -->
+                    <div class="hov d-flex justify-content-center">
+                        <!-- Purchases Button -->
+                        <a href="Seller_product.html" 
+                           class="btn btn-light d-flex align-items-center px-4 py-3 bg-white" 
+                           style="border-radius: 12px; width: 350px; ">
+                            <i class="fas fa-shopping-cart me-4"></i>
+                            <span class="text-start">Sell Product</span>
+                        </a>
+                    </div>
+                   
+       
+                    
+                  
+                    <div class="nav flex-column">
+                        
+                    </div>
+                    <div class="pt-5 pb-5">
+                    </div>
+                    <div class="pt-5 pb-4">
+                    </div>
+                    <div class="pt-4  pb-3">
+                    </div>
+                 
+                </div>
+            </div>
+
+            <!-- Favorites -->
+            <div class="col-md-8">
+
+                <div class="favorites-container">
+                   
+
+                        <div class="mt-5 mb-4 w-100">
+                            <input type="email" class="form-control-lg w-100 transparent-border" id="name" placeholder="Bussiness Name">
+                        </div>
+                    
+                        <div class="mb-4 w-100">
+                            <input type="email" class="form-control-lg w-100 transparent-border" id="address" placeholder="Owner Name">
+                        </div>
+                    
+                        <div class="mb-4 w-100">
+                            <input type="email" class="form-control-lg w-100 transparent-border" id="address" placeholder="Address">
+                        </div>
+                    
+                        <div class="mb-4 w-100">
+                            <input type="email" class="form-control-lg w-100 transparent-border" id="email" placeholder="Email">
+                        </div>
+                    
+                        <div class="mb-4 ">
+                            <input type="email" class="form-control-lg w-100 transparent-border" id="contact_number" placeholder="Contact Number">
+                        </div>
+                    
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary mb-5 w-25 rounded-pill" onclick="window.location.href='Buyer_index.html'">Save</button>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                    
+                        <div class="pt-4 pb-2"></div>
+                        <div class=" pb-1"></div>
+                    
+                   
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

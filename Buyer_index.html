@@ -64,7 +64,8 @@
                     <div class="profile-container">
                         <i class="bi bi-person-circle profile-icon" onclick="window.location.href='Buyer_profile.html'" style="cursor: pointer; font-size: 1.5rem;"></i>
                         <a href="Buyer_profile.html" class="text-dark profile-link" style="font-size: 16px; text-decoration: none; margin-left: 10px;">John Doe</a>
-                        <i class="bi bi-box-arrow-right" onclick="window.location.href='index.html'" style="cursor: pointer; font-size: 1.5rem; margin-left: 20px;"></i>
+                        <i class="bi bi-cart4" style="font-size: 25px; margin-left: 20px; cursor: pointer;" onclick="window.location.href='Buyer_cart.html'"></i>
+                        <i class="bi bi-box-arrow-right" onclick="window.location.href='index.html'" style="cursor: pointer; font-size: 1.4rem; margin-left: 20px;"></i>
                     </div>
                     
                     <!-- <a href="" class="btn btn-primary py-2 px-4">Book A Table</a> -->
@@ -111,31 +112,58 @@
                 <h1>Our <span style="color: #E95F5D;">On Sale!</span></h1>
                 <div class="d-flex justify-content-center">
                     <div class="menu-box rounded p-4 border text-center" style="width: 80%; background-color: #f8f9fa;">
-                        <div class="row justify-content-center">
+                        <!-- Row 1 -->
+                        <div class="row justify-content-center mb-4">
                             <!-- Image 1 -->
-                            <div class="col-2">
-                                <img src="img/about-1.jpg" alt="Macarons" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D;">
-                                <p class="price">Php 20.00</p>
+                            <div class="col-3">
+                                <img src="img/corned beef.png" alt="Corned Beef" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
+                                <p class="name mb-1" style="font-weight: bold;">Corned Beef</p>
+                                <p class="price">Php 15.00</p>
                             </div>
                             <!-- Image 2 -->
-                            <div class="col-2">
-                                <img src="img/about-2.jpg" alt="Cupcake" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D;">
-                                <p class="price">Php 15.00</p>
+                            <div class="col-3">
+                                <img src="img/moist cake.jpg" alt="Moist Cake" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
+                                <p class="name mb-1" style="font-weight: bold;">Moist Cake</p>
+                                <p class="price">Php 8.00</p>
                             </div>
                             <!-- Image 3 -->
-                            <div class="col-2">
-                                <img src="img/about-3.jpg" alt="Vege Salad" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D;">
-                                <p class="price">Php 15.00</p>
+                            <div class="col-3">
+                                <img src="img/pancit canton.jpg" alt="Eggplant" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
+                                <p class="name mb-1" style="font-weight: bold;">Pancit Canton</p>
+                                <p class="price">Php 6.00</p>
                             </div>
                             <!-- Image 4 -->
-                            <div class="col-2">
-                                <img src="img/about-4.jpg" alt="Mixed Donut" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D;">
+                            <div class="col-3">
+                                <img src="img/ensaymada.jpg" alt="Ensaymada" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
+                                <p class="name mb-1" style="font-weight: bold;">Ensaymada</p>
+                                <p class="price">Php 5.00</p>
+                            </div>
+                        </div>
+                        <!-- Row 2 -->
+                        <div class="row justify-content-center">
+                            <!-- Image 5 -->
+                            <div class="col-3">
+                                <img src="img/pinakbet.jpg" alt="Pinakbet" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
+                                <p class="name mb-1" style="font-weight: bold;">Pinakbet</p>
+                                <p class="price">Php 20.00</p>
+                            </div>
+                            <!-- Image 6 -->
+                            <div class="col-3">
+                                <img src="img/centurytuna.jpg" alt="Adobong Pusit" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
+                                <p class="name mb-1" style="font-weight: bold;">Century Tuna</p>
                                 <p class="price">Php 15.00</p>
                             </div>
-                            <!-- Image 5 -->
-                            <div class="col-2">
-                                <img src="img/about-4.jpg" alt="Cheesecake" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D;">
-                                <p class="price">Php 25.00</p>
+                            <!-- Image 7 -->
+                            <div class="col-3">
+                                <img src="img/ginataangGulay.jpg" alt="Ginataang Gulay" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
+                                <p class="name mb-1" style="font-weight: bold;">Ginataang Gulay</p>
+                                <p class="price">Php 10.00</p>
+                            </div>
+                            <!-- Image 8 -->
+                            <div class="col-3">
+                                <img src="img/mango.jpg" alt="Cheese Cupcake" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
+                                <p class="name mb-1" style="font-weight: bold;">Mango</p>
+                                <p class="price">Php 15.00</p>
                             </div>
                         </div>
                     </div>
@@ -157,11 +185,30 @@
             <div class="container">
                 <div class="row g-4">
                     <h1>Our <span style="color: #E95F5D;">Regular</span> Menu</h1>
+
                     <div class="col-lg-3 col-sm-6">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
-                                <img src="img/about-1.jpg" alt="Macarons" class="service-image mb-3">
-                                <h5>Macarons</h5>
+                                <img src="img/corned beef.png" alt="Corned Beef" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Corned Beef</h5>
+                                <div class="star-rating mb-2">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <p class="price">Php 25.00</p>
+                                <a href="#" class="btn btn-custom" onclick="window.location.href='Buyer_cart.html'">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="service-item rounded pt-3">
+                            <div class="p-4 text-center">
+                                <img src="img/eggplant.jpg" alt="Eggplant" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Eggplant</h5>
                                 <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
@@ -169,17 +216,17 @@
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 20.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                                <p class="price">Php 18.00</p>
+                                <a href="#" class="btn btn-custom" >Add to Cart</a>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-3 col-sm-6">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
-                                <img src="img/about-2.jpg" alt="Cupcake" class="service-image mb-3">
-                                <h5>Cupcake</h5>
+                                <img src="img/moist cake.jpg" alt="Moist Cake" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Moist Cake</h5>
                                 <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
@@ -187,43 +234,25 @@
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                 </div>
-                                <p class="price">Php 15.00</p>
+                                <p class="price">Php 35.00</p>
                                 <a href="#" class="btn btn-custom">Add to Cart</a>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-3 col-sm-6">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
-                                <img src="img/about-3.jpg" alt="Vege Salad" class="service-image mb-3">
-                                <h5>Vege Salad</h5>
+                                <img src="img/ensaymada.jpg" alt="Ensaymada" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Ensaymada</h5>
                                 <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star "></span>
-                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 15.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/about-4.jpg" alt="Mixed Donut" class="service-image mb-3">
-                                <h5>Mixed Donut</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                                <p class="price">Php 15.00</p>
+                                <p class="price">Php 28.00</p>
                                 <a href="#" class="btn btn-custom">Add to Cart</a>
                             </div>
                         </div>
@@ -240,8 +269,62 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
-                                <img src="img/about-1.jpg" alt="Macarons" class="service-image mb-3">
-                                <h5>Macarons</h5>
+                                <img src="img/pinakbet.jpg" alt="Pinakbet" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Pinakbet</h5>
+                                <div class="star-rating mb-2">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <p class="price">Php 30.00</p>
+                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="service-item rounded pt-3">
+                            <div class="p-4 text-center">
+                                <img src="img/pancit canton.jpg" alt="Adobong Pusit" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Pancit Canton</h5>
+                                <div class="star-rating mb-2">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <p class="price">Php 8.00</p>
+                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="service-item rounded pt-3">
+                            <div class="p-4 text-center">
+                                <img src="img/ginataangGulay.jpg" alt="Ginataang Gulay" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Ginataang Gulay</h5>
+                                <div class="star-rating mb-2">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <p class="price">Php 18.00</p>
+                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="service-item rounded pt-3">
+                            <div class="p-4 text-center">
+                                <img src="img/cheesecupcake.jpg" alt="Cheese Cupcake" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Cheese Cupcake</h5>
                                 <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
@@ -249,61 +332,7 @@
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 20.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/about-2.jpg" alt="Cupcake" class="service-image mb-3">
-                                <h5>Cupcake</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                                <p class="price">Php 15.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/about-3.jpg" alt="Vege Salad" class="service-image mb-3">
-                                <h5>Vege Salad</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star "></span>
-                                    <span class="fa fa-star "></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 15.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/about-4.jpg" alt="Mixed Donut" class="service-image mb-3">
-                                <h5>Mixed Donut</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                                <p class="price">Php 15.00</p>
+                                <p class="price">Php 25.00</p>
                                 <a href="#" class="btn btn-custom">Add to Cart</a>
                             </div>
                         </div>
@@ -313,6 +342,7 @@
         </div>
         <!-- food 2 end -->
 
+
         <!-- food 3 start -->
         <div class="container-xxl py-5">
             <div class="container">
@@ -320,13 +350,31 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
-                                <img src="img/about-1.jpg" alt="Macarons" class="service-image mb-3">
-                                <h5>Macarons</h5>
+                                <img src="img/corned beef.png" alt="Corned Beef" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Corned Beef</h5>
                                 <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <p class="price">Php 35.00</p>
+                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="service-item rounded pt-3">
+                            <div class="p-4 text-center">
+                                <img src="img/eggplant.jpg" alt="Eggplant" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Eggplant</h5>
+                                <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
                                 <p class="price">Php 20.00</p>
@@ -338,8 +386,8 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
-                                <img src="img/about-2.jpg" alt="Cupcake" class="service-image mb-3">
-                                <h5>Cupcake</h5>
+                                <img src="img/moist cake.jpg" alt="Moist Cake" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Moist Cake</h5>
                                 <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
@@ -347,7 +395,7 @@
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                 </div>
-                                <p class="price">Php 15.00</p>
+                                <p class="price">Php 25.00</p>
                                 <a href="#" class="btn btn-custom">Add to Cart</a>
                             </div>
                         </div>
@@ -356,32 +404,14 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
-                                <img src="img/about-3.jpg" alt="Vege Salad" class="service-image mb-3">
-                                <h5>Vege Salad</h5>
+                                <img src="img/ensaymada.jpg" alt="Ensaymada" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Ensaymada</h5>
                                 <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star "></span>
-                                    <span class="fa fa-star "></span>
                                     <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 15.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/about-4.jpg" alt="Mixed Donut" class="service-image mb-3">
-                                <h5>Mixed Donut</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
                                 </div>
                                 <p class="price">Php 15.00</p>
                                 <a href="#" class="btn btn-custom">Add to Cart</a>
@@ -400,8 +430,26 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
-                                <img src="img/about-1.jpg" alt="Macarons" class="service-image mb-3">
-                                <h5>Macarons</h5>
+                                <img src="img/centurytuna.jpg" alt="Pinakbet" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Century Tuna</h5>
+                                <div class="star-rating mb-2">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <p class="price">Php 30.00</p>
+                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="service-item rounded pt-3">
+                            <div class="p-4 text-center">
+                                <img src="img/adobong pusit.jpg" alt="Adobong Pusit" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Adobong Pusit</h5>
                                 <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
@@ -409,7 +457,7 @@
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 20.00</p>
+                                <p class="price">Php 40.00</p>
                                 <a href="#" class="btn btn-custom">Add to Cart</a>
                             </div>
                         </div>
@@ -418,34 +466,16 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
-                                <img src="img/about-2.jpg" alt="Cupcake" class="service-image mb-3">
-                                <h5>Cupcake</h5>
+                                <img src="img/ginataangGulay.jpg" alt="Ginataang Gulay" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Ginataang Gulay</h5>
                                 <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                                <p class="price">Php 15.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/about-3.jpg" alt="Vege Salad" class="service-image mb-3">
-                                <h5>Vege Salad</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star "></span>
-                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 15.00</p>
+                                <p class="price">Php 28.00</p>
                                 <a href="#" class="btn btn-custom">Add to Cart</a>
                             </div>
                         </div>
@@ -454,16 +484,16 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
-                                <img src="img/about-4.jpg" alt="Mixed Donut" class="service-image mb-3">
-                                <h5>Mixed Donut</h5>
+                                <img src="img/cheesecupcake.jpg" alt="Cheese Cupcake" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Cheese Cupcake</h5>
                                 <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 15.00</p>
+                                <p class="price">Php 18.00</p>
                                 <a href="#" class="btn btn-custom">Add to Cart</a>
                             </div>
                         </div>
@@ -480,8 +510,8 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
-                                <img src="img/about-1.jpg" alt="Macarons" class="service-image mb-3">
-                                <h5>Macarons</h5>
+                                <img src="img/okra.jpg" alt="Okra" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Okra</h5>
                                 <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
@@ -489,7 +519,7 @@
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 20.00</p>
+                                <p class="price">Php 25.00</p>
                                 <a href="#" class="btn btn-custom">Add to Cart</a>
                             </div>
                         </div>
@@ -498,31 +528,13 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
-                                <img src="img/about-2.jpg" alt="Cupcake" class="service-image mb-3">
-                                <h5>Cupcake</h5>
+                                <img src="img/hopia.jpg" alt="Hopia" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Hopia</h5>
                                 <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                                <p class="price">Php 15.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/about-3.jpg" alt="Vege Salad" class="service-image mb-3">
-                                <h5>Vege Salad</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star "></span>
-                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
                                 <p class="price">Php 15.00</p>
@@ -534,16 +546,34 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
-                                <img src="img/about-4.jpg" alt="Mixed Donut" class="service-image mb-3">
-                                <h5>Mixed Donut</h5>
+                                <img src="img/pandesal.jpg" alt="Pandesal" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Pandesal</h5>
+                                <div class="star-rating mb-2">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <p class="price">Php 12.00</p>
+                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="service-item rounded pt-3">
+                            <div class="p-4 text-center">
+                                <img src="img/fried rice.jpg" alt="Fried Rice" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Fried Rice</h5>
                                 <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 15.00</p>
+                                <p class="price">Php 30.00</p>
                                 <a href="#" class="btn btn-custom">Add to Cart</a>
                             </div>
                         </div>
@@ -560,52 +590,34 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
-                                <img src="img/about-1.jpg" alt="Macarons" class="service-image mb-3">
-                                <h5>Macarons</h5>
+                                <img src="img/kinilaw.jpg" alt="Kinilaw" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Kinilaw</h5>
                                 <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                                <p class="price">Php 35.00</p>
+                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="service-item rounded pt-3">
+                            <div class="p-4 text-center">
+                                <img src="img/bicol express.jpg" alt="Bicol Express" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Bicol Express</h5>
+                                <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 20.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/about-2.jpg" alt="Cupcake" class="service-image mb-3">
-                                <h5>Cupcake</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                                <p class="price">Php 15.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/about-3.jpg" alt="Vege Salad" class="service-image mb-3">
-                                <h5>Vege Salad</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star "></span>
-                                    <span class="fa fa-star "></span>
                                     <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 15.00</p>
+                                <p class="price">Php 40.00</p>
                                 <a href="#" class="btn btn-custom">Add to Cart</a>
                             </div>
                         </div>
@@ -614,16 +626,34 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
-                                <img src="img/about-4.jpg" alt="Mixed Donut" class="service-image mb-3">
-                                <h5>Mixed Donut</h5>
+                                <img src="img/banana.jpg" alt="Banana" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Banana</h5>
                                 <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 15.00</p>
+                                <p class="price">Php 10.00</p>
+                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="service-item rounded pt-3">
+                            <div class="p-4 text-center">
+                                <img src="img/orange.jpg" alt="Orange" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
+                                <h5>Orange</h5>
+                                <div class="star-rating mb-2">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <p class="price">Php 12.00</p>
                                 <a href="#" class="btn btn-custom">Add to Cart</a>
                             </div>
                         </div>
@@ -632,8 +662,6 @@
             </div>
         </div>
         <!-- food 6 end -->
-
-
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
