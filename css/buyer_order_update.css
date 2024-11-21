@@ -3,12 +3,11 @@ body {
   font-family: 'Heebo', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: #FFFFFF; /* White background */
   color: #000000; /* Black text */
 }
 
 .order-status {
-  max-width: 600px;
+  max-width: 400px;
   margin: 40px auto;
   background: #FFFFFF; /* White box */
   border-radius: 8px;
@@ -33,9 +32,7 @@ body {
   margin-right: 8px;
 }
 
-.back-btn:hover {
-  color: #000000; /* Black on hover */
-}
+
 
 /* Header */
 h1 {
@@ -107,6 +104,12 @@ p {
   margin: 0;
   font-size: 16px;
 }
+
+.completed .status-dot {
+  background-color: red; /* Completed step color */
+}
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

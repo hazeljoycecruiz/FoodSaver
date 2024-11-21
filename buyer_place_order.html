@@ -134,8 +134,8 @@
         <div class="col-md-12 mt-4 "  >
             <div class="cart-container d-flex justify-content-between " style="height: 575px; ">
                 <!-- Cart Items Section -->
-                <div class="cart-items w-25 overflow-auto">
-                    <div class="cart-item mb-3" style="display: flex; align-items: center; background-color: #ffeedd; border-radius: 15px; padding: 10px;">
+                <div class="cart-items w-25">
+                    <div class="cart-item mb-3 w-75" style="display: flex; align-items: center; background-color: #ffeedd; border-radius: 15px; padding: 10px;">
                         <!-- Image Section -->
                         <img src="img/about-1.jpg" alt="Macarons" style="width: 70px; height: 70px; border-radius: 50%; margin-left: 10px; margin-right: 22px; background-color: #ffebcc; ">
                     
@@ -171,30 +171,10 @@
                             }
                         </script>
                         <!-- Checkbox Section -->
-                        <input class="form-check-input custom-checkbox" type="checkbox" style="width: 25px; height: 25px; margin-right: 22px;">
-
-                            <style>
-                            /* Customize the checkbox border using Bootstrap */
-                            .custom-checkbox {
-                                border: 3px solid black !important; /* Black border with higher thickness */
-                                border-radius: 5px; /* Optional: rounded corners */
-                                appearance: none; /* Remove default checkbox style */
-                                background-color: #ffeedd;
-                            }
-
-                            /* When the checkbox is checked */
-                            .custom-checkbox:checked {
-                                 /* Optional: black fill when checked */
-                                border-color: black; /* Ensure the border stays black */
-                                background-color:  #5a75ec;
-                            }
-
-                            
-                            </style>
                     </div>
 
 
-                    <div class="cart-item mb-3" style="display: flex; align-items: center; background-color: #ffeedd; border-radius: 15px; padding: 10px;">
+                    <div class="cart-item mb-3 w-75" style="display: flex; align-items: center; background-color: #ffeedd; border-radius: 15px; padding: 10px;">
                         <!-- Image Section -->
                         <img src="img/menu-1.jpg" alt="Macarons" style="width: 70px; height: 70px; border-radius: 50%; margin-left: 10px; margin-right: 22px; background-color: #ffebcc; ">
                     
@@ -230,28 +210,9 @@
                             }
                         </script>
                         <!-- Checkbox Section -->
-                        <input class="form-check-input custom-checkbox" type="checkbox" style="width: 25px; height: 25px; margin-right: 22px;">
-
-                            <style>
-                            /* Customize the checkbox border using Bootstrap */
-                            .custom-checkbox {
-                                border: 3px solid black !important; /* Black border with higher thickness */
-                                border-radius: 5px; /* Optional: rounded corners */
-                                appearance: none; /* Remove default checkbox style */
-                                background-color: #ffeedd;
-                            }
-
-                            /* When the checkbox is checked */
-                            .custom-checkbox:checked {
-                                 /* Optional: black fill when checked */
-                                border-color: black; /* Ensure the border stays black */
-                                background-color:  #5a75ec;
-                            }
-
-                            
-                            </style>
+                     
                     </div>
-                    <div class="cart-item mb-3" style="display: flex; align-items: center; background-color: #ffeedd; border-radius: 15px; padding: 10px;">
+                    <div class="cart-item mb-3 w-75" style="display: flex; align-items: center; background-color: #ffeedd; border-radius: 15px; padding: 10px;">
                         <!-- Image Section -->
                         <img src="img/menu-6.jpg" alt="Macarons" style="width: 70px; height: 70px; border-radius: 50%; margin-left: 10px; margin-right: 22px; background-color: #ffebcc; ">
                     
@@ -287,36 +248,17 @@
                             }
                         </script>
                         <!-- Checkbox Section -->
-                        <input class="form-check-input custom-checkbox" type="checkbox" style="width: 25px; height: 25px; margin-right: 22px;">
-
-                            <style>
-                            /* Customize the checkbox border using Bootstrap */
-                            .custom-checkbox {
-                                border: 3px solid black !important; /* Black border with higher thickness */
-                                border-radius: 5px; /* Optional: rounded corners */
-                                appearance: none; /* Remove default checkbox style */
-                                background-color: #ffeedd;
-                            }
-
-                            /* When the checkbox is checked */
-                            .custom-checkbox:checked {
-                                 /* Optional: black fill when checked */
-                                border-color: black; /* Ensure the border stays black */
-                                background-color:  #5a75ec;
-                            }
-
-                            
-                            </style>
+                      
                     </div>
       
                 </div>
 
                 <!-- Summary Section -->
-                <div class="summary-container w-25 ms-3 h-100">
+                <div class="summary-container ms-3 h-100" style="width: 375px;   max-width: 100%; margin-right: 1.5rem;">
                     <div>
-                        <input class="form-control" type="text" value="                   Total Product" 
+                        <input class="form-control" type="text" value="Total Product" 
                         aria-label="Disabled input example" disabled readonly 
-                        style="background-color: white; color: black; border-radius: 25px; border: 3.5px solid #ffeedd;">
+                        style="background-color: white; color: black; text-align: center; border-radius: 25px; border: 3.5px solid #ffeedd;">
                     </div>
                     <div class="d-flex justify-content-between mt-5 mb-3">
                         <span>Subtotal</span>
@@ -326,10 +268,10 @@
                     <div class="row mt-4">
                         <span>Delivery Option:</span>
                         <div class="col mb-4">
-                            <button class="btn w-100 mt-2" style="background-color: #ffcc66; color: black; border-radius: 25px">Pick-up</button>
+                            <button class="btn w-100 mt-2" style="background-color: #ffcc66; width: 153.5px;   max-width: 100%; color: black; border-radius: 25px">Pick-up</button>
                         </div>
                         <div class="col mb-4">
-                            <button class="btn w-100 mt-2" style="background-color: #ffcc66; color: black; border-radius: 25px;">Deliver</button>
+                            <button class="btn w-100 mt-2" style="background-color: #ffcc66; width: 153.5px;   max-width: 100%; color: black; border-radius: 25px;">Delivery</button>
                         </div>
                     </div>
 
@@ -344,8 +286,9 @@
                         aria-label="Disabled input example" disabled readonly 
                         style="background-color: #ffeedd; color: black; border-radius: 25px; border: 3.5px solid #ffeedd;">
                     </div>
+       
              
-                    <button class="btn btn-danger w-100 mt-1" style="border-radius: 25px;">Place Order</button>
+                    <button class="btn btn-danger w-100 mt-1" onclick="window.location.href='buyer_place_order_summary.html'" style="border-radius: 25px;">Place Order</button>
                 </div>
             </div>
         </div>
