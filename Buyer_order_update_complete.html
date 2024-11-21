@@ -18,7 +18,7 @@
   <div class="order-status" >
 
     <!-- Back Button -->
-    <button class="back-btn" onclick="window.location.href='buyer_order_status.html'">
+    <button class="back-btn" onclick="window.location.href='buyer_order_status_arrived.html'">
       <i class="fas fa-arrow-left"></i> Back
     </button>
 
@@ -27,38 +27,38 @@
 
     <!-- Delivery Steps -->
     <div class="tracking">
-      <div class="step" id="step-1">
-        <span class="status-dot"></span>
-        <p class="status-label">Order Placed</p>
-        <p class="status-time" id="time-1">Completed</p>
+      <div class="step completed" id="step-0">
+          <span class="status-dot"></span>
+          <p class="status-label">Order Placed</p>
+          <p class="status-time" id="time-0">Completed</p>
       </div>
-      <div class="step" id="step-2">
-        <span class="status-dot"></span>
-        <p class="status-label">Shipped</p>
-        <p class="status-time" id="time-2">Processing...</p>
+      <div class="step completed" id="step-0">
+          <span class="status-dot"></span>
+          <p class="status-label">Shipped</p>
+          <p class="status-time" id="time-0">Shipped Complete</p>
       </div>
-      <div class="step" id="step-3">
-        <span class="status-dot"></span>
-        <p class="status-label">Out for Delivery</p>
-        <p class="status-time" id="time-3"></p>
+      <div class="step completed" id="step-0">
+          <span class="status-dot"></span>
+          <p class="status-label">Delivery Received</p>
+          <p class="status-time" id="time-0"></p>
       </div>
-      <div class="step" id="step-4">
-        <span class="status-dot"></span>
-        <p class="status-label">Delivered</p>
-        <p class="status-time" id="time-4"></p>
+      <div class="step completed" id="step-0">
+          <span class="status-dot"></span>
+          <p class="status-label">Delivered Successfully</p>
+          <p class="status-time" id="time-0"></p>
       </div>
-    </div>
+  </div>
 
     <!-- Current Location -->
     <div class="current-location">
-      <h2>Current Location</h2>
-      <p id="current-location">Warehouse</p>
+      <h2>Delivered Location</h2>
+      <p>San Andreas</p>
     </div>
 
     <!-- Time Remaining -->
     <div class="time-remaining">
-      <h2>Estimated Time Remaining</h2>
-      <p id="remaining-time">Calculating...</p>
+      <h2>Estimated Time Delivered</h2>
+      <p id="remaining-time">30 minutes</p>
     </div>
   </div>
 

@@ -227,6 +227,15 @@
     color: var(--light) !important;
 }
 
+.service-item:hover .fa-star {
+    color: inherit; /* Ensures hover doesn't affect stars */
+}
+
+.service-item:hover .fa-star.checked {
+    color: gold !important; /* Force checked stars to remain gold */
+}
+
+
 
 /*** Food Menu ***/
 .nav-pills .nav-item .active {
@@ -557,13 +566,15 @@ h5 {
     margin-bottom: 5px;
 }
 
-.star-rating .fa {
-    color: #E95F5D;
+.service-item .fa-star {
+    color: #E95F5D; /* Default color for non-checked stars */
+    transition: none; /* No transition for stars */
 }
 
-.star-rating .checked {
-    color: #FFD700;
+.service-item .fa-star.checked {
+    color: gold; /* Color for checked stars */
 }
+
 
 .price {
     font-size: 16px;
