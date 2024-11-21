@@ -122,6 +122,35 @@
         color: #000000 !important; /* Optional: Change text color if needed */
 }
 
+    .summary-container {
+        background-color: #ffffff;
+        border-radius: 75px;
+        padding: 20px;
+        }
+
+    .summary-container .btn {
+        border-radius: 10px;
+        font-weight: bold;
+        }
+
+    .summary-container .total {
+        font-size: 20px;
+        font-weight: bold;
+        }
+    
+        #address {
+        height: 255px; /* Adjust height as needed */
+    }
+
+     .form-control::placeholder {
+        position: absolute;
+        top: 0;
+        transform: translateY(10%); /* Optional for precise alignment */
+        font-size: 1.5rem; /* Adjust the size if necessary */
+    }
+   
+ 
+
     </style>
 
 </head>
@@ -129,9 +158,11 @@
     <div class="container py-4">
         <!-- Back Button -->
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <button class="back-btn" onclick="window.location.href='Seller_index.html'">
-                <i class="fas fa-arrow-left"></i> Back
-            </button>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <button class="back-btn" onclick="window.location.href='Seller_index.html'">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
         </div>
         <div>
             <input class="form-control" type="text" value="       My Profile/ Sell Product" 
@@ -185,7 +216,7 @@
                     </div>
                     <div class="pt-5 pb-4">
                     </div>
-                    <div class="pt-4  pb-3">
+                    <div class="pt-5  pb-3">
                     </div>
                  
                 </div>
@@ -195,44 +226,30 @@
             <div class="col-md-8">
 
                 <div class="favorites-container">
-                   
 
-                        <div class="mt-5 mb-4 w-100">
-                            <input type="email" class="form-control-lg w-100 transparent-border" id="name" placeholder="Bussiness Name">
+                    <div class="row align-items-center justify-content-center" style="height: 30.5vh;"> <!-- Center content vertically and horizontally -->
+                        <div class="profiles-picture-container col-4 mb-4 summary-container d-flex justify-content-center align-items-center w-25 h-100">
+                            <img src="img/svg_upload.svg" alt="Profile Picture" id="profile-pic" onclick="document.getElementById('file-input').click();" class="img-fluid" style="cursor: pointer;">
+                            <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="previewImage(event)">
                         </div>
                     
-                        <div class="mb-4 w-100">
-                            <input type="email" class="form-control-lg w-100 transparent-border" id="address" placeholder="Owner Name">
+                        <div class="col-8 mb-4">
+                            <input type="text" class="form-control-lg w-100 transparent-border mb-2" id="product_name" placeholder="Product Name">
+                            <input type="text" class="form-control-lg w-100 transparent-border mb-2" id="best_before" placeholder="Best before">
+                            <input type="text" class="form-control-lg w-100 transparent-border mb-2" id="price" placeholder="Price">
+                            <input type="text" class="form-control-lg w-100 transparent-border mb-2" id="qty" placeholder="Qty">
                         </div>
-                    
-                        <div class="mb-4 w-100">
-                            <input type="email" class="form-control-lg w-100 transparent-border" id="address" placeholder="Address">
+                    </div>
+
+                        <div class="mt-5">
+                           
                         </div>
+                
                     
-                        <div class="mb-4 w-100">
-                            <input type="email" class="form-control-lg w-100 transparent-border" id="email" placeholder="Email">
+                        <div class="w-100 pt-1">
+                            <input type="email" class="form-control form-control-lg  transparent-border" id="address" placeholder="Description">
                         </div>
-                    
-                        <div class="mb-4 ">
-                            <input type="email" class="form-control-lg w-100 transparent-border" id="contact_number" placeholder="Contact Number">
-                        </div>
-                    
-                        <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary mb-5 w-25 rounded-pill" onclick="window.location.href='Buyer_index.html'">Save</button>
-                        </div>
-                        
-                        
-                        
-                        
-                        
-                    
-                        <div class="pt-4 pb-2"></div>
-                        <div class=" pb-1"></div>
-                    
-                   
-                    
-                    
-                    
+      
                     
                 </div>
             </div>
