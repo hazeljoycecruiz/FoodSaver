@@ -122,7 +122,7 @@ $conn->close();
 
                     <!-- Sign Up Link -->
                     <div class="text-center">
-                        <span>Do you have an account? 
+                        <span>Don't have an account? 
                             <a href="index_signup.php" class="text-decoration-none fw-bold">Sign Up</a>
                         </span>
                     </div>

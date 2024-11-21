@@ -158,6 +158,13 @@ $conn->close();
                         </div>
                     </div>
 
+                    <!-- Sign Up Link -->
+                    <div class="text-center">
+                        <span>Do you have an account? 
+                            <a href="index_login.php" class="text-decoration-none fw-bold">Log In</a>
+                        </span>
+                    </div>
+
                     <!-- Submit Button -->
                     <button type="submit" class="btn btn-primary mt-3 w-25 rounded-pill">Signup</button>
                 </form>
