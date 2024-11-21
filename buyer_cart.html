@@ -17,6 +17,7 @@
 
     <!-- Libraries Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/profile.css">
 
     <style>
@@ -26,95 +27,125 @@
         }
 
         .cart-container {
-            background-color: #ffffff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-        .cart-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 10px;
-            margin-bottom: 10px;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-        }
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffeedd;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        .cart-item img {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            margin-right: 10px;
-        }
+.cart-item img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 15px;
+    background-color: #ffebcc;
+}
 
-        .cart-item-content {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+.cart-item-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
 
-        .cart-item-title {
-            font-size: 16px;
-            font-weight: 600;
-        }
+.cart-item-title {
+    font-size: 16px;
+    font-weight: 600;
+}
 
-        .cart-item-price {
-            color: #ff6b6b;
-            font-weight: bold;
-        }
+.cart-item-price {
+    color: #e82c2c;
+    font-weight: bold;
+}
 
-        .cart-item-quantity {
-            display: flex;
-            align-items: center;
-        }
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-        .cart-item-quantity input {
-            width: 40px;
-            text-align: center;
-            margin: 0 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+.cart-item-quantity button {
+    background-color: #ffcc66;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
 
-        .summary-container {
-            background-color: #ffffff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
+.cart-item-quantity span {
+    font-size: 16px;
+    text-align: center;
+}
 
-        .summary-container .btn {
-            border-radius: 10px;
-            font-weight: bold;
-        }
+/* Adjust cart-container padding and flex direction for smaller devices */
+@media (max-width: 768px) {
+    .cart-container {
+        flex-direction: column; /* Stack items vertically */
+        padding: 10px;
+    }
+    .cart-items {
+        width: 100%; /* Full width */
+        margin-bottom: 10px;
+    }
+}
 
-        .summary-container .total {
-            font-size: 20px;
-            font-weight: bold;
-        }
+/* Adjust for smaller screens like phones */
+@media (max-width: 576px) {
+    .cart-container {
+        padding: 5px;
+    }
+    .cart-item {
+        flex-direction: column; /* Stack each item content vertically */
+        align-items: flex-start; /* Align content to the left */
+        padding: 10px;
+    }
+    .cart-item img {
+        margin: 0 auto 10px; /* Center image and add space below */
+    }
+}
+
 
         .row-gutter {
             gap: 20px;
         }
+
+        .custom-checkbox {
+            border: 10px solid black !important; /* Black border with higher thickness */
+            border-radius: 5px; /* Optional: rounded corners */
+            appearance: none; /* Remove default checkbox style */
+         }
+
+         /* When the checkbox is checked */
+        .custom-checkbox:checked {
+            background-color: black; /* Optional: black fill when checked */
+            border-color: black; /* Ensure the border stays black */
+        }
     </style>
-    
 </head>
 <body>
     <div class="container py-4">
         <!-- Header -->
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-between align-items-center ">
             <button class="back-btn" onclick="window.location.href='Buyer_index.html'">
                 <i class="fas fa-arrow-left"></i> Back
             </button>
+            </div>
         </div>
-        </div>
+
         <div>
-            <input class="form-control" type="text" value="       My Profile" 
+            <input class="form-control mb-3" type="text" value="       My Cart" 
             aria-label="Disabled input example" disabled readonly 
             style="background-color: white; color: black; border-radius: 8px;">
         </div>
@@ -122,193 +153,138 @@
     
                 <!-- Cart Items and Summary -->
          <!-- Cart Items and Summary -->
-        <div class="col-md-12 mt-4 "  >
-            <div class="cart-container d-flex justify-content-between " style="height: 575px; ">
-                <!-- Cart Items Section -->
-                <div class="cart-items w-25 overflow-auto">
-                    <div class="cart-item mb-3" style="display: flex; align-items: center; background-color: #ffeedd; border-radius: 15px; padding: 10px;">
-                        <!-- Image Section -->
-                        <img src="img/about-1.jpg" alt="Macarons" style="width: 70px; height: 70px; border-radius: 50%; margin-left: 10px; margin-right: 22px; background-color: #ffebcc; ">
-                    
-                        <!-- Content Section -->
-                        <div style="flex-grow: 1;">
-                            <div class="cart-item-title" style="font-size: 18px; font-weight: bold;">Macarons</div>
-                            <div class="cart-item-price" style="color: #ff5555; font-weight: bold;">Php 20.00</div>
-                            <div class="cart-item-quantity" style="display: flex; align-items: center; gap: 10px;">
-                                <button onclick="decreaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
-                                <span class="quantity" style="font-size: 16px;">1</span>
-                                <button onclick="increaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
+            <div class="d-flex flex-wrap justify-content-between align-items-start" >
+                <!-- Cart Items -->
+                <div class="cart-container w-100 d-flex flex-column justify-content-between" style="height: 575px; position: relative;">
+                    <div class="row w-50" style="margin-left: 0.1rem; " >
+                        <div class="cart-item d-flex align-items-center justify-content-between w-25 col ">
+                            <img src="img/about-1.jpg" alt="Macarons" class="img-fluid" style="max-width: 170px;">
+                            <div class="d-flex flex-column flex-grow-1 mx-3 background-color: #ffeedd;">
+                                <h5>Macarons</h5>
+                                <span class="cart-item-price">Php 100.00</span>
+                                <div>
+                                    <button onclick="decreaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
+                                    <span class="quantity" style="font-size: 16px;">1</span>
+                                    <button onclick="increaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
+                                </div>
                             </div>
+                            <input class="form-check-input custom-checkbox" type="checkbox" style="width: 25px; height: 25px; margin-right: 5px;">
                         </div>
-                        <script>
-                            // Function to increase quantity
-                            function increaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and increase it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                quantityElement.textContent = currentQuantity + 1;
-                            }
-                        
-                            // Function to decrease quantity
-                            function decreaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and decrease it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                if (currentQuantity > 1) {
-                                    quantityElement.textContent = currentQuantity - 1;
-                                }
-                            }
-                        </script>
-                        <!-- Checkbox Section -->
-                        <input class="form-check-input custom-checkbox" type="checkbox" style="width: 25px; height: 25px; margin-right: 22px;">
+                    
+                        <!-- Button in the Center -->
+                        <div class="col d-flex align-items-center ">
+                            <button type="button" class="btn btn-danger w-50 " onclick="window.location.href='#'" 
+                                style="color: rgb(255, 255, 255); border-radius: 25px;">
+                                Delete Cart
+                            </button>
+                        </div>
+                    </div>
+                    
 
-                            <style>
-                            /* Customize the checkbox border using Bootstrap */
-                            .custom-checkbox {
-                                border: 3px solid black !important; /* Black border with higher thickness */
-                                border-radius: 5px; /* Optional: rounded corners */
-                                appearance: none; /* Remove default checkbox style */
-                                background-color: #ffeedd;
-                            }
 
-                            /* When the checkbox is checked */
-                            .custom-checkbox:checked {
-                                 /* Optional: black fill when checked */
-                                border-color: black; /* Ensure the border stays black */
-                                background-color:  #5a75ec;
-                            }
-
-                            
-                            </style>
+                    <div class="row w-50" style="margin-left: 0.1rem;" >
+                        <div class="cart-item d-flex align-items-center justify-content-between w-25 col">
+                            <img src="img/about-1.jpg" alt="Macarons" class="img-fluid" style="max-width: 170px;">
+                            <div class="d-flex flex-column  flex-grow-1 mx-3">
+                                <h5>Chicken</h5>
+                                <span class="cart-item-price" >Php 60.00</span>
+                                <div>
+                                    <button onclick="decreaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
+                                    <span class="quantity" style="font-size: 16px;">1</span>
+                                    <button onclick="increaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
+                                </div>
+                            </div>
+                            <input class="form-check-input custom-checkbox" type="checkbox" style="width: 25px; height: 25px; margin-right: 5px;">
+                        </div>
+                    
+                        <!-- Button in the Center -->
+                        <div class="col d-flex align-items-center ">
+                            <button type="button" class="btn btn-danger w-50 " onclick="window.location.href='#'" 
+                                style="color: rgb(255, 255, 255); border-radius: 25px;">
+                                Delete Cart
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="row w-50" style="margin-left: 0.1rem;" >
+                        <div class="cart-item d-flex align-items-center justify-content-between w-25 col">
+                            <img src="img/about-1.jpg" alt="Macarons" class="img-fluid" style="max-width: 170px;">
+                            <div class="d-flex flex-column flex-grow-1 mx-3">
+                                <h5>Burger</h5>
+                                <span class="cart-item-price">Php 30.00</span>
+                                <div>
+                                    <button onclick="decreaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
+                                    <span class="quantity" style="font-size: 16px;">1</span>
+                                    <button onclick="increaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
+                                </div>
+                            </div>
+                            <input class="form-check-input custom-checkbox" type="checkbox" style="width: 25px; height: 25px; margin-right: 5px;">
+                        </div>
+                    
+                        <!-- Button in the Center -->
+                        <div class="col d-flex align-items-center ">
+                            <button type="button" class="btn btn-danger w-50 " onclick="window.location.href='#'" 
+                                style="color: rgb(255, 255, 255); border-radius: 25px;">
+                                Delete Cart
+                            </button>
+                        </div>
                     </div>
 
-
-                    <div class="cart-item mb-3" style="display: flex; align-items: center; background-color: #ffeedd; border-radius: 15px; padding: 10px;">
-                        <!-- Image Section -->
-                        <img src="img/menu-1.jpg" alt="Macarons" style="width: 70px; height: 70px; border-radius: 50%; margin-left: 10px; margin-right: 22px; background-color: #ffebcc; ">
-                    
-                        <!-- Content Section -->
-                        <div style="flex-grow: 1;">
-                            <div class="cart-item-title" style="font-size: 18px; font-weight: bold;">Salad</div>
-                            <div class="cart-item-price" style="color: #ff5555; font-weight: bold;">Php 20.00</div>
-                            <div class="cart-item-quantity" style="display: flex; align-items: center; gap: 10px;">
-                                <button onclick="decreaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
-                                <span class="quantity" style="font-size: 16px;">1</span>
-                                <button onclick="increaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
-                            </div>
-                        </div>
-                        <script>
-                            // Function to increase quantity
-                            function increaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and increase it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                quantityElement.textContent = currentQuantity + 1;
-                            }
-                        
-                            // Function to decrease quantity
-                            function decreaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and decrease it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                if (currentQuantity > 1) {
-                                    quantityElement.textContent = currentQuantity - 1;
-                                }
-                            }
-                        </script>
-                        <!-- Checkbox Section -->
-                        <input class="form-check-input custom-checkbox" type="checkbox" style="width: 25px; height: 25px; margin-right: 22px;">
-
-                            <style>
-                            /* Customize the checkbox border using Bootstrap */
-                            .custom-checkbox {
-                                border: 3px solid black !important; /* Black border with higher thickness */
-                                border-radius: 5px; /* Optional: rounded corners */
-                                appearance: none; /* Remove default checkbox style */
-                                background-color: #ffeedd;
-                            }
-
-                            /* When the checkbox is checked */
-                            .custom-checkbox:checked {
-                                 /* Optional: black fill when checked */
-                                border-color: black; /* Ensure the border stays black */
-                                background-color:  #5a75ec;
-                            }
-
-                            
-                            </style>
+                 
+                    <div class="d-flex justify-content-end mt-auto">
+                        <button type="button" class="btn btn-danger rounded-pill" onclick="window.location.href='buyer_place_order.html'" 
+                            style="color: rgb(255, 255, 255); border-radius: 25px;  width: 200px;   max-width: 100%; ">
+                            Checkout
+                        </button>
                     </div>
-                    <div class="cart-item mb-3" style="display: flex; align-items: center; background-color: #ffeedd; border-radius: 15px; padding: 10px;">
-                        <!-- Image Section -->
-                        <img src="img/menu-6.jpg" alt="Macarons" style="width: 70px; height: 70px; border-radius: 50%; margin-left: 10px; margin-right: 22px; background-color: #ffebcc; ">
-                    
-                        <!-- Content Section -->
-                        <div style="flex-grow: 1;">
-                            <div class="cart-item-title" style="font-size: 18px; font-weight: bold;">Snack Fries</div>
-                            <div class="cart-item-price" style="color: #ff5555; font-weight: bold;">Php 50.00</div>
-                            <div class="cart-item-quantity" style="display: flex; align-items: center; gap: 10px;">
-                                <button onclick="decreaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
-                                <span class="quantity" style="font-size: 16px;">1</span>
-                                <button onclick="increaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
-                            </div>
-                        </div>
-                        <script>
-                            // Function to increase quantity
-                            function increaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and increase it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                quantityElement.textContent = currentQuantity + 1;
-                            }
-                        
-                            // Function to decrease quantity
-                            function decreaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and decrease it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                if (currentQuantity > 1) {
-                                    quantityElement.textContent = currentQuantity - 1;
-                                }
-                            }
-                        </script>
-                        <!-- Checkbox Section -->
-                        <input class="form-check-input custom-checkbox" type="checkbox" style="width: 25px; height: 25px; margin-right: 22px;">
-
-                            <style>
-                            /* Customize the checkbox border using Bootstrap */
-                            .custom-checkbox {
-                                border: 3px solid black !important; /* Black border with higher thickness */
-                                border-radius: 5px; /* Optional: rounded corners */
-                                appearance: none; /* Remove default checkbox style */
-                                background-color: #ffeedd;
-                            }
-
-                            /* When the checkbox is checked */
-                            .custom-checkbox:checked {
-                                 /* Optional: black fill when checked */
-                                border-color: black; /* Ensure the border stays black */
-                                background-color:  #5a75ec;
-                            }
-
-                            
-                            </style>
-                    </div>
-      
+               
                 </div>
-                <div class="summary-container w-25  ">
-                    <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-danger mb-5 w-50 rounded-pill"  onclick="window.location.href='buyer_place_order.html' " style=" color: rgb(255, 255, 255); border-radius: 25px; margin-top: 500px;">Save</button>
-                    </div>
-                </div>
-                
             </div>
-        </div>
+
+            
+                        <script>
+                            // Function to increase quantity
+                            function increaseQuantity(button) {
+                                // Find the span element with class "quantity" in the same parent
+                                const quantityElement = button.parentElement.querySelector('.quantity');
+                                // Parse the current quantity as a number and increase it
+                                let currentQuantity = parseInt(quantityElement.textContent);
+                                quantityElement.textContent = currentQuantity + 1;
+                            }
+                        
+                            // Function to decrease quantity
+                            function decreaseQuantity(button) {
+                                // Find the span element with class "quantity" in the same parent
+                                const quantityElement = button.parentElement.querySelector('.quantity');
+                                // Parse the current quantity as a number and decrease it
+                                let currentQuantity = parseInt(quantityElement.textContent);
+                                if (currentQuantity > 1) {
+                                    quantityElement.textContent = currentQuantity - 1;
+                                }
+                            }
+                        </script>
+
+                            <style>
+                            /* Customize the checkbox border using Bootstrap */
+                            .custom-checkbox {
+                                border: 3px solid black !important; /* Black border with higher thickness */
+                                border-radius: 5px; /* Optional: rounded corners */
+                                appearance: none; /* Remove default checkbox style */
+                                background-color: #ffeedd;
+                            }
+
+                            /* When the checkbox is checked */
+                            .custom-checkbox:checked {
+                                 /* Optional: black fill when checked */
+                                border-color: black; /* Ensure the border stays black */
+                                background-color:  #5a75ec;
+                            }
+
+                            
+                            </style>
+                 
+                
+         
 
     </div>
  
