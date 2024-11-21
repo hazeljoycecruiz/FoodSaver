@@ -433,7 +433,7 @@
     align-items: center;
     justify-content: center;
     color: #CCCCCC;
-    border: 1px solid #FFFFFF;
+    border: 1px solid #000000;
     border-radius: 35px;
     transition: .3s;
 }
@@ -705,7 +705,7 @@ a:hover {
 }
 
 .footer{
-    background-color: #FF6B6B;
+    background-color: #FFD09B;
 }
 
 .menu-item a.active {

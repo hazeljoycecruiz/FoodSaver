@@ -2,7 +2,7 @@ body {
   font-family: 'Heebo', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-image: url("../img/background.png");
+  background: rgba(255, 255, 255, 0.3) url("../img/background.png") ;
   color: #333;
 }
 
