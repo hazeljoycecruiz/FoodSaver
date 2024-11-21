@@ -203,6 +203,25 @@
     width: 90%; /* Ensures the line spans the full width */
 }
 
+/* Popup Header for Close Button */
+.popup-header {
+    position: relative;
+     /* Ensure the close button can be positioned relative to this container */
+}
+
+/* Close Button */
+.close-x {
+    top: 10px;
+    margin-left: 340px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #E95F5D; /* Optional: match the color scheme */
+}
+
+.close-x:hover {
+    color: #ff4040; /* Optional: hover effect */
+}
+
 
 </style>
 
@@ -445,10 +464,11 @@
                 
                             <!-- Centered Image -->
                             <img id="popupImage" src="" alt="Product Image" class="popup-image">
-                            <div class="popup-info"> <p id="popupQty"><strong>Quantity:</strong></p></div>
+                            
                 
                             <!-- Information Section -->
                             <div class="popup-info">
+                                <p id="popupQty"><strong>Quantity:</strong></p>
                                 <p id="popupName"><strong>Product Name:</strong> </p>
                                 <p id="popupDate"><strong>Best Before:</strong> </p>
                                 <p id="popupPrice"><strong>Price:</strong> </p>

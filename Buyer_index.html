@@ -32,6 +32,145 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
+<style>
+
+.btn {
+        background-color: #E95F5D;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+.btn:hover {
+        background-color: #ff4040;
+    }
+
+
+   /* Popup Overlay */
+.popup-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Popup Box */
+.popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: #f9dbba;
+    border: 2px solid #ff4040;
+    color: #E95F5D;
+    border-radius: 10px;
+    width: 500px; /* Normal size */
+    max-width: 90%; /* Responsive */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    padding: 5px; /* Add space between square and the popup edges */
+}
+
+/* Square Styling */
+.popup-square {
+    background-color: #ffffff;
+    border: 2px solid #E95F5D;
+    border-radius: 10px; /* Optional for rounded corners */
+    width: 90%; /* Same width as the popup */
+   
+    padding: 20px; /* Inner padding for content */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Centered Image */
+.popup-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #E95F5D;
+    object-fit: cover;
+}
+
+
+/* Information Text */
+.popup-info {
+    font-size: 15px;
+    color: #333;
+    text-align: left;
+    width: 100%;
+    margin-left: 50px;
+}
+
+.popup-info p {
+    margin: 5px 0;
+}
+
+/* Add to Cart Button */
+.popup-actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.add-to-cart-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #E95F5D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 150px;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #E95F5D;
+}
+
+.popup-divider {
+    border: none;
+    color: #000000;
+    border-top: 1px solid #000000; /* Adjust color to match your design */
+    margin: 10px 0; /* Adjust spacing */
+    width: 90%; /* Ensures the line spans the full width */
+}
+
+/* Popup Header for Close Button */
+.popup-header {
+    position: relative;
+     /* Ensure the close button can be positioned relative to this container */
+}
+
+/* Close Button */
+.close-x {
+    top: 10px;
+    margin-left: 340px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #E95F5D; /* Optional: match the color scheme */
+}
+
+.close-x:hover {
+    color: #ff4040; /* Optional: hover effect */
+}
+
+
+</style>
+
+
 <body>
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
@@ -124,7 +263,7 @@
                             <div class="col-3">
                                 <img src="img/moist cake.jpg" alt="Moist Cake" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
                                 <p class="name mb-1" style="font-weight: bold;">Moist Cake</p>
-                                <p class="price">Php 8.00</p>
+                                <p class="price">Php 5.00</p>
                             </div>
                             <!-- Image 3 -->
                             <div class="col-3">
@@ -136,7 +275,7 @@
                             <div class="col-3">
                                 <img src="img/ensaymada.jpg" alt="Ensaymada" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
                                 <p class="name mb-1" style="font-weight: bold;">Ensaymada</p>
-                                <p class="price">Php 5.00</p>
+                                <p class="price">Php 3.00</p>
                             </div>
                         </div>
                         <!-- Row 2 -->
@@ -145,7 +284,7 @@
                             <div class="col-3">
                                 <img src="img/pinakbet.jpg" alt="Pinakbet" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
                                 <p class="name mb-1" style="font-weight: bold;">Pinakbet</p>
-                                <p class="price">Php 20.00</p>
+                                <p class="price">Php 10.00</p>
                             </div>
                             <!-- Image 6 -->
                             <div class="col-3">
@@ -198,8 +337,8 @@
                                     <span class="fa fa-star"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 25.00</p>
-                                <a href="#" class="btn btn-custom" onclick="window.location.href='Buyer_cart.html'">Add to Cart</a>
+                                <p class="price">Php 20.00</p>
+                                <button class="btn" onclick="showPopup('img/corned beef.png', '5', 'Corned Beef', 'November 30, 2024', 'Php 20.00', '3', 'FoodSaver Convinience Store', 'Butuan City')"> Add to Cart </button>
                             </div>
                         </div>
                     </div>
@@ -216,8 +355,8 @@
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 18.00</p>
-                                <a href="#" class="btn btn-custom" >Add to Cart</a>
+                                <p class="price">Php 6.00</p>
+                                <button class="btn" onclick="showPopup('img/eggplant.jpg', '10', 'Talong', 'November 22, 2024', 'Php 6.00', '4', 'Tata Vegetable Stand', 'Butuan City')"> Add to Cart </button>
                             </div>
                         </div>
                     </div>
@@ -234,8 +373,8 @@
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                 </div>
-                                <p class="price">Php 35.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                                <p class="price">Php 5.00</p>
+                                <button class="btn" onclick="showPopup('img/moist cake.jpg', '30', 'Moist Cake', 'November 22, 2024', 'Php 6.00', '5', 'Joyce Bakery', 'Butuan City')"> Add to Cart </button>
                             </div>
                         </div>
                     </div>
@@ -252,8 +391,8 @@
                                     <span class="fa fa-star"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 28.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                                <p class="price">Php 3.00</p>
+                                <button class="btn" onclick="showPopup('img/ensaymada.jpg', '40', 'Ensaymada', 'November 22, 2024', 'Php 3.00', '4', 'Aubrey Bakery', 'Ampayon')"> Add to Cart </button>
                             </div>
                         </div>
                     </div>
@@ -274,12 +413,12 @@
                                 <div class="star-rating mb-2">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 30.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                                <p class="price">Php 10.00</p>
+                                <button class="btn" onclick="showPopup('img/pinakbet.jpg', '3', 'Pinakbet', 'November 22, 2024', 'Php 10.00', '3', 'Uriel Eatery', 'Ampayon')"> Add to Cart </button>
                             </div>
                         </div>
                     </div>
@@ -297,7 +436,7 @@
                                     <span class="fa fa-star"></span>
                                 </div>
                                 <p class="price">Php 8.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                                <button class="btn" onclick="showPopup('img/pancit canton.jpg', '50', 'Pancit Canton', 'November 30, 2024', 'Php 8.00', '3', 'FoodSaver Convinience Store', 'Ampayon')"> Add to Cart </button>
                             </div>
                         </div>
                     </div>
@@ -314,8 +453,8 @@
                                     <span class="fa fa-star"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 18.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                                <p class="price">Php 15.00</p>
+                                <button class="btn" onclick="showPopup('img/ginataangGulay.jpg', '3', 'Ginataang Gulay', 'November 22, 2024', 'Php 15.00', '3', 'Uriel Eatery', 'Ampayon')"> Add to Cart </button>
                             </div>
                         </div>
                     </div>
@@ -359,8 +498,8 @@
                                     <span class="fa fa-star"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 35.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                                <p class="price">Php 20.00</p>
+                                <button class="btn" onclick="showPopup('img/corned beef.png', '5', 'Corned Beef', 'November 30, 2024', 'Php 20.00', '3', 'FoodSaver Convinience Store', 'Butuan City')"> Add to Cart </button>
                             </div>
                         </div>
                     </div>
@@ -377,8 +516,8 @@
                                     <span class="fa fa-star"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 20.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                                <p class="price">Php 6.00</p>
+                                <button class="btn" onclick="showPopup('img/eggplant.jpg', '10', 'Talong', 'November 22, 2024', 'Php 6.00', '4', 'Tata Vegetable Stand', 'Butuan City')"> Add to Cart </button>
                             </div>
                         </div>
                     </div>
@@ -395,8 +534,8 @@
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                 </div>
-                                <p class="price">Php 25.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                                <p class="price">Php 5.00</p>
+                                <button class="btn" onclick="showPopup('img/moist cake.jpg', '30', 'Moist Cake', 'November 22, 2024', 'Php 6.00', '5', 'Joyce Bakery', 'Butuan City')"> Add to Cart </button>
                             </div>
                         </div>
                     </div>
@@ -413,8 +552,8 @@
                                     <span class="fa fa-star"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 15.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                                <p class="price">Php 3.00</p>
+                                <button class="btn" onclick="showPopup('img/ensaymada.jpg', '40', 'Ensaymada', 'November 22, 2024', 'Php 3.00', '4', 'Aubrey Bakery', 'Ampayon')"> Add to Cart </button>
                             </div>
                         </div>
                     </div>
@@ -439,8 +578,8 @@
                                     <span class="fa fa-star"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
-                                <p class="price">Php 30.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                                <p class="price">Php 10.00</p>
+                                <button class="btn" onclick="showPopup('img/pinakbet.jpg', '3', 'Pinakbet', 'November 22, 2024', 'Php 10.00', '3', 'Uriel Eatery', 'Ampayon')"> Add to Cart </button>
                             </div>
                         </div>
                     </div>
@@ -476,7 +615,7 @@
                                     <span class="fa fa-star"></span>
                                 </div>
                                 <p class="price">Php 28.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
+                                <button class="btn" onclick="showPopup('img/ginataangGulay.jpg', '3', 'Ginataang Gulay', 'November 22, 2024', 'Php 15.00', '3', 'Uriel Eatery', 'Ampayon')"> Add to Cart </button>
                             </div>
                         </div>
                     </div>
@@ -659,12 +798,103 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Popup -->
+                <div id="popupOverlay" class="popup-overlay">
+                    <div id="popup" class="popup">
+                        <!-- Square Section -->
+                        <div class="popup-square">
+                            <!-- Product Name with Close Button -->
+                            <div class="popup-header">
+                                <span class="close-x" onclick="closePopup()">&#10006;</span>
+                            </div>
+                
+                            <!-- Centered Image -->
+                            <img id="popupImage" src="" alt="Product Image" class="popup-image">
+                            
+                
+                            <!-- Information Section -->
+                            <div class="popup-info">
+                                <p id="popupQty"><strong>Quantity:</strong></p>
+                                <p id="popupName"><strong>Product Name:</strong> </p>
+                                <p id="popupDate"><strong>Best Before:</strong> </p>
+                                <p id="popupPrice"><strong>Price:</strong> </p>
+                                <p id="popupRating"><strong>Rating:</strong> </p>
+                                
+                                <!-- Line between Rating and Store Name -->
+                                <hr class="popup-divider">
+                                <p id="popupStore"><strong>Store Name:</strong> </p>
+                                <p id="popupLoc"><strong>Location:</strong> </p>
+                            </div>
+                    
+                            <!-- Add to Cart Button -->
+                            <div class="popup-actions">
+                                <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
         <!-- food 6 end -->
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
+
+    <script>
+        // Function to show the popup with product details
+        function showPopup(image, qty, name, date, price, rating, store, location) {
+        
+        document.getElementById('popupImage').src = image;
+        document.getElementById('popupQty').innerHTML = '<strong>Quantity: </strong>' + qty;
+        document.getElementById('popupName').innerHTML = '<strong>Name: </strong>' + name;
+        document.getElementById('popupDate').innerHTML = '<strong>Best Before: </strong>' + date;
+        document.getElementById('popupPrice').innerHTML = '<strong>Price: </strong>' + price;
+        document.getElementById('popupRating').innerHTML = '<strong>Rating: </strong>' + rating + ' <i class="fas fa-star" style="color: #FFD700;"></i>';
+        document.getElementById('popupStore').innerHTML = '<strong>Store Name: </strong>' + store;
+        document.getElementById('popupLoc').innerHTML = '<strong>Location: </strong>' + location;
+    
+    
+        // Display the popup
+        document.getElementById('popupOverlay').style.display = 'flex';
+    }
+    
+        // Function to add the product to the cart
+        function addToCart(name, image, price, qty, date, rating, store, location) {
+            const product = {
+                name: name,
+                image: image,
+                price: price,
+                qty: qty,
+                date: date,
+                rating: rating,
+                store: store,
+                location: location
+            };
+    
+        // Retrieve cart from localStorage or create a new cart array
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+        // Add the new product to the cart
+        cart.push(product);
+    
+        // Store the updated cart in localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+    
+        // Close the popup
+        closePopup();
+    
+        // Redirect to the cart page
+        window.location.href = 'Buyer_cart.html';
+    }
+    
+    // Function to close the popup
+    function closePopup() {
+        document.getElementById('popupOverlay').style.display = 'none';
+    }
+    
+        </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
