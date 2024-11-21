@@ -118,7 +118,7 @@
                 </button>
             </div>
         </div>
-        <div>
+        <div style="border: 2px solid #E95F5D; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
             <input class="form-control" type="text" value="       My Profile / Favorites" 
             aria-label="Disabled input example" disabled readonly 
             style="background-color: white; color: black;">
@@ -126,8 +126,8 @@
         <!-- Profile Content -->
         <div class="row g-3 mt-1 ">
             <!-- Sidebar -->
-            <div class="col-md-4">
-                <div class="sidebar pt-5">
+            <div class="col-md-4" >
+                <div class="sidebar pt-5" style="border: 2px solid #E95F5D; border-radius: 12px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
                     <!-- Profile Icon -->
                     <div class="profile-picture-container">
                         <img 
@@ -187,30 +187,56 @@
                 </div>
             </div>
 
-            <!-- Favorites -->
-            <div class="col-md-8">
-                <div class="favorites-container" onclick="showPopup('img/corned beef.png', '5', 'Corned Beef', 'November 30, 2024', 'Php 20.00', '3', 'FoodSaver Convinience Store', 'Butuan City')">
-                    <div class="favorite-item mt-2">
-                        <span>Century Tuna</span>
-                        <i class="fas fa-heart favorite-heart"></i>
-                    </div>
-                    <div class="pt-5 pb-5">
-                    </div>
-                    <div class="pt-5 pb-5">
-                    </div>
-                    <div class="pt-5 pb-5">
-                    </div>
-                    <div class="pt-5 pb-5">
-                    </div>
-                    <div class="pt-5 pb-4">
-                    </div>
-                    <div class="pb-2 pt-1">
-                        
-                    </div>
+           <!-- Favorites -->
+           <div class="col-md-8">
+            <div class="favorites-container" style="border: 2px solid #E95F5D; border-radius: 12px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+                <div class="favorite-item mt-2" onclick="showPopup('img/centurytuna.jpg', 'Century Tuna', 'November 30, 2024', 'Php 20.00', 'FoodSaver Convenience Store', 'Butuan City')">
+                    <span>Century Tuna</span>
+                    <i class="fas fa-heart favorite-heart"></i>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Product Details Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color: #FFECC8; border-radius: 20px; border: 2px solid #FFD09B;">
+            <div class="modal-header" style="border-bottom: 1px solid #FFD09B;">
+                <h5 class="modal-title" id="productModalLabel" style="color: #E95F5D; font-weight: bold;">Favorite Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: #FFB0B0;"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex align-items-center mb-3">
+                    <img id="productImage" src="img/centurytuna.jpg" alt="Product Image" style="width: 100px; height: 100px; border-radius: 10px; margin-right: 20px;">
+                    <div>
+                        <p id="productName" style="margin-bottom: 3px;"><strong>Product Name:</strong></p>
+                        <p id="bestBefore" style="margin-bottom: 3px;"><strong>Best Before:</strong></p>
+                        <p id="price" style="margin-bottom: 3px;"><strong>Price:</strong></p>
+                        <p id="store" style="margin-bottom: 3px;"><strong>Store:</strong></p>
+                        <p id="location" style="margin-bottom: 3px;"><strong>Location:</strong></p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+
+    <script>
+        function showPopup(imageSrc, name, bestBefore, price, store, location) {
+            document.getElementById('productImage').src = imageSrc;
+            document.getElementById('productName').innerHTML = `<strong>Product Name:</strong> ${name}`;
+            document.getElementById('bestBefore').innerHTML = `<strong>Best Before:</strong> ${bestBefore}`;
+            document.getElementById('price').innerHTML = `<strong>Price:</strong> ${price}`;
+            document.getElementById('store').innerHTML = `<strong>Store:</strong> ${store}`;
+            document.getElementById('location').innerHTML = `<strong>Location:</strong> ${location}`;
+            new bootstrap.Modal(document.getElementById('productModal')).show();
+        }
+    </script>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

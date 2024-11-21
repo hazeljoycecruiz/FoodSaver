@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Place Order Summary</title>
+    <title>Place Order</title>
     <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
@@ -113,17 +113,16 @@
             border-color: black; /* Ensure the border stays black */
         }
     </style>
-    
 </head>
 <body>
     <div class="container py-4">
         <!-- Header -->
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <button class="back-btn" onclick="window.location.href='buyer_place_order.html'">
+            <button class="back-btn" onclick="window.location.href='buyer_cart.html'">
                 <i class="fas fa-arrow-left"></i> Back
             </button>
         </div>
-        <div style="border: 2px solid #E95F5D; border-radius: 12px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+        <div>
             <input class="form-control" type="text" value="       My Cart" 
             aria-label="Disabled input example" disabled readonly 
             style="background-color: white; color: black; border-radius: 8px;">
@@ -132,10 +131,10 @@
     
                 <!-- Cart Items and Summary -->
          <!-- Cart Items and Summary -->
-        <div class="col-md-12 mt-4 "  style="border: 2px solid #E95F5D; border-radius: 12px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+        <div class="col-md-12 mt-4 "  >
             <div class="cart-container d-flex justify-content-between " style="height: 575px; ">
                 <!-- Cart Items Section -->
-                <div class="cart-items" style="width: 350px;">
+                <div class="cart-items w-25">
                     <div class="cart-item mb-3 w-75" style="display: flex; align-items: center; background-color: #ffeedd; border-radius: 15px; padding: 10px;">
                         <!-- Image Section -->
                         <img src="img/bicol express.jpg" alt="Macarons" style="width: 70px; height: 70px; border-radius: 50%; margin-left: 10px; margin-right: 22px; background-color: #ffebcc; ">
@@ -211,7 +210,7 @@
                             }
                         </script>
                         <!-- Checkbox Section -->
-                       
+                     
                     </div>
                     <div class="cart-item mb-3 w-75" style="display: flex; align-items: center; background-color: #ffeedd; border-radius: 15px; padding: 10px;">
                         <!-- Image Section -->
@@ -219,7 +218,7 @@
                     
                         <!-- Content Section -->
                         <div style="flex-grow: 1;">
-                            <div class="cart-item-title" style="font-size: 18px; font-weight: bold;">Ginataang Gulay</div>
+                            <div class="cart-item-title" style="font-size: 16px; font-weight: bold;">Ginataang Gulay</div>
                             <div class="cart-item-price" style="color: #ff5555; font-weight: bold;">Php 10.00</div>
                             <div class="cart-item-quantity" style="display: flex; align-items: center; gap: 10px;">
                                 <button onclick="decreaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
@@ -248,6 +247,7 @@
                                 }
                             }
                         </script>
+                        <!-- Checkbox Section -->
                       
                     </div>
       
@@ -256,86 +256,44 @@
                 <!-- Summary Section -->
                 <div class="summary-container ms-3 h-100" style="width: 375px;   max-width: 100%; margin-right: 1.5rem;">
                     <div>
-                        <input class="form-control" type="text" value="Order Summary" 
+                        <input class="form-control" type="text" value="Total Product" 
                         aria-label="Disabled input example" disabled readonly 
                         style="background-color: white; color: black; text-align: center; border-radius: 25px; border: 3.5px solid #ffeedd;">
                     </div>
-                    <div class="pt-1"></div>
-                    <div class="d-flex justify-content-between mt-4 mb-3">
+                    <div class="d-flex justify-content-between mt-5 mb-3">
                         <span>Subtotal</span>
                         <span>Php 000.00</span>
                     </div>
 
                     <div class="row mt-4">
-                        <span>Shipping Method:</span>
-                        <div class="col mb-2" style=" max-width: 100%">
-                            <button class="btn mt-2" style="background-color: #ffcc66; color: black; border-radius: 25px; width: 153.5px;   max-width: 100%;">Online Payment</button>
+                        <span>Delivery Option:</span>
+                        <div class="col mb-4">
+                            <button class="btn w-100 mt-2" style="background-color: #ffcc66; width: 153.5px;   max-width: 100%; color: black; border-radius: 25px">Pick-up</button>
                         </div>
-                        <div class="col mb-3">
-                            <button class="btn mt-2" style="background-color: #ffcc66; color: black; border-radius: 25px; width: 153.5px;   max-width: 100%;">Cash on Delivery</button>
+                        <div class="col mb-4">
+                            <button class="btn w-100 mt-2" style="background-color: #ffcc66; width: 153.5px;   max-width: 100%; color: black; border-radius: 25px;">Delivery</button>
                         </div>
                     </div>
 
-          
-
-
-
-
-                    <div class="mb-2 w-100">
-                        <input type="email" class="form-control w-100 " style="border-radius: 25px; border: 3.5px solid #ffeedd;" id="address" placeholder="Municipality">
-                    </div>
-                    <div class="mb-2 w-100">
-                        <input type="email" class="form-control w-100 " style="border-radius: 25px; border: 3.5px solid #ffeedd;" id="address" placeholder="Municipality">
-                    </div>
-                    <div class="mb-3 w-100">
-                        <input type="email" class="form-control w-100 " style="border-radius: 25px; border: 3.5px solid #ffeedd;" id="address" placeholder="Municipality">
-                    </div>
-                    <div class="d-flex justify-content-between mb-3">
+                    <div class="pt-4 pb-4"></div>
+                    
+                    <div class="d-flex justify-content-between pt-4 mt-5 mb-4">
                         <span>Shipping Fee</span>
                         <span>Php 000.00</span>
                     </div>
                     <div>
-                        <input class="form-control mb-2" type="text" value="Total Product                               Php 000.00 " 
+                        <input class="form-control mb-2" type="text" value="Total Product                Php 000.00 " 
                         aria-label="Disabled input example" disabled readonly 
                         style="background-color: #ffeedd; color: black; border-radius: 25px; border: 3.5px solid #ffeedd;">
                     </div>
+       
              
-                    <button class="btn btn-danger w-100 mt-1" style="border-radius: 25px;">Place Order</button>
-
-                    <!-- Modal -->
-<div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" style="background-color: #FFECC8; border-radius: 12px; border: 2px solid #FFD09B;">
-            <div class="modal-header" style="border-bottom: 1px solid #FFD09B;">
-                <h5 class="modal-title" id="thankYouModalLabel" style="font-family: 'Nunito', sans-serif; font-weight: 700; color: #E95F5D;">Thank You for Your Order!</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: #FFB0B0;"></button>
-            </div>
-            <div class="modal-body">
-                <p>Your order has been successfully placed. We will process it shortly.</p>
-                <p>We appreciate your business and hope to serve you again soon!</p>
-            </div>
-            <div class="modal-footer" style="border-top: 1px solid #FFD09B;">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a href="Buyer_index.html" class="btn" style="background-color: #E95F5D; color: #ffffff;">Back to Home</a>
-            </div>
-        </div>
-    </div>
-</div>
-
+                    <button class="btn btn-danger w-100 mt-1" onclick="window.location.href='buyer_place_order_summary.html'" style="border-radius: 25px;">Place Order</button>
                 </div>
             </div>
         </div>
 
     </div>
-
-    <script>
-        document.querySelector('.btn-danger').addEventListener('click', function() {
-            // Show the thank you modal when "Place Order" button is clicked
-            var myModal = new bootstrap.Modal(document.getElementById('thankYouModal'));
-            myModal.show();
-        });
-    </script>
-    
  
 
     <!-- Bootstrap JS and dependencies -->
