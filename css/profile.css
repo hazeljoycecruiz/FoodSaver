@@ -140,3 +140,46 @@ header h1 {
   margin: auto; /* Centers the container itself if it's inside a parent */
 
 }
+
+
+.star-widget {
+  display: flex;
+  flex-direction: row-reverse; /* Reverse the order of the stars */
+  justify-content: start;
+  align-items: center;
+  margin-left: 45px;
+  position: relative; /* Enables positioning relative to its normal position */
+  top: 20px; /* Moves the element downward */
+}
+
+
+.star-widget input {
+  display: none;
+}
+
+.star-widget label {
+  font-size: 15px;
+  color: #444;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+}
+
+/* Hover effect: Highlight current star and all previous stars */
+.star-widget label:hover,
+.star-widget label:hover ~ label {
+  color: #fd4;
+}
+
+/* Selected effect: Highlight the selected star and all previous stars */
+.star-widget input:checked ~ label,
+.star-widget input:checked ~ label ~ label {
+  color: #fe7;
+}
+
+/* Special effect for the highest star when selected */
+.star-widget input#star5:checked ~ label {
+  color: #fe7;
+  text-shadow: 0 0 20px #952;
+}
+
