@@ -145,9 +145,9 @@
                             <div class="cart-item-title" style="font-size: 18px; font-weight: bold;">Bicol Express</div>
                             <div class="cart-item-price" style="color: #ff5555; font-weight: bold;">Php 20.00</div>
                             <div class="cart-item-quantity" style="display: flex; align-items: center; gap: 10px;">
-                                <button onclick="decreaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
+                                <button onclick="decreaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
                                 <span class="quantity" style="font-size: 16px;">1</span>
-                                <button onclick="increaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
+                                <button onclick="increaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
                             </div>
                         </div>
                         <script>
@@ -184,9 +184,9 @@
                             <div class="cart-item-title" style="font-size: 18px; font-weight: bold;">Fried Rice</div>
                             <div class="cart-item-price" style="color: #ff5555; font-weight: bold;">Php 5.00</div>
                             <div class="cart-item-quantity" style="display: flex; align-items: center; gap: 10px;">
-                                <button onclick="decreaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
+                                <button onclick="decreaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
                                 <span class="quantity" style="font-size: 16px;">1</span>
-                                <button onclick="increaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
+                                <button onclick="increaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
                             </div>
                         </div>
                         <script>
@@ -222,9 +222,9 @@
                             <div class="cart-item-title" style="font-size: 18px; font-weight: bold;">Ginataang Gulay</div>
                             <div class="cart-item-price" style="color: #ff5555; font-weight: bold;">Php 10.00</div>
                             <div class="cart-item-quantity" style="display: flex; align-items: center; gap: 10px;">
-                                <button onclick="decreaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
+                                <button onclick="decreaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
                                 <span class="quantity" style="font-size: 16px;">1</span>
-                                <button onclick="increaseQuantity(this)" style="background-color: #ffcc66; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
+                                <button onclick="increaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
                             </div>
                         </div>
                         <script>
@@ -268,14 +268,40 @@
 
                     <div class="row mt-4">
                         <span>Shipping Method:</span>
-                        <div class="col mb-2" style=" max-width: 100%">
-                            <button class="btn mt-2" style="background-color: #ffcc66; color: black; border-radius: 25px; width: 153.5px;   max-width: 100%;">Online Payment</button>
+                        <div class="col mb-2" style="max-width: 100%">
+                            <button 
+                                class="btn mt-2 shipping-method" 
+                                style="background-color: #FFECC8; color: black; border-radius: 25px; width: 153.5px; max-width: 100%;" 
+                                onclick="toggleActive(this)">
+                                Online Payment
+                            </button>
                         </div>
                         <div class="col mb-3">
-                            <button class="btn mt-2" style="background-color: #ffcc66; color: black; border-radius: 25px; width: 153.5px;   max-width: 100%;">Cash on Delivery</button>
+                            <button 
+                                class="btn mt-2 shipping-method" 
+                                style="background-color: #FFECC8; color: black; border-radius: 25px; width: 153.5px; max-width: 100%;" 
+                                onclick="toggleActive(this)">
+                                Cash on Delivery
+                            </button>
                         </div>
                     </div>
-
+                    
+                    <script>
+                        function toggleActive(clickedButton) {
+                            // Get all buttons with the "shipping-method" class
+                            const buttons = document.querySelectorAll('.shipping-method');
+                    
+                            // Loop through and reset all buttons to default style
+                            buttons.forEach(button => {
+                                button.style.backgroundColor = '#FFECC8';
+                                button.style.color = 'black';
+                            });
+                    
+                            // Apply active style to the clicked button
+                            clickedButton.style.backgroundColor = '#ff6b6b';
+                            clickedButton.style.color = 'white';
+                        }
+                    </script>
           
 
 
@@ -301,27 +327,6 @@
                     </div>
              
                     <button class="btn btn-danger w-100 mt-1" style="border-radius: 25px;">Place Order</button>
-
-                    <!-- Modal -->
-<div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" style="background-color: #FFECC8; border-radius: 12px; border: 2px solid #FFD09B;">
-            <div class="modal-header" style="border-bottom: 1px solid #FFD09B;">
-                <h5 class="modal-title" id="thankYouModalLabel" style="font-family: 'Nunito', sans-serif; font-weight: 700; color: #E95F5D;">Thank You for Your Order!</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: #FFB0B0;"></button>
-            </div>
-            <div class="modal-body">
-                <p>Your order has been successfully placed. We will process it shortly.</p>
-                <p>We appreciate your business and hope to serve you again soon!</p>
-            </div>
-            <div class="modal-footer" style="border-top: 1px solid #FFD09B;">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a href="Buyer_index.html" class="btn" style="background-color: #E95F5D; color: #ffffff;">Back to Home</a>
-            </div>
-        </div>
-    </div>
-</div>
-
                 </div>
             </div>
         </div>
