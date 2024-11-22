@@ -36,6 +36,9 @@
             border-radius: 10px;
             padding: 20px;
         }
+        .profile {
+            width: 2px;
+        }
 
         .sidebar {
             background-color: #ffe6e2;
@@ -179,11 +182,13 @@
                     </div>
                     <div class="pt-5 pb-5">
                     </div>
-                    <div class="pt-5 pb-4">
+                    <div class="pt-5 pb-5">
                     </div>
-                    <div class="pt-5  pb-3">
+                    <div class="pt-5  pb-5">
                     </div>
-                 
+                    <div class="pt-3  pb-2">
+                    </div>
+                    
                 </div>
             </div>
 
@@ -192,13 +197,18 @@
 
                 <div class="favorites-container" style="border: 2px solid #E95F5D; border-radius: 12px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
                 
-                    <div class="profiles-picture-container" >
-                        <img src="img/photo_edit.png" alt="Profile Picture" id="profile-pic" onclick="document.getElementById('file-input').click();" style="cursor: pointer;">
+                    <div class="profiles-picture-container" style="width: 150px; height: 149px; display: flex; justify-content: center; align-items: center; border-radius: 50%; overflow: hidden;">
+                        <img src="img/photo_edit.png" alt="Profile Picture" id="profile-pic" onclick="document.getElementById('file-input').click();" style="cursor: pointer; width: 100%; height: auto;">
                         <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="previewImage(event)">
                     </div>
+                    
 
                         <div class="mb-4 w-100">
                             <input type="email" class="form-control-lg w-100 transparent-border" id="name" placeholder="Bussiness Name">
+                        </div>
+
+                        <div class="mb-4 w-100">
+                            <input type="email" class="form-control-lg w-100 transparent-border" id="name" placeholder="Bussiness Type">
                         </div>
                     
                         <div class="mb-4 w-100">
@@ -219,18 +229,7 @@
                     
                         <div class="d-flex justify-content-end">
                             <button type="button" class="btn btn-primary  w-25 rounded-pill" onclick="window.location.href='Seller_index.html'">Save</button>
-                        </div>
-                        
-                        
-                        
-                        
-                        
-              
-                   
-                    
-                    
-                    
-                    
+                        </div>               
                 </div>
             </div>
         </div>
