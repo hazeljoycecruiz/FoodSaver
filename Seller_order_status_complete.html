@@ -6,71 +6,95 @@
   <title>Product Order Status</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/seller_product_order_lists.css">
-  <link rel="stylesheet" href="css/profile.css">
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
- 
+
+  <link rel="stylesheet" href="css/profile.css">
+
   <style>
     body {
       background-color: #f8f9fa;
       font-family: 'Heebo', sans-serif;
+      background-image: url("img/background.png");
     }
 
+    /* Shared container styling */
+    .container-box {
+      max-width: 800px; /* Uniform width for all sections */
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Title Section */
+    .title-section input {
+      width: 100%;
+      background-color: white;
+      border: 2px solid #E95F5D;
+      border-radius: 8px;
+      text-align: center;
+      color: black;
+      font-weight: bold;
+    }
+
+    /* Tabs Styling */
     .tabs {
       display: flex;
-      justify-content: center;
-      margin: 20px 0;
+      justify-content: space-around;
+      border-bottom: 2px solid #E95F5D;
+      padding-bottom: 10px;
     }
 
     .tab {
-      padding: 12px 20px;
-      border-radius: 12px;
-      margin: 0 10px;
+      flex: 1;
+      text-align: center;
+      padding: 10px;
       cursor: pointer;
-      background-color: #fff;
-      border: 2px solid #E95F5D;  /* Border color applied */
-      color: #333;
-      font-weight: 500;
-      transition: all 0.3s ease;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #555;
+      border-radius: 10px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .tab.active {
       background-color: #FFEBEB;
       color: #E95F5D;
-      border-color: #E95F5D;  /* Border color applied */
+      border: 2px solid #E95F5D;
     }
 
     .tab:hover {
-      background-color: #ffffff;
-    }
-
-    .tab.active:hover {
-      background-color: #FFEBEB;
+      background-color: #FDEEEE;
       color: #E95F5D;
-      border-color: #E95F5D;  /* Border color applied */
-}
-
-    .order-card {
-      background-color: #fff;
-      border-radius: 12px;
-      padding: 20px;
-      margin-top: 20px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-   
     }
 
-    .estimated-arrival,
-    .address-line {
+    /* Order Card */
+    .order-card {
+      border: 2px solid #E95F5D;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .estimated-arrival {
+      font-size: 1.1rem;
+      color: #555;
       margin-bottom: 15px;
     }
 
-    .address-line .arrow {
-      margin: 0 10px;
+    .address-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 20px;
     }
 
     .product-details {
       display: flex;
       align-items: center;
+      gap: 20px;
       margin-bottom: 20px;
     }
 
@@ -78,8 +102,14 @@
       width: 80px;
       height: 80px;
       object-fit: cover;
-      border-radius: 50%;
-      margin-right: 20px;
+      border-radius: 8px;
+      border: 2px solid #E95F5D;
+    }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
     }
 
     .product-info p {
@@ -89,101 +119,85 @@
 
     .order-footer {
       display: flex;
+      justify-content: space-between;
       align-items: center;
     }
 
     .total-label {
-      font-weight: 600;
+      font-weight: 700;
       font-size: 1.2rem;
+      color: #555;
     }
 
     .details-btn {
-      background-color: #FF6B6B;
+      background-color: #E95F5D;
       color: white;
-      padding: 8px 18px;
-      border: 2px solid #E95F5D;  /* Border color applied */
-      border-radius: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
       font-size: 1rem;
+      font-weight: 600;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
     .details-btn:hover {
-      background-color: #ff4949;
+      background-color: #d14e4e;
     }
-
-
   </style>
-
-
-
 </head>
 <body>
-  <div class="container py-4">
-    <!-- Back Button aligned with title and content -->
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <button class="back-btn" onclick="window.location.href='Seller_index.html'">
-          <i class="fas fa-arrow-left"></i> Back
-      </button>
+  <!-- Back Button -->
+  <div class="d-flex justify-content-between align-items-center mb-3" style="margin-left: 280px; margin-top: 50px;">
+    <button class="back-btn" onclick="window.location.href='Seller_index.html'">
+      <i class="fas fa-arrow-left"></i> Back
+    </button>
   </div>
-  <div style="border: 2px solid #E95F5D; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+
+  <!-- Title Section -->
+  <div class="container-box" style=" padding: 0;">
+    <div style="border: 2px solid #E95F5D; border-radius: 7px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
       <input class="form-control" type="text" value="       Order Status" 
-      aria-label="Disabled input example" disabled readonly 
-      style="background-color: white; color: black; border-radius: 8px;">
+        aria-label="Disabled input example" disabled readonly 
+        style="background-color: white; color: black; text-align: center; border: none;">
+    </div>
   </div>
 
-
-
-    <!-- Order Card -->
-    <div class="order-card" style="border: 2px solid #E95F5D; border-radius: 12px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
-      <!-- Tab Navigation -->
+  <!-- Tabs Section -->
+  <div class="container-box" style="background-color: #FFD09B;">
     <div class="tabs">
-      <button class="tab" onclick="window.location.href='Seller_order_status.html'">On Shipping</button>
-      <button class="tab" onclick="window.location.href='Seller_order_status_cancel.html'">Cancelled</button>
-      <button class="tab active">Complete</button>
-    </div>
-
-      <div class="estimated-arrival">
-        <span class="label">Transaction Complete:</span>
-        <span class="value">Today, 12:00 PM</span>
-      </div>
-      <div class="address-line">
-        <span class="owner">Purchase Successfully</span>
-        <span class="arrow">------------------&gt;</span>
-        <span class="customer"><b>Transaction ID:</b> #8631</span>
-      </div>
-
-      <div class="product-details">
-        <img class="product-image" src="img/kinilaw.jpg" alt="Can Good">
-        <div class="product-info">
-          <p class="product-name">Kinilaw</p>
-          <p class="product-qty">Qty: 5</p>
-          <p class="product-price">Php 35.00</p>
-        </div>
-      </div>
- 
-      <div class="order-footer ">
-        <span class="total-label mb-2">Total: Php 175.00</span>
-
-        <div class="ms-5"></div>
-        <div class="ms-5"></div>
-        <button class="btn btn-primary details-btn ms-5"  onclick="window.location.href='Seller_order_update_complete.html'" >Details</button>
- 
-      </div>
-
-
-
-      <div class="pt-5 pb-5">
-      </div>
-      <div class="pt-5 pb-5">
-      </div><div class="pt-3">
-      </div>
-     
-
+      <div class="tab" onclick="window.location.href='Seller_order_status_complete.html'" style="color: black;">On Shipping</div>
+      <div class="tab" onclick="window.location.href='Seller_order_status_cancel.html'" style="color: black;">Cancelled</div>
+      <div class="tab active" >Complete</div>
     </div>
   </div>
 
-  <!-- Bootstrap JS and dependencies -->
+  <!-- Order Card -->
+  <div class="container-box order-card">
+    <div class="estimated-arrival">
+      <strong>Transaction Complete:</strong> Today, 12:00 PM
+    </div>
+    <div class="address-line">
+      <span>Delivered Successfully</span>
+      <span>&rarr;</span>
+      <span><strong>Transaction ID: </strong>#8631</span>
+    </div>
+    <div class="product-details">
+      <img class="product-image" src="img/kinilaw.jpg" alt="Kinilaw">
+      <div class="product-info">
+        <p class="product-name"><strong>Kinilaw</strong></p>
+        <p class="product-qty">Qty: 5</p>
+        <p class="product-price">Php 35.00</p>
+      </div>
+    </div>
+    <div class="order-footer">
+      <span class="total-label">Total: Php 175.00</span>
+      <button class="details-btn" onclick="window.location.href='Seller_order_update_complete.html'">Details</button>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
