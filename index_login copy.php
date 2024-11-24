@@ -1,57 +1,60 @@
 <?php
-require_once 'database/db_connection.php';
-session_start(); // Start the session here
+// Include database connection
+include 'database/db_connection.php'; // Update path if needed
 
-// Initialize error variable
-$error = ''; // Make sure $error is initialized
+// Initialize variables for form handling
+$email = $password = $error = "";
 
+// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? '';
+    // Retrieve and sanitize user inputs
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 
-    // Validate login credentials
-    $sql = "SELECT * FROM users WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    // Check if password field is set and sanitize further if needed
+    if (isset($_POST['password']) && !empty($_POST['password'])) {
+        $password = $_POST['password'];
+    } else {
+        $error = "Password is required.";
+    }
 
-    if ($result->num_rows > 0) {
-        $user = $result->fetch_assoc();
-        if (password_verify($password, $user['password'])) {
-            // Set session variables
-            $_SESSION['user_id'] = $user['user_id'];
-            $_SESSION['first_name'] = $user['first_name'];
-            $_SESSION['role_id'] = $user['role_id'];
+    // Validate user credentials if no error
+    if (empty($error)) {
+        $sql = "SELECT * FROM users WHERE email = ?";  // Make sure to replace with your actual table and column names
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-            // Redirect based on role
-            $role = $user['role_id'];
-            if ($role === 1) { // Seller role ID
-                header("Location: Seller_index.php");
-                exit();
-            } elseif ($role === 2) { // Buyer role ID
-                header("Location: Buyer_index.php");
-                exit();
-            } elseif ($role === 3) { // Admin role ID
-                header("Location: Admin_index.php");
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+
+            // Correctly reference 'password_hash' instead of 'password'
+            if (password_verify($password, $user['password_hash'])) {
+                // Check the user's role and redirect accordingly
+                $role = $user['role'];  // Assuming the role is stored in the 'role' column of your 'users' table
+                
+                if ($role === 'Buyer') {
+                    header("Location: Buyer_index.html");
+                } elseif ($role === 'Seller') {
+                    header("Location: Seller_index.html");
+                } elseif ($role === 'Admin') {
+                    header("Location: Admin_index.html");
+                } else {
+                    $error = "Invalid role.";
+                }
                 exit();
             } else {
-                $error = "Invalid role."; // This should be handled appropriately
+                $error = "Invalid password.";
             }
         } else {
-            $error = "Invalid password."; // Set error if password is incorrect
+            $error = "No account found with this email.";
         }
-    } else {
-        $error = "No account found with this email."; // Set error if email does not exist
     }
 }
+
+$conn->close();
+
 ?>
-
-
-<!-- You can output the error message on the page as well -->
-<?php if ($error) { echo "<p>Error: $error</p>"; } ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -66,13 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body class="login">
-
- <!-- Display error if it exists -->
- <?php if (!empty($error)): ?>
-        <div class="alert alert-danger">
-            <?php echo htmlspecialchars($error); ?>
-        </div>
-    <?php endif; ?>
 
     <div class="container vh-100 d-flex justify-content-center align-items-center">
         <div class="row w-100 shadow-lg rounded-4 overflow-hidden" style="max-width: 900px;">
@@ -98,17 +94,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php endif; ?>
 
                 <!-- Login Form -->
-                <form method="POST" action="index_login.php" class="d-flex flex-column align-items-center" style="width: 75%; margin: auto;">
+                <form method="POST" class="d-flex flex-column align-items-center" style="width: 75%; margin: auto;">
                     <!-- Email Input -->
                     <div class="mb-3 w-100">
                         <input type="email" 
                                class="form-control border-danger" 
                                id="email" name="email" 
-                               placeholder="Email"  required>
+                               placeholder="Email" 
+                               value="<?= htmlspecialchars($email) ?>" required>
                     </div>
 
                     <!-- Password Input -->
-                    <div class="mb-4 w-100">
+                    <div class="mb-3 w-100">
                         <input type="password" 
                                class="form-control border-danger" 
                                id="password" name="password" 
