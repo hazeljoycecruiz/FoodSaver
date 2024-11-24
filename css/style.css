@@ -746,3 +746,12 @@ a:hover {
     color: #FF6F61; /* Add hover color to icons for interactivity */
   }
   
+  i.bi-box-arrow-right {
+    color: red;
+    transition: transform 0.2s;
+}
+
+i.bi-box-arrow-right:hover {
+    transform: scale(1.2);
+    color: darkred;
+}
