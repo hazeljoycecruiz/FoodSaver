@@ -452,9 +452,9 @@ CREATE TABLE `users` (
   `bussiness_type` varchar(50) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `password` text DEFAULT NULL,
-  `user_image` LONGBLOB DEFAULT NULL, 
+  `file` varchar(100) DEFAULT NULL, 
   `phone_num` bigint(20) DEFAULT NULL,
-  `address` text DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
   `lang_profile` text DEFAULT NULL,
   `role_id` int(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -465,7 +465,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `age`, `birthdate`, `bussiness_name`, `bussiness_type`, `email`, `password`, `user_image`, `phone_num`, `address`, `lang_profile`, `role_id`, `created_at`, `updated_at`) VALUES
+INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `age`, `birthdate`, `bussiness_name`, `bussiness_type`, `email`, `password`, `file`, `phone_num`, `address`, `lang_profile`, `role_id`, `created_at`, `updated_at`) VALUES
 ('b3653202-7efd-11ef-8801-c01850599686', 'John', 'Doe', NULL, NULL, NULL, NULL, 'john.doe@example.com', 'bdef3ba6503cd0d481b3e3737f770fc5b72e308f5e7eb4bdbb84b42b1bde6348', NULL, 1234567890, '123 Main St, City A', 'English', 1, '2024-09-30 07:29:17', '2024-09-30 07:29:17'),
 ('b3653b86-7efd-11ef-8801-c01850599686', 'Jane', 'Smith', NULL, NULL, NULL, NULL, 'jane.smith@example.com', 'c189b2d696bc8808d9657f986d7ed31ff4e1eda13dcd242960457085990dab77', NULL, 2345678901, '456 Elm St, City B', 'Spanish', 2, '2024-09-30 07:29:17', '2024-09-30 07:29:17'),
 ('b3653c7a-7efd-11ef-8801-c01850599686', 'Alice', 'Johnson', NULL, NULL, NULL, NULL, 'alice.johnson@example.com', 'fe51c93cf68600dd2895fa7dfc18a82c8f031efdad679330f2307b8d62a38b79', NULL, 3456789012, '789 Pine St, City C', 'French', 1, '2024-09-30 07:29:17', '2024-09-30 07:29:17'),
