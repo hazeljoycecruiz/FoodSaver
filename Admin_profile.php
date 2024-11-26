@@ -37,7 +37,7 @@
         <!-- Back Button -->
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <button class="back-btn" onclick="window.location.href='Admin_index.html'">
+                <button class="back-btn" onclick="window.location.href='Admin_index.php'">
                     <i class="fas fa-arrow-left"></i> Back
                 </button>
             </div>
@@ -122,7 +122,7 @@
                         </div>
                     
                         <div class="d-flex justify-content-end pt-1">
-                            <button type="button" class="btn btn-primary  w-25 rounded-pill" onclick="window.location.href='Admin_index.html'">Save</button>
+                            <button type="button" class="btn btn-primary  w-25 rounded-pill" onclick="window.location.href='Admin_index.php'">Save</button>
                         </div>
     
                 </div>

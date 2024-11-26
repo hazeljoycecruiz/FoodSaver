@@ -257,6 +257,7 @@ try {
                         <?php if (!empty($error)) { echo "<p>Error: $error</p>"; } ?>
 
                         <!-- Logout Icon -->
+                        <i class="bi bi-cart4" style="font-size: 25px; margin-left: 20px; cursor: pointer;" onclick="window.location.href='Buyer_cart.php'"></i>
                         <i class="bi bi-box-arrow-right" 
                         onclick="window.location.href='logout.php'" 
                         style="cursor: pointer; font-size: 1.5rem; margin-left: 20px;">
