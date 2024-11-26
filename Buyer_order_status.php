@@ -230,7 +230,7 @@
     <div class="order-footer">
       <span class="total-label">Total: Php 175.00</span>
       <button class="details-btn" onclick="window.location.href='Buyer_order_update.php'">Details</button>
-      <button class="cancel-btn" onclick="window.location.href='Buyer_order_update.php'">Cancel</button>
+      <button class="cancel-btn">Cancel</button>
     </div>
   </div>
 
@@ -275,7 +275,7 @@
     <div class="order-footer">
       <span class="total-label">Total: Php 175.00</span>
       <button class="details-btn" onclick="window.location.href='Buyer_order_update.php'">Details</button>
-      <button class="cancel-btn" onclick="window.location.href='Buyer_order_update.php'">Cancel</button>
+      <button class="cancel-btn">Cancel</button>
     </div>
   </div>
 
@@ -320,54 +320,70 @@
     <div class="order-footer">
       <span class="total-label">Total: Php 175.00</span>
       <button class="details-btn" onclick="window.location.href='Buyer_order_update.php'">Details</button>
-      <button class="cancel-btn" onclick="window.location.href='Buyer_order_update.php'">Cancel</button>
+      <button class="cancel-btn">Cancel</button>
     </div>
   </div>
 
     <!-- Order Card -->
-    <div class="container-box order-card">
-    <div class="estimated-arrival">
-      <strong>Estimated Arrival:</strong> Today, 12:00 PM
-    </div>
-    <div class="address-line">
-      <span>Owner Address</span>
-      <span>&rarr;</span>
-      <span>Customer Address</span>
-    </div>
-    <div class="product-details">
-      <img class="product-image" src="img/kinilaw.jpg" alt="Kinilaw">
-      <div class="product-info">
-        <p class="product-name"><strong>Kinilaw</strong></p>
-
-        <p class="product-qty">Qty: 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You may cancel your order
-        </p>
-        <p class="product-price">Php 35.00 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;within 5 minutes
-      </p>
+  <div class="container-box order-card">
+      <div class="estimated-arrival">
+        <strong>Estimated Arrival:</strong> Today, 12:00 PM
       </div>
-    </div>
-    <div class="order-footer">
-      <span class="total-label">Total: Php 175.00</span>
-      <button class="details-btn" onclick="window.location.href='Buyer_order_update.php'">Details</button>
-      <button class="cancel-btn" onclick="window.location.href='Buyer_order_update.php'">Cancel</button>
-    </div>
+      <div class="address-line">
+        <span>Owner Address</span>
+        <span>&rarr;</span>
+        <span>Customer Address</span>
+      </div>
+      <div class="product-details">
+        <img class="product-image" src="img/kinilaw.jpg" alt="Kinilaw">
+        <div class="product-info">
+          <p class="product-name"><strong>Kinilaw</strong></p>
+
+          <p class="product-qty">Qty: 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You may cancel your order
+          </p>
+          <p class="product-price">Php 35.00 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;within 5 minutes
+        </p>
+        </div>
+      </div>
+      <div class="order-footer">
+        <span class="total-label">Total: Php 175.00</span>
+        <button class="details-btn" onclick="window.location.href='Buyer_order_update.php'">Details</button>
+        <button class="cancel-btn" >Cancel</button>
+      </div>
   </div>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Select all cancel buttons
+    const cancelButtons = document.querySelectorAll(".cancel-btn");
+
+    cancelButtons.forEach(button => {
+      button.addEventListener("click", function (event) {
+        // Find the parent container of the clicked cancel button
+        const containerBox = button.closest(".container-box");
+        if (containerBox) {
+          containerBox.style.display = "none"; // Hide the container
+        }
+      });
+    });
+  });
+</script>
 
   <!-- Bootstrap JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

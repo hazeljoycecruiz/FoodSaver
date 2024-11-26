@@ -109,7 +109,7 @@ try {
     }
     $stmt->close();
 } catch (Exception $e) {
-    echo "Error fetching user image: " . $e->getMessage();
+   // echo "Error fetching user image: " . $e->getMessage();
 }
 
 // Fetch other user details securely
@@ -134,7 +134,6 @@ try {
     echo "Error fetching user details: " . $e->getMessage();
 }
 
-echo "Saved successfully!";
 ?>
 
 
@@ -273,9 +272,9 @@ echo "Saved successfully!";
 
                     <form action="Buyer_profile.php" method="POST" enctype="multipart/form-data">
                         <div class="profiles-picture-container">
-                        <img src="<?= $profileImage ?>" alt="Profile Picture" id="profile-pic"
+                        <img src="img/photo_edit.png" alt="Profile Picture" id="profile-pic"
                             onclick="document.getElementById('file-input').click();" style="cursor: pointer;">
-                        <input type="file" id="file-input" name="user_image" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                        <input type="file" id="file-input" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
                         </div>
 
                         <script>
@@ -292,6 +291,7 @@ echo "Saved successfully!";
                                 }
                             }
                         </script>
+            
                             
                         <div class="row">
                             <div class="col mb-4">

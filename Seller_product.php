@@ -279,10 +279,7 @@ try {
         font-size: 20px;
         font-weight: bold;
         }
-    
-        #description {
-        height: 255px; /* Adjust height as needed */
-    }
+ 
 
      .form-control::placeholder {
         text-align: start; vertical-align: top;
@@ -292,7 +289,11 @@ try {
         font-size: 1.25rem; /* Adjust the size if necessary */
     }
    
- 
+    .product-picture-container {
+    background-color: rgba(255, 255, 255, 0); /* Fully transparent */
+    border: none; /* Remove borders if needed */
+    box-shadow: none; /* Remove shadows if present */
+}
 
     </style>
 
@@ -370,13 +371,49 @@ try {
             <!-- Favorites -->
             <div class="col-md-8">
 
-                <div class="favorites-container" style="border: 2px solid #E95F5D; border-radius: 12px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+                <div class="favorites-container" style="border: 2px solid #E95F5D; 
+            border-radius: 12px; 
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+            box-sizing: border-box; 
+            height: 575px; /* Fixed height */ 
+            padding: 16px; 
+           ">
 
-                    <div class="row align-items-center justify-content-center" style="height: 27vh;"> <!-- Center content vertically and horizontally -->
-                        <div class="profiles-picture-container col-4 mb-4 summary-container d-flex justify-content-center align-items-center w-25 h-100">
-                            <img src="img/svg_upload.svg" alt="Profile Picture" id="profile-pic" onclick="document.getElementById('file-input').click();" class="img-fluid" style="cursor: pointer;">
-                            <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="previewImage(event)">
-                        </div>
+                    <div class="row align-items-center justify-content-center" > <!-- Center content vertically and horizontally -->
+                    <div class="product-picture-container col-4 mb-4 summary-container d-flex justify-content-center align-items-center w-25 h-100">
+                        <img src="img/svg_upload.svg" 
+                            alt="product_pic" 
+                            id="product_pic" 
+                            onclick="document.getElementById('file-input').click();" 
+                            class="img-fluid" 
+                            style="cursor: pointer; width: 150px; height: 150x; object-fit: cover; border-radius: 8px; border: 2px solid #E95F5D;">
+                        <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                    </div>
+
+<script>
+    // Function to preview the image after it's selected
+    function previewImage(event) {
+        // Get the file selected by the user
+        const file = event.target.files[0];
+
+        // Check if the file is valid
+        if (file) {
+            // Create a FileReader instance
+            const reader = new FileReader();
+
+            // Set up the callback for when the file is read
+            reader.onload = function (e) {
+                // Update the image source with the new image's data URL
+                document.getElementById('product_pic').src = e.target.result;
+            };
+
+            // Read the file as a data URL to preview it
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+
+
                     
                         <div class="col-8 mb-4">
                             <input type="text" class="form-control w-100 transparent-border mb-2" id="product_name" placeholder="Product Name">
@@ -389,15 +426,8 @@ try {
                         </div>
                 
                     
-                        <textarea 
-                            name="description" 
-                            class="form-control transparent-border" 
-                            id="description" 
-                            placeholder="Description" 
-                            rows="4" 
-                            style="padding: 10px; text-align: left; color: #000; background-color: #fff;">
-                        </textarea>
 
+                        <textarea id="comments" class="form-control" rows="4" placeholder="Description" style=" border-radius: 10px; height: 242px;"></textarea>
       
                         <div class="mt-4 pt-2"> 
 
@@ -405,7 +435,7 @@ try {
   
 
                         <div class="d-flex justify-content-end">
-                                <button type="submit" name="submit" class="btn btn-primary w-25 rounded-pill">Save</button>
+                                <button type="submit" name="submit" class="btn btn-primary w-25 rounded-pill" onclick="window.location.href='Seller_products_uploaded.php'">Save</button>
                         </div> 
                 </div>
             </div>
