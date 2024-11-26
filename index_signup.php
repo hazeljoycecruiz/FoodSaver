@@ -61,9 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Execute the statement
                 if ($stmt->execute()) {
                     // Successful registration
-                    $message = "User registered successfully! You will be redirected to the login page.";
-                    // Redirect after 3 seconds
-                    echo '<meta http-equiv="refresh" content="3;url=index_login.php">';
+                    $message = "User registered successfully!";
+                    // Immediate redirection to the login page
+                    header("Location: index_login.php");
+                    exit();
                 } else {
                     $message = "Error inserting user: " . $stmt->error;
                 }
