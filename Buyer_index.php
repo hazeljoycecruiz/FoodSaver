@@ -395,7 +395,7 @@ try {
                                     <span class="fa fa-star"></span>
                                 </div>
                                 <p class="price">Php 20.00</p>
-                                <button class="btn" onclick="showPopup('img/corned beef.png', '5', 'Corned Beef', 'November 30, 2024', 'Php 20.00', '3', 'FoodSaver Convinience Store', 'Butuan City')"> Add to Cart </button>
+                                <button class="btn" onclick="showPopup('img/corned beef.png', '5', 'Corned Beef', 'November 30, 2024', 'Php 20.00', '3', 'FoodSaver Convinience Store', 'Butuan City', 'Buyer_seller_store.php?id=11337dba-abee-11ef-9c3d-088fc3161d34')">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -887,7 +887,9 @@ try {
                             <!-- Add to Cart Button -->
                             <div class="popup-actions">
                                 <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+                                <button class="view-store-btn" onclick="viewStore()">View Store</button>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -900,23 +902,32 @@ try {
     </div>
 
     <script>
-        // Function to show the popup with product details
-        function showPopup(image, qty, name, date, price, rating, store, location) {
-        
-        document.getElementById('popupImage').src = image;
-        document.getElementById('popupQty').innerHTML = '<strong>Quantity: </strong>' + qty;
-        document.getElementById('popupName').innerHTML = '<strong>Name: </strong>' + name;
-        document.getElementById('popupDate').innerHTML = '<strong>Best Before: </strong>' + date;
-        document.getElementById('popupPrice').innerHTML = '<strong>Price: </strong>' + price;
-        document.getElementById('popupRating').innerHTML = '<strong>Rating: </strong>' + rating + ' <i class="fas fa-star" style="color: #FFD700;"></i>';
-        document.getElementById('popupStore').innerHTML = '<strong>Store Name: </strong>' + store;
-        document.getElementById('popupLoc').innerHTML = '<strong>Location: </strong>' + location;
-    
-    
-        // Display the popup
-        document.getElementById('popupOverlay').style.display = 'flex';
-    }
-    
+       // Function to show the popup with product details
+        function showPopup(image, qty, name, date, price, rating, store, location, storeUrl) {
+            document.getElementById('popupImage').src = image;
+            document.getElementById('popupQty').innerHTML = '<strong>Quantity: </strong>' + qty;
+            document.getElementById('popupName').innerHTML = '<strong>Name: </strong>' + name;
+            document.getElementById('popupDate').innerHTML = '<strong>Best Before: </strong>' + date;
+            document.getElementById('popupPrice').innerHTML = '<strong>Price: </strong>' + price;
+            document.getElementById('popupRating').innerHTML = '<strong>Rating: </strong>' + rating + ' <i class="fas fa-star" style="color: #FFD700;"></i>';
+            document.getElementById('popupStore').innerHTML = '<strong>Store Name: </strong>' + store;
+            document.getElementById('popupLoc').innerHTML = '<strong>Location: </strong>' + location;
+
+            // Store the URL for the View Store button
+            window.currentStoreUrl = storeUrl;
+
+            // Display the popup
+            document.getElementById('popupOverlay').style.display = 'flex';
+        }
+
+        // Function to redirect the buyer to the store page
+        function viewStore() {
+            // Redirect to the store URL passed in the showPopup function
+            if (window.currentStoreUrl) {
+                window.location.href = window.currentStoreUrl;
+            }
+        }
+
         // Function to add the product to the cart
         function addToCart(name, image, price, qty, date, rating, store, location) {
             const product = {
@@ -929,27 +940,28 @@ try {
                 store: store,
                 location: location
             };
-    
-        // Retrieve cart from localStorage or create a new cart array
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-        // Add the new product to the cart
-        cart.push(product);
-    
-        // Store the updated cart in localStorage
-        localStorage.setItem('cart', JSON.stringify(cart));
-    
-        // Close the popup
-        closePopup();
-    
-        // Redirect to the cart page
-        window.location.href = 'Buyer_cart.php';
-    }
-    
-    // Function to close the popup
-    function closePopup() {
-        document.getElementById('popupOverlay').style.display = 'none';
-    }
+
+            // Retrieve cart from localStorage or create a new cart array
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Add the new product to the cart
+            cart.push(product);
+
+            // Store the updated cart in localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Close the popup
+            closePopup();
+
+            // Redirect to the cart page
+            window.location.href = 'Buyer_cart.php';
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('popupOverlay').style.display = 'none';
+        }
+
     
         </script>
 

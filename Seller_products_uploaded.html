@@ -68,6 +68,9 @@
                                 <p class="price">Php 20.00</p>
                                 <p>Status: Uploaded</p>
                                 <button class="btn btn-danger">Remove</button>
+                                <br>
+                                <br>
+                                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal">Update</button>
                             </div>
                         </div>
                     </div>
@@ -80,6 +83,9 @@
                                 <p class="price">Php 8.00</p>
                                 <p>Status: Uploaded</p>
                                 <button class="btn btn-danger">Remove</button>
+                                <br>
+                                <br>
+                                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal">Update</button>
                             </div>
                         </div>
                     </div>
@@ -92,6 +98,9 @@
                                 <p class="price">Php 20.00</p>
                                 <p>Status: Uploaded</p>
                                 <button class="btn btn-danger">Remove</button>
+                                <br>
+                                <br>
+                                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal">Update</button>
                             </div>
                         </div>
                     </div>
@@ -100,11 +109,93 @@
             </div>
         </div>
         <br>
+        <!-- Update Product Modal -->
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border-radius: 12px; border: 2px solid #E95F5D;">
+            <div class="modal-header" style="background-color: #FFD09B; color: black; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                <h5 class="modal-title" id="updateModalLabel" style="font-family: 'Nunito', sans-serif; font-weight: 700;">Update Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="background-color: #FFD09B; padding: 20px;">
+                <form id="updateForm">
+                    <!-- Product Name -->
+                    <div class="mb-3">
+                        <label for="productName" class="form-label" style="font-family: 'Heebo', sans-serif;">Product Name</label>
+                        <input type="text" class="form-control" id="productName" placeholder="Enter Product Name" style="border-radius: 10px; border: 1px solid #E95F5D; font-family: 'Heebo', sans-serif;">
+                    </div>
+                    <!-- Product Description -->
+                    <div class="mb-3">
+                        <label for="productDescription" class="form-label" style="font-family: 'Heebo', sans-serif;">Description</label>
+                        <textarea class="form-control" id="productDescription" rows="3" placeholder="Enter Description" style="border-radius: 10px; border: 1px solid #E95F5D; font-family: 'Heebo', sans-serif;"></textarea>
+                    </div>
+                    <!-- Best Before -->
+                    <div class="mb-3">
+                        <label for="bestBefore" class="form-label" style="font-family: 'Heebo', sans-serif;">Best Before</label>
+                        <input type="date" class="form-control" id="bestBefore" style="border-radius: 10px; border: 1px solid #E95F5D; font-family: 'Heebo', sans-serif;">
+                    </div>
+                    <!-- Price -->
+                    <div class="mb-3">
+                        <label for="productPrice" class="form-label" style="font-family: 'Heebo', sans-serif;">Price (Php)</label>
+                        <input type="number" class="form-control" id="productPrice" placeholder="Enter Price" style="border-radius: 10px; border: 1px solid #E95F5D; font-family: 'Heebo', sans-serif;">
+                    </div>
+                    <!-- Quantity -->
+                    <div class="mb-3">
+                        <label for="productQuantity" class="form-label" style="font-family: 'Heebo', sans-serif;">Quantity</label>
+                        <input type="number" class="form-control" id="productQuantity" placeholder="Enter Quantity" style="border-radius: 10px; border: 1px solid #E95F5D; font-family: 'Heebo', sans-serif;">
+                    </div>
+                    <!-- Upload Photo -->
+                    <div class="mb-3">
+                        <label for="productImage" class="form-label" style="font-family: 'Heebo', sans-serif;">Upload Photo</label>
+                        <input type="file" class="form-control" id="productImage" style="border-radius: 10px; border: 1px solid #E95F5D; font-family: 'Heebo', sans-serif;">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer" style="background-color: #FFD09B; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
+                <button type="button" class="btn btn-primary" onclick="updateProduct()" style="border-radius: 10px; font-family: 'Nunito', sans-serif; background-color: #E95F5D; color: white;">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
     </div>
 
         <!-- Back to Top Button -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
+
+    <script>
+        // Pre-fill modal form when Update is clicked
+function fillUpdateForm(name, description, bestBefore, price, quantity, imageUrl) {
+    document.getElementById('productName').value = name;
+    document.getElementById('productDescription').value = description;
+    document.getElementById('bestBefore').value = bestBefore;
+    document.getElementById('productPrice').value = price;
+    document.getElementById('productQuantity').value = quantity;
+    document.getElementById('productImage').value = ''; // File input cannot be pre-filled
+}
+
+    
+        // Save updated product information
+        function saveUpdatedProduct() {
+            const name = document.getElementById('productName').value;
+            const description = document.getElementById('productDescription').value;
+            const image = document.getElementById('productImage').files[0];
+    
+            // Perform form validation (optional)
+            if (!name || !description) {
+                alert('Please fill out all fields.');
+                return;
+            }
+    
+            // Handle form submission (e.g., AJAX or form POST)
+            console.log('Updated Product:', { name, description, image });
+    
+            // Close modal after saving
+            const updateModal = bootstrap.Modal.getInstance(document.getElementById('updateModal'));
+            updateModal.hide();
+        }
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

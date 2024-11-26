@@ -144,33 +144,8 @@
                         <div style="flex-grow: 1;">
                             <div class="cart-item-title" style="font-size: 18px; font-weight: bold;">Bicol Express</div>
                             <div class="cart-item-price" style="color: #ff5555; font-weight: bold;">Php 20.00</div>
-                            <div class="cart-item-quantity" style="display: flex; align-items: center; gap: 10px;">
-                                <button onclick="decreaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
-                                <span class="quantity" style="font-size: 16px;">1</span>
-                                <button onclick="increaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
-                            </div>
                         </div>
-                        <script>
-                            // Function to increase quantity
-                            function increaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and increase it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                quantityElement.textContent = currentQuantity + 1;
-                            }
                         
-                            // Function to decrease quantity
-                            function decreaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and decrease it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                if (currentQuantity > 1) {
-                                    quantityElement.textContent = currentQuantity - 1;
-                                }
-                            }
-                        </script>
                         <!-- Checkbox Section -->
                     </div>
 
@@ -183,33 +158,9 @@
                         <div style="flex-grow: 1;">
                             <div class="cart-item-title" style="font-size: 18px; font-weight: bold;">Fried Rice</div>
                             <div class="cart-item-price" style="color: #ff5555; font-weight: bold;">Php 5.00</div>
-                            <div class="cart-item-quantity" style="display: flex; align-items: center; gap: 10px;">
-                                <button onclick="decreaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
-                                <span class="quantity" style="font-size: 16px;">1</span>
-                                <button onclick="increaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
-                            </div>
+                            
                         </div>
-                        <script>
-                            // Function to increase quantity
-                            function increaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and increase it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                quantityElement.textContent = currentQuantity + 1;
-                            }
                         
-                            // Function to decrease quantity
-                            function decreaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and decrease it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                if (currentQuantity > 1) {
-                                    quantityElement.textContent = currentQuantity - 1;
-                                }
-                            }
-                        </script>
                         <!-- Checkbox Section -->
                        
                     </div>
@@ -221,33 +172,9 @@
                         <div style="flex-grow: 1;">
                             <div class="cart-item-title" style="font-size: 18px; font-weight: bold;">Ginataang Gulay</div>
                             <div class="cart-item-price" style="color: #ff5555; font-weight: bold;">Php 10.00</div>
-                            <div class="cart-item-quantity" style="display: flex; align-items: center; gap: 10px;">
-                                <button onclick="decreaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
-                                <span class="quantity" style="font-size: 16px;">1</span>
-                                <button onclick="increaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
-                            </div>
+                            
                         </div>
-                        <script>
-                            // Function to increase quantity
-                            function increaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and increase it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                quantityElement.textContent = currentQuantity + 1;
-                            }
                         
-                            // Function to decrease quantity
-                            function decreaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and decrease it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                if (currentQuantity > 1) {
-                                    quantityElement.textContent = currentQuantity - 1;
-                                }
-                            }
-                        </script>
                       
                     </div>
       

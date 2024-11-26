@@ -128,51 +128,22 @@
             style="background-color: white; color: black; border-radius: 8px;">
         </div>
 
-    
-                <!-- Cart Items and Summary -->
-         <!-- Cart Items and Summary -->
+        <!-- Cart Items and Summary -->
         <div class="col-md-12 mt-4 "  style="border: 2px solid #E95F5D; border-radius: 12px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
             <div class="cart-container d-flex justify-content-between " style="height: 575px; ">
+
                 <!-- Cart Items Section -->
                 <div class="cart-items" style="width: 350px;">
                     <div class="cart-item mb-3 w-75" style="display: flex; align-items: center; background-color: #ffeedd; border-radius: 15px; padding: 10px;">
                         <!-- Image Section -->
                         <img src="img/bicol express.jpg" alt="Macarons" style="width: 70px; height: 70px; border-radius: 50%; margin-left: 10px; margin-right: 22px; background-color: #ffebcc; ">
-                    
+
                         <!-- Content Section -->
                         <div style="flex-grow: 1;">
                             <div class="cart-item-title" style="font-size: 16px; font-weight: bold;">Bicol Express</div>
                             <div class="cart-item-price" style="color: #ff5555; font-weight: bold;">Php 20.00</div>
-                            <div class="cart-item-quantity" style="display: flex; align-items: center; gap: 10px;">
-                                <button onclick="decreaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
-                                <span class="quantity" style="font-size: 16px;">1</span>
-                                <button onclick="increaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
-                            </div>
                         </div>
-                        <script>
-                            // Function to increase quantity
-                            function increaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and increase it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                quantityElement.textContent = currentQuantity + 1;
-                            }
-                        
-                            // Function to decrease quantity
-                            function decreaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and decrease it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                if (currentQuantity > 1) {
-                                    quantityElement.textContent = currentQuantity - 1;
-                                }
-                            }
-                        </script>
-                        <!-- Checkbox Section -->
                     </div>
-
 
                     <div class="cart-item mb-3 w-75" style="display: flex; align-items: center; background-color: #ffeedd; border-radius: 15px; padding: 10px;">
                         <!-- Image Section -->
@@ -182,75 +153,19 @@
                         <div style="flex-grow: 1;">
                             <div class="cart-item-title" style="font-size: 16px; font-weight: bold;">Fried Rice</div>
                             <div class="cart-item-price" style="color: #ff5555; font-weight: bold;">Php 5.00</div>
-                            <div class="cart-item-quantity" style="display: flex; align-items: center; gap: 10px;">
-                                <button onclick="decreaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
-                                <span class="quantity" style="font-size: 16px;">1</span>
-                                <button onclick="increaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
-                            </div>
                         </div>
-                        <script>
-                            // Function to increase quantity
-                            function increaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and increase it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                quantityElement.textContent = currentQuantity + 1;
-                            }
-                        
-                            // Function to decrease quantity
-                            function decreaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and decrease it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                if (currentQuantity > 1) {
-                                    quantityElement.textContent = currentQuantity - 1;
-                                }
-                            }
-                        </script>
-                        <!-- Checkbox Section -->
-                     
                     </div>
+
                     <div class="cart-item mb-3 w-75" style="display: flex; align-items: center; background-color: #ffeedd; border-radius: 15px; padding: 10px;">
                         <!-- Image Section -->
                         <img src="img/ginataangGulay.jpg" alt="Macarons" style="width: 70px; height: 70px; border-radius: 50%; margin-left: 10px; margin-right: 22px; background-color: #ffebcc; ">
-                    
+
                         <!-- Content Section -->
                         <div style="flex-grow: 1;">
                             <div class="cart-item-title" style="font-size: 16px; font-weight: bold;">Ginataang Gulay</div>
                             <div class="cart-item-price" style="color: #ff5555; font-weight: bold;">Php 10.00</div>
-                            <div class="cart-item-quantity" style="display: flex; align-items: center; gap: 10px;">
-                                <button onclick="decreaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.7px 10px; border-radius: 5px;">-</button>
-                                <span class="quantity" style="font-size: 16px;">1</span>
-                                <button onclick="increaseQuantity(this)" style="background-color: #FFD09B; border: none; padding: 0.5px 8px; border-radius: 5px;">+</button>
-                            </div>
                         </div>
-                        <script>
-                            // Function to increase quantity
-                            function increaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and increase it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                quantityElement.textContent = currentQuantity + 1;
-                            }
-                        
-                            // Function to decrease quantity
-                            function decreaseQuantity(button) {
-                                // Find the span element with class "quantity" in the same parent
-                                const quantityElement = button.parentElement.querySelector('.quantity');
-                                // Parse the current quantity as a number and decrease it
-                                let currentQuantity = parseInt(quantityElement.textContent);
-                                if (currentQuantity > 1) {
-                                    quantityElement.textContent = currentQuantity - 1;
-                                }
-                            }
-                        </script>
-                        <!-- Checkbox Section -->
-                      
                     </div>
-      
                 </div>
 
                 <!-- Summary Section -->
@@ -264,8 +179,6 @@
                         <span>Subtotal</span>
                         <span>Php 000.00</span>
                     </div>
-
-        
 
                     <div class="row mt-4">
                         <span>Delivery Option:</span>
@@ -281,32 +194,15 @@
                             <button 
                                 class="btn mt-2 shipping-method" 
                                 style="background-color: #FFECC8; color: black; border-radius: 25px; width: 153.5px; max-width: 100%;" 
-                                onclick="toggleActive(this)">
+                                data-bs-toggle="modal" 
+                                data-bs-target="#codModal">
                                 Cash on Delivery
                             </button>
                         </div>
                     </div>
-                    
-                    <script>
-                        function toggleActive(clickedButton) {
-                            // Get all buttons with the "shipping-method" class
-                            const buttons = document.querySelectorAll('.shipping-method');
-                    
-                            // Loop through and reset all buttons to default style
-                            buttons.forEach(button => {
-                                button.style.backgroundColor = '#FFECC8';
-                                button.style.color = 'black';
-                            });
-                    
-                            // Apply active style to the clicked button
-                            clickedButton.style.backgroundColor = '#ff6b6b';
-                            clickedButton.style.color = 'white';
-                        }
-                    </script>
-          
 
                     <div class="pt-4 pb-4"></div>
-                    
+
                     <div class="d-flex justify-content-between pt-4 mt-5 mb-4">
                         <span>Shipping Fee</span>
                         <span>Php 000.00</span>
@@ -316,17 +212,54 @@
                         aria-label="Disabled input example" disabled readonly 
                         style="background-color: #ffeedd; color: black; border-radius: 25px; border: 3.5px solid #ffeedd;">
                     </div>
-       
-             
-                    <button class="btn  w-100 mt-1" onclick="window.location.href='buyer_place_order_summary.php'" style="border-radius: 25px;  background-color: #ff6b6b; color: white;">Place Order</button>
+
+                    <!-- Place Order Button -->
+                    <button class="btn  w-100 mt-1" onclick="window.location.href='buyer_place_order_summary.php'" style="border-radius: 25px; background-color: #ff6b6b; color: white;">Place Order</button>
                 </div>
             </div>
-        </div>
 
+            <!-- Cash on Delivery Modal with Address Form -->
+            <div class="modal fade" id="codModal" tabindex="-1" aria-labelledby="codModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="border-radius: 12px; border: 2px solid #E95F5D;">
+                        <div class="modal-header" style="background-color: #FFD09B; color: black; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                            <h5 class="modal-title" id="codModalLabel" style="font-family: 'Nunito', sans-serif; font-weight: 700;">Enter Your Address</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: black;"></button>
+                        </div>
+                        <div class="modal-body" style="background-color: #FFD09B; padding: 20px;">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="city" class="form-label" style="font-family: 'Heebo', sans-serif;">City/Municipality</label>
+                                    <input type="text" class="form-control" id="city" placeholder="Enter City or Municipality" style="border-radius: 10px; border: 1px solid #E95F5D; font-family: 'Heebo', sans-serif; background-color: white; color: black;">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="barangay" class="form-label" style="font-family: 'Heebo', sans-serif;">Barangay</label>
+                                    <input type="text" class="form-control" id="barangay" placeholder="Enter Barangay" style="border-radius: 10px; border: 1px solid #E95F5D; font-family: 'Heebo', sans-serif; background-color: white; color: black;">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="street" class="form-label" style="font-family: 'Heebo', sans-serif;">Street</label>
+                                    <input type="text" class="form-control" id="street" placeholder="Enter Street" style="border-radius: 10px; border: 1px solid #E95F5D; font-family: 'Heebo', sans-serif; background-color: white; color: black;">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer" style="background-color: #FFD09B; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
+                            <button type="button" class="btn btn-primary" onclick="saveAddress()" style="border-radius: 10px; font-family: 'Nunito', sans-serif; background-color: #E95F5D; color: white;">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
- 
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function saveAddress() {
+            // Simply save the address and redirect to order summary without any notifications
+            window.location.href = 'buyer_place_order_summary.php';
+        }
+    </script>
 </body>
 </html>
