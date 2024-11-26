@@ -112,11 +112,12 @@
     <div class="container py-4">
         <!-- Back Button -->
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <button class="back-btn" onclick="window.location.href='Buyer_index.php'">
-                <i class="fas fa-arrow-left"></i> Back
-            </button>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <button class="back-btn" onclick="window.location.href='Buyer_index.php'">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
         </div>
-
         <!-- Title -->
         <div style="border: 2px solid #E95F5D; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
             <input class="form-control" type="text" value="       My Profile / Favorites" aria-label="Disabled input example" disabled readonly style="background-color: white; color: black;">
@@ -155,6 +156,15 @@
                             <i class="fas fa-star me-4"></i>
                             <span class="text-start">Rating</span>
                         </a>
+                    </div>
+                     
+                    <div class="nav flex-column">
+                        
+                    </div>
+                    <div class="pt-5 pb-5">
+                    </div>
+
+                    <div class="pt-2 ">
                     </div>
                 </div>
             </div>

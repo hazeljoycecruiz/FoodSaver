@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <div class="container" style="background-color: #FFD09B; width: 930px; border-radius: 10px;">
+        <div class="container" style="background-color: #FFD09B; width: 930px; border-radius: 10px; width: 1075px; max-width: 100%;">
             <br>
             <!-- Product Listings -->
             <div class="row justify-content-center" id="product-section">

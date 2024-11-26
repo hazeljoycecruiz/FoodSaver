@@ -162,11 +162,8 @@ canvas {
                 <h3>Buyers by Age Group</h3>
                 <canvas id="ageGroupChart"></canvas>
             </div>
-            <!-- New Bar Chart for Gender Distribution -->
-            <div class="chart">
-                <h3>Buyers by Gender</h3>
-                <canvas id="genderChart"></canvas>
-            </div>
+       
+    
         </div>
       </section>
     </div>
@@ -234,26 +231,7 @@ canvas {
           }
         });
 
-        // Bar Chart for Buyers by Gender
-        const genderCtx = document.getElementById('genderChart').getContext('2d');
-        const genderChart = new Chart(genderCtx, {
-          type: 'bar',
-          data: {
-            labels: ['Male', 'Female', 'Other'],
-            datasets: [{
-              label: 'Buyers',
-              data: [50, 40, 10], // Example data, replace with actual data
-              backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56']
-            }]
-          },
-          options: {
-            responsive: true,
-            scales: {
-              x: { beginAtZero: true },
-              y: { beginAtZero: true }
-            }
-          }
-        });
+     
 
   </script>
 </body>

@@ -119,19 +119,19 @@ try {
     background-color: #f9dbba;
     border: 2px solid #ff4040;
     color: #E95F5D;
-    border-radius: 10px;
+    border-radius: 20px;
     width: 500px; /* Normal size */
     max-width: 90%; /* Responsive */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
-    padding: 5px; /* Add space between square and the popup edges */
+    padding: 30px; /* Add space between square and the popup edges */
 }
 
 /* Square Styling */
 .popup-square {
     background-color: #ffffff;
     border: 2px solid #E95F5D;
-    border-radius: 10px; /* Optional for rounded corners */
+    border-radius: 30px; /* Optional for rounded corners */
     width: 90%; /* Same width as the popup */
    
     padding: 20px; /* Inner padding for content */
@@ -204,15 +204,41 @@ try {
 
 /* Close Button */
 .close-x {
-    top: 10px;
-    margin-left: 340px;
-    font-size: 24px;
+    position: absolute; /* Ensure it's positioned relative to the container */
+    top: -26px; /* Adjust the distance from the top */
+    right: -185px; /* Align it to the right side of the container */
+    font-size: 40px;
     cursor: pointer;
     color: #E95F5D; /* Optional: match the color scheme */
 }
 
 .close-x:hover {
     color: #ff4040; /* Optional: hover effect */
+}
+
+.confirmation-popup {
+    background: #ffe6e2;
+    border-radius: 50%;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.check-icon {
+    font-size: 145px;
+    color: #28a745;
+    margin: -40px; /* Ensures no extra margin above or below */
+}
+
+.confirmation-text {
+    font-size: 18px;
+    color: #333;
 }
 
 
@@ -896,6 +922,13 @@ try {
 
             </div>
         </div>
+
+        <div id="confirmationPopup" class="popup-overlay" style="display: none;">
+            <div class="confirmation-popup">
+                <span class="check-icon">&#10004;</span>
+                <p class="confirmation-text">Added to Cart</p>
+            </div>
+        </div>
         <!-- food 6 end -->
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
@@ -963,6 +996,24 @@ try {
         }
 
     
+        </script>
+
+        <script>
+            function showConfirmation() {
+                // Show the confirmation popup
+                const confirmationPopup = document.getElementById('confirmationPopup');
+                confirmationPopup.style.display = 'flex';
+
+                // Hide the confirmation popup after 3 seconds
+                setTimeout(() => {
+                    confirmationPopup.style.display = 'none';
+                }, 3000);
+            }
+
+            function closePopup() {
+                // Hide the main popup
+                document.getElementById('popupOverlay').style.display = 'none';
+            }
         </script>
 
     <!-- JavaScript Libraries -->

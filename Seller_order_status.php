@@ -198,7 +198,7 @@
 
   <div class="container-box order-card">
     <div class="estimated-arrival">
-      <strong>Estimated Arrival:</strong> 11/27/24, 2:30 PM
+      <strong>Estimated Arrival:</strong> 11/27/24, 7:30 AM
     </div>
     <div class="address-line">
       <span>Owner Address</span>
@@ -221,7 +221,7 @@
 
   <div class="container-box order-card">
     <div class="estimated-arrival">
-      <strong>Estimated Arrival:</strong> 11/27/24, 6:00 PM
+      <strong>Estimated Arrival:</strong> 11/26/24, 6:00 PM
     </div>
     <div class="address-line">
       <span>Owner Address</span>
@@ -229,15 +229,15 @@
       <span>Customer Address</span>
     </div>
     <div class="product-details">
-      <img class="product-image" src="img/kinilaw.jpg" alt="Kinilaw">
+      <img class="product-image" src="img/moist cake.jpg" alt="Kinilaw">
       <div class="product-info">
-        <p class="product-name"><strong>Kinilaw</strong></p>
-        <p class="product-qty">Qty: 5</p>
-        <p class="product-price">Php 35.00</p>
+        <p class="product-name"><strong>Moist Cake</strong></p>
+        <p class="product-qty">Qty: 6</p>
+        <p class="product-price">Php 5.00</p>
       </div>
     </div>
     <div class="order-footer">
-      <span class="total-label">Total: Php 175.00</span>
+      <span class="total-label">Total: Php 30.00</span>
       <button class="details-btn" onclick="window.location.href='Seller_order_update.php'">Details</button>
     </div>
   </div>

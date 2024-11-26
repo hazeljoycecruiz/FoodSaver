@@ -177,10 +177,10 @@
     <!-- Order Card -->
   <div class="container-box order-card">
     <div class="estimated-arrival">
-      <strong>Cancel Order:</strong> Today, 12:00 PM
+      <strong>Cancel Order:</strong> 11/27/24, 7:30 AM
     </div>
     <div class="address-line">
-      <span>Owner Adress</span>
+      <span>Buyer: Cancel</span>
       <span>&rarr;</span>
       <h6 style="color: red;"><strong>Status:</strong> Cancelled</h6>
     </div>
@@ -197,6 +197,54 @@
       
     </div>
   </div>
+
+  <div class="container-box order-card">
+    <div class="estimated-arrival">
+      <strong>Cancel Order:</strong> 11/27/24, 6:00 AM
+    </div>
+    <div class="address-line">
+      <span>Seller: Product Removed</span>
+      <span>&rarr;</span>
+      <h6 style="color: red;"><strong>Status:</strong> Cancelled</h6>
+    </div>
+    <div class="product-details">
+      <img class="product-image" src="img/pancit canton.jpg" alt="Kinilaw">
+      <div class="product-info">
+        <p class="product-name"><strong>Pancit Canton</strong></p>
+        <p class="product-qty">Qty: 3</p>
+        <p class="product-price">Php 8.00</p>
+      </div>
+    </div>
+    <div class="order-footer">
+      <span class="total-label">Total: Php 24.00</span>
+      
+    </div>
+  </div>
+
+  <div class="container-box order-card">
+    <div class="estimated-arrival">
+      <strong>Cancel Order:</strong> 11/26/24, 10:00 PM
+    </div>
+    <div class="address-line">
+      <span>Seller: Product Removed</span>
+      <span>&rarr;</span>
+      <h6 style="color: red;"><strong>Status:</strong> Cancelled</h6>
+    </div>
+    <div class="product-details">
+      <img class="product-image" src="img/corned beef.png" alt="Kinilaw">
+      <div class="product-info">
+        <p class="product-name"><strong>Corned Beef</strong></p>
+        <p class="product-qty">Qty: 2</p>
+        <p class="product-price">Php 20.00</p>
+      </div>
+    </div>
+    <div class="order-footer">
+      <span class="total-label">Total: Php 40.00</span>
+      
+    </div>
+  </div>
+
+  
 
   <!-- Bootstrap JS and dependencies -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
