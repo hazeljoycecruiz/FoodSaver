@@ -53,7 +53,7 @@
             </div>
         </div>
 
-        <div class="container" style="background-color: #FFD09B; width: 930px; border-radius: 10px;">
+        <div class="container" style="background-color: #FFD09B; width: 930px; border-radius: 10px; width: 1075px; max-width: 100%;">
             <br>
         
        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
@@ -76,61 +76,63 @@
         <!-- Product Listings -->
         <div class="row justify-content-center" id="product-section">
             <div class="col-md-10">
-                <div class="row g-4" id="product-list">
+                <div class="row g-4 justify-content-center" id="product-list">
                     <!-- Example of a Product Item -->
-                    <div class="col-lg-3 col-sm-6" style="width: 250px;">
+                    <div class="col-lg-4 col-sm-6" style="width: 250px; border-radius: 100px;">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
                                 <img src="img/corned beef.png" alt="Corned Beef" class="service-image mb-3" style="width: 100%; height: 130px; object-fit: cover;">
                                 <h5>Corned Beef</h5>
                                 <p class="price">Php 20.00</p>
                                 <p>Status: Uploaded</p>
-                                <button class="btn btn-danger remove-btn">Remove</button>
+                                <button class="btn btn-danger remove-btn" style=" border-radius: 5px;">Remove</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-sm-6" style="width: 250px;">
+                    <div class="col-lg-4 col-sm-6" style="width: 250px;">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
                                 <img src="img/pancit canton.jpg" alt="Corned Beef" class="service-image mb-3" style="width: 100%; height: 130px; object-fit: cover;">
                                 <h5>Pancit Canton</h5>
                                 <p class="price">Php 8.00</p>
                                 <p>Status: Uploaded</p>
-                                <button class="btn btn-danger remove-btn">Remove</button>
+                                <button class="btn btn-danger remove-btn" style=" border-radius: 5px;">Remove</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-sm-6" style="width: 250px;">
+                    <div class="col-lg-4 col-sm-6" style="width: 250px;">
                         <div class="service-item rounded pt-3">
                             <div class="p-4 text-center">
                                 <img src="img/centurytuna.jpg" alt="Corned Beef" class="service-image mb-3" style="width: 100%; height: 130px; object-fit: cover;">
                                 <h5>Century Tuna</h5>
                                 <p class="price">Php 20.00</p>
                                 <p>Status: Uploaded</p>
-                                <button class="btn btn-danger remove-btn">Remove</button>
+                                <button class="btn btn-danger remove-btn" style=" border-radius: 5px;">Remove</button>
                             </div>
                         </div>
-                    </div>
+                    </div>                 
                     <!-- Repeat the above block for other uploaded products -->
                 </div>
             </div>
         </div>
 
+        
+
         <script>
-            // Wait for the DOM to be ready
+            // Wait for the DOM to be fully loaded
             document.addEventListener('DOMContentLoaded', () => {
-                let rowToDelete = null; // Store the row to delete
+                let productToDelete = null; // Store the product to delete
 
                 // Get all remove buttons
                 const removeButtons = document.querySelectorAll('.remove-btn');
 
-                // Add event listener for each remove button
+                // Add event listener to each remove button
                 removeButtons.forEach(button => {
-                    button.addEventListener('click', function() {
-                        // Store the product column (col-lg-3 col-sm-6) to delete
-                        rowToDelete = button.closest('.col-lg-3');
+                    button.addEventListener('click', function () {
+                        // Find the closest product card to the button
+                        productToDelete = button.closest('.col-lg-4');
 
                         // Show the Bootstrap modal
                         const modal = new bootstrap.Modal(document.getElementById('confirmationModal'));
@@ -138,10 +140,10 @@
                     });
                 });
 
-                // Confirm cancellation and remove the product column
-                document.getElementById('confirmCancelBtn').addEventListener('click', function() {
-                    if (rowToDelete) {
-                        rowToDelete.remove(); // Remove the entire product column
+                // Handle the confirm cancellation button in the modal
+                document.getElementById('confirmCancelBtn').addEventListener('click', function () {
+                    if (productToDelete) {
+                        productToDelete.remove(); // Remove the product card
                     }
 
                     // Hide the modal after confirming
@@ -149,8 +151,8 @@
                     modal.hide();
                 });
             });
-
         </script>
+
 
         <br>
     </div>

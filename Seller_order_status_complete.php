@@ -166,7 +166,7 @@
   <!-- Tabs Section -->
   <div class="container-box" style="background-color: #FFD09B;">
     <div class="tabs">
-      <div class="tab" onclick="window.location.href='Seller_order_status_complete.php'" style="color: black;">On Shipping</div>
+      <div class="tab" onclick="window.location.href='Seller_order_status.php'" style="color: black;">On Shipping</div>
       <div class="tab" onclick="window.location.href='Seller_order_status_cancel.php'" style="color: black;">Cancelled</div>
       <div class="tab active" >Complete</div>
     </div>
@@ -175,7 +175,7 @@
   <!-- Order Card -->
   <div class="container-box order-card">
     <div class="estimated-arrival">
-      <strong>Transaction Complete:</strong> Today, 12:00 PM
+      <strong>Transaction Complete:</strong> 11/27/24, 12:00 PM
     </div>
     <div class="address-line">
       <span>Delivered Successfully</span>
@@ -195,6 +195,8 @@
       <button class="details-btn" onclick="window.location.href='Seller_order_update_complete.php'">Details</button>
     </div>
   </div>
+
+  
 
   <!-- Bootstrap JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

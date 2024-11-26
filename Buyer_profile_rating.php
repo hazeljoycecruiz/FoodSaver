@@ -182,8 +182,7 @@
  
                     
                   
-                    <div class="nav flex-column">
-                        
+                    <div class="nav flex-column">           
                     </div>
                     <div class="pt-5 pb-5">
                     </div>
@@ -248,9 +247,7 @@
                 </div>
             </div>
 
-            <!-- Favorites 2 -->
-           
-        </div>
+         
     </div>
 
     <!-- Bootstrap JS and dependencies -->
