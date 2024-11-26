@@ -119,10 +119,10 @@ try {
         // Check if bussiness_name exists and is not NULL
         if (isset($user['bussiness_name']) && $user['bussiness_name'] !== NULL) {
             $bussiness_name = htmlspecialchars($user['bussiness_name']);
-          
+     
         } else {
             $first_name = htmlspecialchars($user['first_name']);
-          
+     
         }
     } else {
         // User not found
@@ -133,9 +133,8 @@ try {
 } catch (Exception $e) {
     echo "Error fetching user details: " . $e->getMessage();
 }
+
 ?>
-
-
 
 
 
@@ -146,7 +145,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bussiness Profile </title>
+    <title>Bussiness Product </title>
     <link href="img/favicon.ico" rel="icon">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -178,9 +177,6 @@ try {
             background-color: #ffe6e2;
             border-radius: 10px;
             padding: 20px;
-        }
-        .profile {
-            width: 2px;
         }
 
         .sidebar {
@@ -268,7 +264,38 @@ try {
         color: #000000 !important; /* Optional: Change text color if needed */
 }
 
+    .summary-container {
+        background-color: #ffffff;
+        border-radius: 75px;
+        padding: 20px;
+        }
+
+    .summary-container .btn {
+        border-radius: 10px;
+        font-weight: bold;
+        }
+
+    .summary-container .total {
+        font-size: 20px;
+        font-weight: bold;
+        }
+    
+        #description {
+        height: 255px; /* Adjust height as needed */
+    }
+
+     .form-control::placeholder {
+        text-align: start; vertical-align: top;
+        position: absolute;
+        top: 0;
+        transform: translateY(10%); /* Optional for precise alignment */
+        font-size: 1.25rem; /* Adjust the size if necessary */
+    }
+   
+ 
+
     </style>
+
 </head>
 <body>
     <div class="container py-4">
@@ -281,29 +308,31 @@ try {
             </div>
         </div>
         <div style="border: 2px solid #E95F5D; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
-            <input class="form-control" type="text" value="       My Profile" 
+            <input class="form-control" type="text" value="       My Profile/ Sell Product" 
             aria-label="Disabled input example" disabled readonly 
             style="background-color: white; color: black;">
         </div>
         <!-- Profile Content -->
         <div class="row g-3 mt-1 ">
             <!-- Sidebar -->
-            <div class="col-md-4">
+            <div class="col-md-4" >
                 <div class="sidebar pt-5" style="border: 2px solid #E95F5D; border-radius: 12px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
                     <!-- Profile Icon -->
 
+                <!-- Display the Profile Picture -->
+                <div class="profile-picture-container">
+                    <img 
+                        src="img/store.jpg" 
+                        alt="Profile Picture" 
+                        id="profile-pic" 
+                        style="cursor: pointer;" 
+                        onclick="window.location.href='Seller_profile.php';">
+                </div>
 
-                    <div class="profile-picture-container">
-                    <img src="img/store.jpg" alt="Profile Picture" id="profile-pic" onclick="document.getElementById('file-input').click();" style="cursor: pointer;">
-                    <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="previewImage(event)">
-                    </div>
-
-                    <a href="Seller_profile.php" class="pb-4 name" style=";text-decoration: none; "><h5> <?php echo htmlspecialchars($bussiness_name ?? $first_name); ?></h5> 
+                <a href="Seller_profile.php" class="pb-4 name" style=";text-decoration: none; "><h5> <?php echo htmlspecialchars($bussiness_name ?? $first_name); ?></h5> 
                         </a>
                         <!-- Display error message if it exists -->
                         <?php if (!empty($error)) { echo "<p>Error: $error</p>"; } ?>
-
-         <!-- Favorites Menu Item -->
 
 
                          <!-- Other Menu Items -->
@@ -311,16 +340,17 @@ try {
                     <div class="pb-5"></div>
    
                     <!-- Other Menu Items -->
-                    <div class="hov d-flex justify-content-center">
-                        <!-- Purchases Button -->
-                        <a href="Seller_product.php" 
-                           class="btn btn-light d-flex align-items-center px-4 py-3 bg-white" 
-                           style="border-radius: 12px; width: 350px; ">
+   
+                    <div class="d-flex justify-content-center " id="navbarCollapse">
+                        <!-- Favorites Button -->
+                        <button 
+                            type="button" 
+                            class="btn text-white d-flex align-items-center px-4 py-3" 
+                            style="background-color: #ff6b6b;  border-radius: 12px; pointer-events: none; width: 350px;">
                             <i class="fas fa-shopping-cart me-4"></i>
                             <span class="text-start">Sell Product</span>
-                        </a>
+                        </button>
                     </div>
-                   
        
                     
                   
@@ -329,94 +359,55 @@ try {
                     </div>
                     <div class="pt-5 pb-5">
                     </div>
-                    <div class="pt-5 pb-5">
+                    <div class="pt-5 pb-4">
                     </div>
-                    <div class="pt-5  pb-5">
+                    <div class="pt-5  pb-3">
                     </div>
-                    <div class="pt-3  pb-2">
-                    </div>
-                    
+                 
                 </div>
             </div>
 
             <!-- Favorites -->
             <div class="col-md-8">
-       
 
-                    <div class="favorites-container" style="border: 2px solid #E95F5D; border-radius: 12px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
-                <form method="POST" enctype="multipart/form-data">
+                <div class="favorites-container" style="border: 2px solid #E95F5D; border-radius: 12px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
 
-                <div class="profiles-picture-container mb-2">
-                        <img src="img/photo_edit.png" alt="Profile Picture" id="profile-pic"
-                            onclick="document.getElementById('file-input').click();" style="cursor: pointer;">
-                        <input type="file" id="file-input" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                    <div class="row align-items-center justify-content-center" style="height: 27vh;"> <!-- Center content vertically and horizontally -->
+                        <div class="profiles-picture-container col-4 mb-4 summary-container d-flex justify-content-center align-items-center w-25 h-100">
+                            <img src="img/svg_upload.svg" alt="Profile Picture" id="profile-pic" onclick="document.getElementById('file-input').click();" class="img-fluid" style="cursor: pointer;">
+                            <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="previewImage(event)">
                         </div>
-
-                        <script>
-                            // Preview the selected image
-                            function previewImage(event) {
-                                const file = event.target.files[0]; // Get the file
-                                if (file) {
-                                    const reader = new FileReader(); // FileReader to read the file
-                                    reader.onload = function (e) {
-                                        const profilePic = document.getElementById('profile-pic');
-                                        profilePic.src = e.target.result; // Set the image src to the selected file
-                                    };
-                                    reader.readAsDataURL(file); // Read the file as a data URL
-                                }
-                            }
-                        </script>
-            
-                        <!-- Profile Picture Upload -->
-    
-
-
-                        
-                            <div class="row">
-                                <div class="col mb-4 ">
-                                    <input type="bussiness_name" name="bussiness_name" class="form-control-lg w-100 transparent-border" id="bussiness_name" placeholder="Bussiness Name">
-                                </div>
-                                <div class="col mb-4">
-                                    <input type="bussiness_type" name="bussiness_type" class="form-control-lg w-100 transparent-border" id="bussiness_type" placeholder="Bussiness Type">
-                                </div>
-                            </div>
-                        
-                            <div class="row">
-                                <div class="col mb-4">
-                                    <input type="first_name" name="first_name" class="form-control-lg w-100 transparent-border" id="first_name" placeholder="First Name">
-                                </div>
-                                <div class="col mb-4">
-                                    <input type="last_name" name="last_name" class="form-control-lg w-100 transparent-border" id="last_name" placeholder="Last Name">
-                                </div>
-                            </div>
-                        
-                            <div class="row">
-                                <div class="col mb-4">
-                                    <input type="age" name="age" class="form-control-lg w-100 transparent-border" id="age" placeholder="Age">
-                                </div>
-                                <div class="col mb-4">
-                                    <input type="birthdate" name="birthdate" class="form-control-lg w-100 transparent-border" id="birthdate" placeholder="Birthdate       Ex.  March 21, 1977">
-                                </div>
-                            </div>
-                        
-                            <div class="mb-4 w-100">
-                                <input type="address" name="address" class="form-control-lg w-100 transparent-border" id="address" placeholder="Address">
-                            </div>
-                        
-                            <div class="mb-4 w-100">
-                                <input type="email" name="email" class="form-control-lg w-100 transparent-border" id="email" placeholder="Email">
-                            </div>
-                        
-                            <div class="mb-3 ">
-                                <input type="phone_num" name="phone_num" class="form-control-lg w-100 transparent-border" id="phone_num" placeholder="Contact Number">
-                            </div>
-                        
-                            <div class="d-flex justify-content-end">
-                                <button type="submit" name="submit" class="btn btn-primary w-25 rounded-pill">Save</button>
-                            </div>               
+                    
+                        <div class="col-8 mb-4">
+                            <input type="text" class="form-control w-100 transparent-border mb-2" id="product_name" placeholder="Product Name">
+                            <input type="text" class="form-control w-100 transparent-border mb-2" id="best_before" placeholder="Best before">
+                            <input type="text" class="form-control w-100 transparent-border mb-2" id="price" placeholder="Price">
+                            <input type="text" class="form-control w-100 transparent-border mb-2" id="qty" placeholder="Qty">
+                        </div>
                     </div>
-                </form>
+                        <div class="pt-4">
+                        </div>
+                
+                    
+                        <textarea 
+                            name="description" 
+                            class="form-control transparent-border" 
+                            id="description" 
+                            placeholder="Description" 
+                            rows="4" 
+                            style="padding: 10px; text-align: left; color: #000; background-color: #fff;">
+                        </textarea>
 
+      
+                        <div class="mt-4 pt-2"> 
+
+                        </div>
+  
+
+                        <div class="d-flex justify-content-end">
+                                <button type="submit" name="submit" class="btn btn-primary w-25 rounded-pill">Save</button>
+                        </div> 
+                </div>
             </div>
         </div>
     </div>

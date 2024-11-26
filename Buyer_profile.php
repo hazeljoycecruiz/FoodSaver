@@ -188,7 +188,7 @@ echo "Saved successfully!";
         <!-- Back Button -->
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <button class="back-btn" onclick="window.location.href='Buyer_index.html'">
+                <button class="back-btn" onclick="window.location.href='Buyer_index.php'">
                     <i class="fas fa-arrow-left"></i> Back
                 </button>
             </div>
@@ -220,7 +220,7 @@ echo "Saved successfully!";
                          <!-- Other Menu Items -->
                          <div class="hov d-flex justify-content-center pt-3 pb-4">
                             <!-- Purchases Button -->
-                            <a href="Buyer_profile_favorites.html" 
+                            <a href="Buyer_profile_favorites.php" 
                                class="btn btn-light d-flex align-items-center px-4 py-3 bg-white" 
                                style="border-radius: 12px; width: 350px; ">
                                <i class="fas fa-heart me-4"></i>
@@ -233,7 +233,7 @@ echo "Saved successfully!";
                     <!-- Other Menu Items -->
                     <div class="hov d-flex justify-content-center">
                         <!-- Purchases Button -->
-                        <a href="Buyer_profile_purchase.html" 
+                        <a href="Buyer_profile_purchase.php" 
                            class="btn btn-light d-flex align-items-center px-4 py-3 bg-white" 
                            style="border-radius: 12px; width: 350px; ">
                             <i class="fas fa-shopping-cart me-4"></i>
@@ -243,7 +243,7 @@ echo "Saved successfully!";
                     <div class="pb-4"></div>
                     <div class="hov d-flex justify-content-center">
                         <!-- Rating Button -->
-                        <a href="Buyer_profile_rating.html" 
+                        <a href="Buyer_profile_rating.php" 
                            class="btn btn-light d-flex align-items-center px-4 py-3 bg-white" 
                            style="border-radius: 12px; width: 350px;">
                             <i class="fas fa-star me-4"></i>
