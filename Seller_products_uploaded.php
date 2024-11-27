@@ -1,45 +1,44 @@
+<?php
+// Database connection
+include('database/db_connection.php');
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch products from the database
+$sql = "SELECT * FROM products";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-
     <title>FoodSaver - Seller's Products</title>
-
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
-
     <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
-
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
-
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="css/profile.css">
-
-    <!-- Make sure to include jQuery -->
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- Make sure to include Bootstrap JS -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-
 </head>
 
 <body>
@@ -47,7 +46,7 @@
         <!-- Back Button -->
         <div class="row justify-content-center mb-3">
             <div class="col-md-10 text-center">
-                <button class="back-btn btn btn-link" onclick="window.location.href='Seller_index.html'" style="text-decoration: none; text-transform: none;">
+                <button class="back-btn btn btn-link" onclick="window.location.href='Seller_index.php'" style="text-decoration: none; text-transform: none;">
                     <i class="fas fa-arrow-left"></i> Back
                 </button>
             </div>
@@ -66,110 +65,122 @@
             <div class="row justify-content-center" id="product-section">
                 <div class="col-md-10">
                     <div class="row g-4" id="product-list">
-                        <!-- Example of a Product Item -->
-                        <div class="col-lg-3 col-sm-6" style="width: 250px;">
-                            <div class="service-item rounded pt-3">
-                                <div class="p-4 text-center">
-                                    <img src="img/corned beef.png" alt="Corned Beef" class="service-image mb-3" style="width: 100%; height: 130px; object-fit: cover;">
-                                    <h5>Corned Beef</h5>
-                                    <p class="price">Php 20.00</p>
-                                    <p>Status: Uploaded</p>
-                                    <button class="btn btn-danger">Remove</button>
-                                    <br><br>
-                                    <!-- Update Button that triggers the modal -->
-                                    <button class="btn btn-warning" onclick="fillUpdateForm(1, 'Corned Beef', 'A can of corned beef', '2024-12-31', 20.00, 10, 'img/corned beef.png')" data-bs-toggle="modal" data-bs-target="#updateModal">Update</button>
-                                </div>
-                            </div>
-
-                            <!-- Repeat the above block for other uploaded products -->
-                        </div>
+                        <?php
+                        // Check if there are any products in the database
+                        if ($result->num_rows > 0) {
+                            // Loop through each product and display it
+                            while($row = $result->fetch_assoc()) {
+                                // Get image from BLOB and encode it as base64 for display
+                                $image = base64_encode($row['product_image']);
+                                // Display each product dynamically
+                                echo '<div class="col-lg-3 col-sm-6" style="width: 250px;" id="product-' . $row['product_id'] . '">';
+                                echo '    <div class="service-item rounded pt-3">';
+                                echo '        <div class="p-4 text-center">';
+                                echo '            <img src="' . $row['product_image'] . '" alt="' . $row['product_name'] . '" class="service-image mb-3" style="width: 100%; height: 130px; object-fit: cover;">';
+                                echo '            <h5>' . $row['product_name'] . '</h5>';
+                                echo '            <p class="price">Php ' . number_format($row['price'], 2) . '</p>';
+                                echo '            <p>Status: Uploaded</p>';
+                                echo '            <button class="btn btn-danger" onclick="removeProduct(\'' . $row['product_id'] . '\')">Remove</button>';
+                                echo '            <br><br>';
+                                echo '            <button class="btn btn-warning" onclick="fillUpdateForm(\'' . $row['product_id'] . '\', \'' . $row['product_name'] . '\', \'' . $row['description'] . '\', \'' . $row['best_before'] . '\', ' . $row['price'] . ', ' . $row['stock_quantity'] . ', \'' . $image . '\')" data-bs-toggle="modal" data-bs-target="#updateModal">Update</button>';
+                                echo '        </div>';
+                                echo '    </div>';
+                                echo '</div>';
+                            }
+                        } else {
+                            echo '<p>No products uploaded yet.</p>';
+                        }
+                        ?>
                     </div>
                 </div>
-                <br>
-
-                <!-- Modal Structure -->
-                <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content" style="border-radius: 12px; border: 2px solid #E95F5D;">
-                            <div class="modal-header" style="background-color: #FFD09B; color: black; border-top-left-radius: 12px; border-top-right-radius: 12px;">
-                                <h5 class="modal-title" id="updateModalLabel" style="font-family: 'Nunito', sans-serif; font-weight: 700;">Update Product</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body" style="background-color: #FFD09B; padding: 20px;">
-                                <form id="updateForm" method="POST" action="update_products.php" enctype="multipart/form-data">
-                                    <!-- Hidden Fields -->
-                                    <input type="hidden" name="productId" id="productId">
-                                    <input type="hidden" name="existingImage" id="existingImage">
-
-                                    <!-- Form Fields -->
-                                    <div class="mb-3">
-                                        <label for="productName" class="form-label" style="font-family: 'Heebo', sans-serif;">Product Name</label>
-                                        <input type="text" class="form-control" id="productName" placeholder="Enter Product Name">
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="productDescription" class="form-label">Description</label>
-                                        <textarea class="form-control" id="productDescription" rows="3" placeholder="Enter Description"></textarea>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="bestBefore" class="form-label">Best Before</label>
-                                        <input type="date" class="form-control" id="bestBefore">
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="productPrice" class="form-label">Price (Php)</label>
-                                        <input type="number" class="form-control" id="productPrice" placeholder="Enter Price">
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="productQuantity" class="form-label">Quantity</label>
-                                        <input type="number" class="form-control" id="productQuantity" placeholder="Enter Quantity">
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="productImage" class="form-label">Upload Photo</label>
-                                        <input type="file" class="form-control" id="productImage">
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer" style="background-color: #FFD09B;">
-                                <button type="button" class="btn btn-primary" style="background-color: #E95F5D;" onclick="submitUpdateForm()">Save Changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
             </div>
-
-            <!-- Back to Top Button -->
-            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+            <br>
         </div>
 
-        <!-- Javascript -->
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/jquery.min.js"></script>
+        <!-- Modal Structure for Update -->
+        <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateModalLabel">Update Product</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="updateForm" method="POST" action="update_product.php" enctype="multipart/form-data">
+                            <input type="hidden" id="productId" name="product_id">
+                            <div class="mb-3">
+                                <label for="productName" class="form-label">Product Name</label>
+                                <input type="text" class="form-control" id="productName" name="product_name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="productDescription" class="form-label">Description</label>
+                                <textarea class="form-control" id="productDescription" name="description" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="productPrice" class="form-label">Price (Php)</label>
+                                <input type="number" class="form-control" id="productPrice" name="price" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="productStock" class="form-label">Stock Quantity</label>
+                                <input type="number" class="form-control" id="productStock" name="stock_quantity" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="bestBefore" class="form-label">Best Before</label>
+                                <input type="text" class="form-control" id="bestBefore" name="best_before" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="productImage" class="form-label">Product Image (optional)</label>
+                                <input type="file" class="form-control" id="productImage" name="product_image">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Product</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <script>
-            // Pre-fill the modal with product data
-            function fillUpdateForm(productId, name, description, bestBefore, price, quantity, imageUrl) {
-                document.getElementById('productId').value = productId;
-                document.getElementById('productName').value = name;
-                document.getElementById('productDescription').value = description;
-                document.getElementById('bestBefore').value = bestBefore;
-                document.getElementById('productPrice').value = price;
-                document.getElementById('productQuantity').value = quantity;
-                document.getElementById('existingImage').value = imageUrl; // Keep the existing image path for reference
-                document.getElementById('productImage').value = ''; // Reset the file input
+        <!-- Back to top button -->
+        <a href="#" class="btn btn-light btn-lg rounded-circle" id="back-to-top" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+            <i class="bi bi-arrow-up"></i>
+        </a>
+    </div>
+
+    <script>
+        // Product Removal Function
+        function removeProduct(productId) {
+            if (confirm('Are you sure you want to delete this product?')) {
+                $.ajax({
+                    url: 'delete_product.php',
+                    type: 'POST',
+                    data: { product_id: productId },
+                    success: function(response) {
+                        if (response === 'success') {
+                            // Remove the product element from the page
+                            $('#product-' + productId).remove();
+                        } else {
+                            alert('Failed to delete product.');
+                        }
+                    },
+                    error: function() {
+                        alert('An error occurred while deleting the product.');
+                    }
+                });
             }
+        }
 
-
-            // Submit the update form
-            function submitUpdateForm() {
-                document.getElementById('updateForm').submit();
+        // Function to fill the update form with existing product data
+        function fillUpdateForm(productId, productName, description, bestBefore, price, stockQuantity, productImage) {
+            $('#productId').val(productId);
+            $('#productName').val(productName);
+            $('#productDescription').val(description);
+            $('#bestBefore').val(bestBefore);
+            $('#productPrice').val(price);
+            $('#productStock').val(stockQuantity);
+            // If there's an image, display it
+            if (productImage) {
+                $('#productImage').val(productImage);
             }
-        </script>
+        }
+    </script>
 </body>
-
 </html>

@@ -1,143 +1,65 @@
 <?php
-// Include the database connection file
-require_once 'database/db_connection.php';
+// Include your database connection file
+include('database/db_connection.php');
 
-// Start the session
-session_start();
+// Check if the form is submitted via POST method
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get data from the form
+    $product_name = $_POST['product_name'];
+    $description = $_POST['description'];
+    $best_before = $_POST['best_before'];
+    $price = (float)$_POST['price'];
+    $stock_quantity = (int)$_POST['stock_quantity'];
 
-// Check if the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    // Redirect to the login page if not logged in
-    header("Location: index_login.php");
-    exit();
-}
+    // Handle the product image upload
+    if (isset($_FILES['productImage']) && $_FILES['productImage']['error'] === UPLOAD_ERR_OK) {
+        $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
+        $file_type = mime_content_type($_FILES['productImage']['tmp_name']);
+        $file_size = $_FILES['productImage']['size'];
 
-// Get the logged-in user's ID
-$user_id = intval($_SESSION['user_id']); // Convert to integer for safety
-
-// Verify the database connection
-if (!$conn) {
-    die("Database connection failed: " . mysqli_connect_error());
-}
-
-// Check if the form is submitted via POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-    // Prevent redirection loop using a session flag
-    if (!isset($_SESSION['form_submitted'])) {
-        // Get form data with validation
-        $first_name = isset($_POST['first_name']) ? trim($_POST['first_name']) : NULL;
-        $last_name = isset($_POST['last_name']) ? trim($_POST['last_name']) : NULL;
-        $age = isset($_POST['age']) ? trim($_POST['age']) : NULL;
-        $birthdate = isset($_POST['birthdate']) ? trim($_POST['birthdate']) : NULL;
-        $address = isset($_POST['address']) ? trim($_POST['address']) : NULL;
-        $email = isset($_POST['email']) ? trim($_POST['email']) : NULL;
-        $phone_num = isset($_POST['phone_num']) ? trim($_POST['phone_num']) : NULL;
-        $bussiness_name = isset($_POST['bussiness_name']) ? trim($_POST['bussiness_name']) : NULL;
-        $bussiness_type = isset($_POST['bussiness_type']) ? trim($_POST['bussiness_type']) : NULL;
-
-
-        // Check for duplicate email
-        $email_check_query = "SELECT user_id FROM users WHERE email = ? AND user_id != ?";
-        $stmt_check = $conn->prepare($email_check_query);
-        $stmt_check->bind_param("si", $email, $user_id);
-        $stmt_check->execute();
-        $result_check = $stmt_check->get_result();
-
-        if ($result_check->num_rows > 0) {
-            echo "Error: The email address is already in use.";
-            $stmt_check->close();
-            exit();
-        }
-        $stmt_check->close();
-
-        // Update user data in the database, including the file path
-        $sql = "UPDATE users 
-                SET first_name = ?, 
-                    last_name = ?, 
-                    age = ?, 
-                    birthdate = ?, 
-                    address = ?, 
-                    email = ?, 
-                    phone_num = ?, 
-                    bussiness_name = ?, 
-                    bussiness_type = ? 
-                WHERE user_id = ?";
-
-        // Bind the parameters and execute the update query
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssssissi", $first_name, $last_name, $age, $birthdate, $address, $email, $phone_num, $bussiness_name, $bussiness_type, $user_id);
-
-        if ($stmt->execute()) {
-            // Set session flag to prevent reprocessing
-            $_SESSION['form_submitted'] = true;
-
-            // Redirect after success
-            header("Location: Seller_profile.php");
-            exit();
-        } else {
-            echo "Error: " . $stmt->error;
+        if (!in_array($file_type, $allowed_types)) {
+            die("Invalid file type. Only JPG, PNG, and GIF are allowed.");
         }
 
-        // Close the prepared statement
-        $stmt->close();
-    } else {
-        // Form already submitted; clear the flag and redirect
-        unset($_SESSION['form_submitted']);
-        header("Location: Seller_profile.php");
-        exit();
-    }
-}
+        if ($file_size > 2 * 1024 * 1024) { // 2 MB limit
+            die("File size exceeds the limit of 2 MB.");
+        }
 
-if(isset($_POST['submit'])){
-    $file_name = $_FILES['image']['name'];
-    $tempname = $_FILES['image']['tmp_name'];
-    $folder = 'img/'.$file_name;
+        $file_name = $_FILES['productImage']['name'];
+        $file_tmp = $_FILES['productImage']['tmp_name'];
+        $file_path = 'img/' . $file_name;
 
-    $query = mysqli_query($conn, "Insert into users (file) values ('$file_name')");
-
-    if(move_uploaded_file($tempname, $folder)){
-        echo "<h2> File uploaded successfully</h2>";
-    } else{
-        echo "<h2> File not uploaded</h2>";
-    }
-
-}
-
-// Fetch other user details securely
-try {
-    $sql = "SELECT * FROM users WHERE user_id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        // Fetch user data
-        $user = $result->fetch_assoc();
-        $stmt->close();
-
-        // Check if bussiness_name exists and is not NULL
-        if (isset($user['bussiness_name']) && $user['bussiness_name'] !== NULL) {
-            $bussiness_name = htmlspecialchars($user['bussiness_name']);
-     
+        if (move_uploaded_file($file_tmp, $file_path)) {
+            $product_image = $file_path;
         } else {
-            $first_name = htmlspecialchars($user['first_name']);
-     
+            die("Error uploading image.");
         }
     } else {
-        // User not found
-        session_destroy(); // Clear session
-        header("Location: index_login.php"); // Redirect to login
-        exit();
+        $product_image = null; // Default image
     }
-} catch (Exception $e) {
-    echo "Error fetching user details: " . $e->getMessage();
-}
 
+    // Prepare the SQL query for inserting the new product into the database
+    $query = "INSERT INTO products (product_name, description, price, best_before, stock_quantity, product_image, created_at) 
+              VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)";
+
+    if ($stmt = $conn->prepare($query)) {
+        $stmt->bind_param("ssdsis", $product_name, $description, $price, $best_before, $stock_quantity, $product_image);
+        $stmt->execute();
+
+        if ($stmt->affected_rows > 0) {
+            // echo "Product posted successfully!";
+        } else {
+            echo "Error posting product: " . $stmt->error;
+        }
+
+        $stmt->close();
+    } else {
+        echo "Error preparing the query.";
+    }
+
+    $conn->close();
+}
 ?>
-
-
-
 
 
 <!DOCTYPE html>
@@ -330,7 +252,7 @@ try {
                         onclick="window.location.href='Seller_profile.php';">
                 </div>
 
-                <a href="Seller_profile.php" class="pb-4 name" style=";text-decoration: none; "><h5> <?php echo htmlspecialchars($bussiness_name ?? $first_name); ?></h5> 
+                <h5> <?php echo htmlspecialchars($bussiness_name ?? $first_name ?? 'Business Name'); ?></h5>
                         </a>
                         <!-- Display error message if it exists -->
                         <?php if (!empty($error)) { echo "<p>Error: $error</p>"; } ?>
@@ -380,7 +302,7 @@ try {
            ">
 
                     <div class="row align-items-center justify-content-center" > <!-- Center content vertically and horizontally -->
-                    <div class="product-picture-container col-4 mb-4 summary-container d-flex justify-content-center align-items-center w-25 h-100">
+                    <!-- <div class="product-picture-container col-4 mb-4 summary-container d-flex justify-content-center align-items-center w-25 h-100">
                         <img src="img/svg_upload.svg" 
                             alt="product_pic" 
                             id="product_pic" 
@@ -388,7 +310,7 @@ try {
                             class="img-fluid" 
                             style="cursor: pointer; width: 150px; height: 150x; object-fit: cover; border-radius: 8px; border: 2px solid #E95F5D;">
                         <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="previewImage(event)">
-                    </div>
+                    </div> -->
 
 <script>
     // Function to preview the image after it's selected
@@ -415,28 +337,107 @@ try {
 
 
                     
-                        <div class="col-8 mb-4">
-                            <input type="text" class="form-control w-100 transparent-border mb-2" id="product_name" placeholder="Product Name">
-                            <input type="text" class="form-control w-100 transparent-border mb-2" id="best_before" placeholder="Best before">
-                            <input type="text" class="form-control w-100 transparent-border mb-2" id="price" placeholder="Price">
-                            <input type="text" class="form-control w-100 transparent-border mb-2" id="qty" placeholder="Qty">
-                        </div>
+                    <!-- <div class="col-8 mb-4">
+                        <input type="text" class="form-control w-100 transparent-border mb-2" id="product_name" placeholder="Product Name">
+                        <input type="date" class="form-control w-100 transparent-border mb-2" id="best_before" placeholder="Best before" required style="font-size: 20px;">
+                        <input type="number" class="form-control w-100 transparent-border mb-2" id="price" placeholder="Price" min="0" step="any" required>
+                        <input type="number" class="form-control w-100 transparent-border mb-2" id="qty" placeholder="Qty" min="0" required>
+                    </div> -->
+
+                    <div class="col-8 mb-4">
+    <!-- Form for submitting product data -->
+    <form method="POST" action="" enctype="multipart/form-data">
+    
+    <img 
+    src="img/svg_upload.svg" 
+    alt="Upload" 
+    id="product_pic" 
+    onclick="document.getElementById('file-input').click();" 
+    style="cursor: pointer; width: 150px; height: 150px; object-fit: cover; display: block; margin: 0 auto;"
+>
+
+<br>
+    <input 
+        type="text" 
+        name="product_name" 
+        class="form-control w-100 transparent-border mb-2" 
+        placeholder="Product Name" 
+        required
+    >
+
+    <textarea 
+        name="description" 
+        class="form-control w-100 transparent-border mb-2" 
+        placeholder="Description" 
+        required
+    ></textarea>
+
+    <input 
+        type="date" 
+        name="best_before" 
+        class="form-control w-100 transparent-border mb-2" 
+        required
+    >
+
+    <input 
+        type="number" 
+        name="price" 
+        class="form-control w-100 transparent-border mb-2" 
+        placeholder="Price" 
+        min="0" 
+        step="any" 
+        required
+    >
+
+    <input 
+        type="number" 
+        name="stock_quantity" 
+        class="form-control w-100 transparent-border mb-2" 
+        placeholder="Qty" 
+        min="0" 
+        required
+    >
+
+    <input 
+        type="file" 
+        name="productImage" 
+        id="file-input" 
+        accept="image/*" 
+        style="display: none;"
+    >
+    
+
+    <button 
+    type="submit" 
+    class="btn btn-primary w-25 rounded-pill mt-3" 
+    style="float: right;"
+>
+    Save
+</button>
+
+</form>
+
+
+    
+</div>
+
+
                     </div>
                         <div class="pt-4">
                         </div>
                 
                     
 
-                        <textarea id="comments" class="form-control" rows="4" placeholder="Description" style=" border-radius: 10px; height: 242px;"></textarea>
+                        <!-- <textarea id="comments" class="form-control" rows="4" placeholder="Description" style=" border-radius: 10px; height: 242px;"></textarea> -->
       
                         <div class="mt-4 pt-2"> 
 
                         </div>
   
 
-                        <div class="d-flex justify-content-end">
+                        <!-- <div class="d-flex justify-content-end">
                                 <button type="submit" name="submit" class="btn btn-primary w-25 rounded-pill" onclick="window.location.href='Seller_products_uploaded.php'">Save</button>
-                        </div> 
+                        </div>  -->
                 </div>
             </div>
         </div>

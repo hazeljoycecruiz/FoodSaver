@@ -43,6 +43,17 @@ try {
 } catch (Exception $e) {
     echo "Error: " . $e->getMessage(); // Display the error message for debugging
 }
+
+try {
+    // Fetch products from the database (using the products table)
+    $sql = "SELECT * FROM products";
+    $result = mysqli_query($conn, $sql);
+    if (!$result) {
+        throw new Exception("Failed to fetch products: " . mysqli_error($conn));
+    }
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage(); // Display the error message for debugging
+}
 ?>
 
 
@@ -81,8 +92,7 @@ try {
 </head>
 
 <style>
-
-.btn {
+    .btn {
         background-color: #E95F5D;
         color: white;
         border: none;
@@ -91,157 +101,172 @@ try {
         cursor: pointer;
     }
 
-.btn:hover {
+    .btn:hover {
         background-color: #ff4040;
     }
 
 
-   /* Popup Overlay */
-.popup-overlay {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
+    /* Popup Overlay */
+    .popup-overlay {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Semi-transparent background */
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
 
-/* Popup Box */
-.popup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    background-color: #f9dbba;
-    border: 2px solid #ff4040;
-    color: #E95F5D;
-    border-radius: 20px;
-    width: 500px; /* Normal size */
-    max-width: 90%; /* Responsive */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box;
-    padding: 30px; /* Add space between square and the popup edges */
-}
+    /* Popup Box */
+    .popup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        background-color: #f9dbba;
+        border: 2px solid #ff4040;
+        color: #E95F5D;
+        border-radius: 20px;
+        width: 500px;
+        /* Normal size */
+        max-width: 90%;
+        /* Responsive */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        box-sizing: border-box;
+        padding: 30px;
+        /* Add space between square and the popup edges */
+    }
 
-/* Square Styling */
-.popup-square {
-    background-color: #ffffff;
-    border: 2px solid #E95F5D;
-    border-radius: 30px; /* Optional for rounded corners */
-    width: 90%; /* Same width as the popup */
-   
-    padding: 20px; /* Inner padding for content */
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
+    /* Square Styling */
+    .popup-square {
+        background-color: #ffffff;
+        border: 2px solid #E95F5D;
+        border-radius: 30px;
+        /* Optional for rounded corners */
+        width: 90%;
+        /* Same width as the popup */
 
-/* Centered Image */
-.popup-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 4px solid #E95F5D;
-    object-fit: cover;
-}
+        padding: 20px;
+        /* Inner padding for content */
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
 
-
-/* Information Text */
-.popup-info {
-    font-size: 15px;
-    color: #333;
-    text-align: left;
-    width: 100%;
-    margin-left: 50px;
-}
-
-.popup-info p {
-    margin: 5px 0;
-}
-
-/* Add to Cart Button */
-.popup-actions {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.add-to-cart-btn {
-    padding: 10px 20px;
-    font-size: 14px;
-    background-color: #E95F5D;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    max-width: 150px;
-}
-
-.add-to-cart-btn:hover {
-    background-color: #E95F5D;
-}
-
-.popup-divider {
-    border: none;
-    color: #000000;
-    border-top: 1px solid #000000; /* Adjust color to match your design */
-    margin: 10px 0; /* Adjust spacing */
-    width: 90%; /* Ensures the line spans the full width */
-}
-
-/* Popup Header for Close Button */
-.popup-header {
-    position: relative;
-     /* Ensure the close button can be positioned relative to this container */
-}
-
-/* Close Button */
-.close-x {
-    position: absolute; /* Ensure it's positioned relative to the container */
-    top: -26px; /* Adjust the distance from the top */
-    right: -185px; /* Align it to the right side of the container */
-    font-size: 40px;
-    cursor: pointer;
-    color: #E95F5D; /* Optional: match the color scheme */
-}
-
-.close-x:hover {
-    color: #ff4040; /* Optional: hover effect */
-}
-
-.confirmation-popup {
-    background: #ffe6e2;
-    border-radius: 50%;
-    text-align: center;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    width: 200px;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.check-icon {
-    font-size: 145px;
-    color: #28a745;
-    margin: -40px; /* Ensures no extra margin above or below */
-}
-
-.confirmation-text {
-    font-size: 18px;
-    color: #333;
-}
+    /* Centered Image */
+    .popup-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 4px solid #E95F5D;
+        object-fit: cover;
+    }
 
 
+    /* Information Text */
+    .popup-info {
+        font-size: 15px;
+        color: #333;
+        text-align: left;
+        width: 100%;
+        margin-left: 50px;
+    }
+
+    .popup-info p {
+        margin: 5px 0;
+    }
+
+    /* Add to Cart Button */
+    .popup-actions {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .add-to-cart-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        background-color: #E95F5D;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        max-width: 150px;
+    }
+
+    .add-to-cart-btn:hover {
+        background-color: #E95F5D;
+    }
+
+    .popup-divider {
+        border: none;
+        color: #000000;
+        border-top: 1px solid #000000;
+        /* Adjust color to match your design */
+        margin: 10px 0;
+        /* Adjust spacing */
+        width: 90%;
+        /* Ensures the line spans the full width */
+    }
+
+    /* Popup Header for Close Button */
+    .popup-header {
+        position: relative;
+        /* Ensure the close button can be positioned relative to this container */
+    }
+
+    /* Close Button */
+    .close-x {
+        position: absolute;
+        /* Ensure it's positioned relative to the container */
+        top: -26px;
+        /* Adjust the distance from the top */
+        right: -185px;
+        /* Align it to the right side of the container */
+        font-size: 30px;
+        cursor: pointer;
+        color: #E95F5D;
+        /* Optional: match the color scheme */
+    }
+
+    .close-x:hover {
+        color: #ff4040;
+        /* Optional: hover effect */
+    }
+
+    .confirmation-popup {
+        background: #ffe6e2;
+        border-radius: 50%;
+        text-align: center;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        width: 200px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .check-icon {
+        font-size: 145px;
+        color: #28a745;
+        margin: -40px;
+        /* Ensures no extra margin above or below */
+    }
+
+    .confirmation-text {
+        font-size: 18px;
+        color: #333;
+    }
 </style>
 
 
@@ -280,16 +305,18 @@ try {
                             <?php echo htmlspecialchars($first_name); ?>
                         </a>
                         <!-- Display error message if it exists -->
-                        <?php if (!empty($error)) { echo "<p>Error: $error</p>"; } ?>
+                        <?php if (!empty($error)) {
+                            echo "<p>Error: $error</p>";
+                        } ?>
 
                         <!-- Logout Icon -->
                         <i class="bi bi-cart4" style="font-size: 25px; margin-left: 20px; cursor: pointer;" onclick="window.location.href='Buyer_cart.php'"></i>
-                        <i class="bi bi-box-arrow-right" 
-                        onclick="window.location.href='logout.php'" 
-                        style="cursor: pointer; font-size: 1.5rem; margin-left: 20px;">
+                        <i class="bi bi-box-arrow-right"
+                            onclick="window.location.href='logout.php'"
+                            style="cursor: pointer; font-size: 1.5rem; margin-left: 20px;">
                         </i>
                     </div>
-                    
+
                     <!-- <a href="" class="btn btn-primary py-2 px-4">Book A Table</a> -->
                 </div>
             </nav>
@@ -311,12 +338,12 @@ try {
                                     <i class="fas fa-search"></i>
                                 </button>
                             </div>
-                            
-            
+
+
                             <!-- Buy Now Button -->
                             <!-- <a href="" class="btn btn-custom py-sm-3 px-sm-5 me-3 animated slideInLeft">Buy Now</a> -->
                         </div>
-            
+
                         <!-- Right Column: Image -->
                         <div class="col-lg-6 text-center text-lg-end overflow-hidden">
                             <img class="img-fluid" src="img/hero.png" alt="Hero Image">
@@ -324,7 +351,7 @@ try {
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <!-- Navbar & Hero End -->
 
@@ -402,486 +429,50 @@ try {
         </style>
 
 
-        <!-- food 1 start -->
+        <!-- Food 1 Section Start -->
         <div class="container-xxl py-5" id="food-section">
             <div class="container">
                 <div class="row g-4">
                     <h1>Our <span style="color: #E95F5D;">Regular</span> Menu</h1>
 
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/corned beef.png" alt="Corned Beef" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Corned Beef</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 20.00</p>
-                                <button class="btn" onclick="showPopup('img/corned beef.png', '5', 'Corned Beef', 'November 30, 2024', 'Php 20.00', '3', 'FoodSaver Convinience Store', 'Butuan City', 'Buyer_seller_store.php?id=11337dba-abee-11ef-9c3d-088fc3161d34')">Add to Cart</button>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                    // Loop through the products and display them
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($product = mysqli_fetch_assoc($result)) {
+                            $product_name = htmlspecialchars($product['product_name']); // Safe output
+                            $product_price = number_format($product['price'], 2); // Format price
+                            $product_description = htmlspecialchars($product['description']); // Safe output
+                            $product_best_before = htmlspecialchars($product['best_before']); // Safe output
+                            $product_image = $product['product_image']; // BLOB image data (to be handled in base64)
+                            $product_id = $product['product_id']; // Product ID (UUID)
+                    ?>
 
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/eggplant.jpg" alt="Eggplant" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Eggplant</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="service-item rounded pt-3">
+                                    <div class="p-4 text-center">
+                                        <!-- Handle image as base64 if it's a BLOB -->
+                                        <img src="<?php echo $product['product_image']; ?>" alt="<?php echo $product['product_name']; ?>" class="service-image mb-3" style="width: 130px; height: 130px; object-fit: cover; border-radius: 50%;">
+                                        <h5><?php echo $product_name; ?></h5>
+                                        <div class="star-rating mb-2">
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        </div>
+                                        <p class="price">Php <?php echo $product_price; ?></p>
+                                        <button class="btn" onclick="showPopup('<?php echo $product_image; ?>', '5', '<?php echo $product_name; ?>', '<?php echo $product_best_before; ?>', 'Php <?php echo $product_price; ?>', '3', 'FoodSaver Convinience Store', 'Butuan City', 'Buyer_seller_store.php?id=<?php echo $product_id; ?>')">Add to Cart</button>
+                                    </div>
                                 </div>
-                                <p class="price">Php 6.00</p>
-                                <button class="btn" onclick="showPopup('img/eggplant.jpg', '10', 'Talong', 'November 22, 2024', 'Php 6.00', '4', 'Tata Vegetable Stand', 'Butuan City')"> Add to Cart </button>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/moist cake.jpg" alt="Moist Cake" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Moist Cake</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                                <p class="price">Php 5.00</p>
-                                <button class="btn" onclick="showPopup('img/moist cake.jpg', '30', 'Moist Cake', 'November 22, 2024', 'Php 6.00', '5', 'Joyce Bakery', 'Butuan City')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/ensaymada.jpg" alt="Ensaymada" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Ensaymada</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 3.00</p>
-                                <button class="btn" onclick="showPopup('img/ensaymada.jpg', '40', 'Ensaymada', 'November 22, 2024', 'Php 3.00', '4', 'Aubrey Bakery', 'Ampayon')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                        }
+                    } else {
+                        echo "<p>No products available at the moment.</p>";
+                    }
+                    ?>
                 </div>
-            </div>
-        </div>
-        <!-- food 1 end -->
-
-        <!-- food 2 start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/pinakbet.jpg" alt="Pinakbet" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Pinakbet</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 10.00</p>
-                                <button class="btn" onclick="showPopup('img/pinakbet.jpg', '3', 'Pinakbet', 'November 22, 2024', 'Php 10.00', '3', 'Uriel Eatery', 'Ampayon')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/pancit canton.jpg" alt="Adobong Pusit" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Pancit Canton</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 25.00</p>
-                                <button class="btn" onclick="showPopup('img/adobong pusit.jpg', '3', 'Adobong Pusit', 'November 22, 2024', 'Php 25.00', '3', 'Uriel Eatery', 'Ampayon')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/ginataangGulay.jpg" alt="Ginataang Gulay" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Ginataang Gulay</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 15.00</p>
-                                <button class="btn" onclick="showPopup('img/ginataangGulay.jpg', '3', 'Ginataang Gulay', 'November 22, 2024', 'Php 15.00', '3', 'Uriel Eatery', 'Ampayon')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/cheesecupcake.jpg" alt="Cheese Cupcake" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Cheese Cupcake</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 10.00</p>
-                                <button class="btn" onclick="showPopup('img/cheesecupcake.jpg', '20', 'Cheese Cupcake', 'November 23, 2024', 'Php 10.00', '4', 'Aubrey Bakery', 'Ampayon')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- food 2 end -->
-
-
-        <!-- food 3 start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/corned beef.png" alt="Corned Beef" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Corned Beef</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 20.00</p>
-                                <button class="btn" onclick="showPopup('img/corned beef.png', '5', 'Corned Beef', 'November 30, 2024', 'Php 20.00', '3', 'FoodSaver Convinience Store', 'Butuan City')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/eggplant.jpg" alt="Eggplant" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Eggplant</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 6.00</p>
-                                <button class="btn" onclick="showPopup('img/eggplant.jpg', '10', 'Talong', 'November 22, 2024', 'Php 6.00', '4', 'Tata Vegetable Stand', 'Butuan City')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/moist cake.jpg" alt="Moist Cake" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Moist Cake</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                                <p class="price">Php 5.00</p>
-                                <button class="btn" onclick="showPopup('img/moist cake.jpg', '30', 'Moist Cake', 'November 22, 2024', 'Php 6.00', '5', 'Joyce Bakery', 'Butuan City')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/ensaymada.jpg" alt="Ensaymada" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Ensaymada</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 3.00</p>
-                                <button class="btn" onclick="showPopup('img/ensaymada.jpg', '40', 'Ensaymada', 'November 22, 2024', 'Php 3.00', '4', 'Aubrey Bakery', 'Ampayon')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- food 3 end -->
-
-        <!-- food 4 start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/centurytuna.jpg" alt="Pinakbet" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Century Tuna</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 10.00</p>
-                                <button class="btn" onclick="showPopup('img/pinakbet.jpg', '3', 'Pinakbet', 'November 22, 2024', 'Php 10.00', '3', 'Uriel Eatery', 'Ampayon')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/adobong pusit.jpg" alt="Adobong Pusit" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Adobong Pusit</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 25.00</p>
-                                <button class="btn" onclick="showPopup('img/adobong pusit.jpg', '3', 'Adobong Pusit', 'November 22, 2024', 'Php 25.00', '3', 'Uriel Eatery', 'Ampayon')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/ginataangGulay.jpg" alt="Ginataang Gulay" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Ginataang Gulay</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 28.00</p>
-                                <button class="btn" onclick="showPopup('img/ginataangGulay.jpg', '3', 'Ginataang Gulay', 'November 22, 2024', 'Php 15.00', '3', 'Uriel Eatery', 'Ampayon')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/cheesecupcake.jpg" alt="Cheese Cupcake" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Cheese Cupcake</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 10.00</p>
-                                <button class="btn" onclick="showPopup('img/cheesecupcake.jpg', '20', 'Cheese Cupcake', 'November 23, 2024', 'Php 10.00', '4', 'Aubrey Bakery', 'Ampayon')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- food 4 end -->
-
-        <!-- food 5 start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/okra.jpg" alt="Okra" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Okra</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 20.00</p>
-                                <button class="btn" onclick="showPopup('img/okra.jpg', '3', 'Okra', 'November 22, 2024', 'Php 20.00', '3', 'Joyce Vegetable Stand', 'Ampayon')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/hopia.jpg" alt="Hopia" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Hopia</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 5.00</p>
-                                <button class="btn" onclick="showPopup('img/hopia.jpg', '30', 'Hopia', 'November 22, 2024', 'Php 5.00', '3', 'FoodSaver Convinience Store', 'Ampayon')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/pandesal.jpg" alt="Pandesal" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Pandesal</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 2.00</p>
-                                <button class="btn" onclick="showPopup('img/pandesal.jpg', '50', 'Pandesal', 'November 22, 2024', 'Php 2.00', '3', 'FoodSaver Convinience Store', 'Ampayon')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/fried rice.jpg" alt="Fried Rice" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Fried Rice</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 10.00</p>
-                                <button class="btn" onclick="showPopup('img/fried rice.jpg', '5', 'Fried Rice', 'November 22, 2024', 'Php 10.00', '3', 'FoodSaver Convinience Store', 'Ampayon')"> Add to Cart </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- food 5 end -->
-
-        <!-- food 6 start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/kinilaw.jpg" alt="Kinilaw" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Kinilaw</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                                <p class="price">Php 35.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/bicol express.jpg" alt="Bicol Express" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Bicol Express</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 40.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/banana.jpg" alt="Banana" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Banana</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 10.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <img src="img/orange.jpg" alt="Orange" class="service-image mb-3" style="width: 100%; height: 170px; object-fit: cover;">
-                                <h5>Orange</h5>
-                                <div class="star-rating mb-2">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <p class="price">Php 12.00</p>
-                                <a href="#" class="btn btn-custom">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Popup -->
                 <div id="popupOverlay" class="popup-overlay">
                     <div id="popup" class="popup">
@@ -891,11 +482,11 @@ try {
                             <div class="popup-header">
                                 <span class="close-x" onclick="closePopup()">&#10006;</span>
                             </div>
-                
+
                             <!-- Centered Image -->
                             <img id="popupImage" src="" alt="Product Image" class="popup-image">
-                            
-                
+
+
                             <!-- Information Section -->
                             <div class="popup-info">
                                 <p id="popupQty"><strong>Quantity:</strong></p>
@@ -903,25 +494,32 @@ try {
                                 <p id="popupDate"><strong>Best Before:</strong> </p>
                                 <p id="popupPrice"><strong>Price:</strong> </p>
                                 <p id="popupRating"><strong>Rating:</strong> </p>
-                                
+
                                 <!-- Line between Rating and Store Name -->
                                 <hr class="popup-divider">
                                 <p id="popupStore"><strong>Store Name:</strong> </p>
                                 <p id="popupLoc"><strong>Location:</strong> </p>
                             </div>
-                    
+
                             <!-- Add to Cart Button -->
-                            <div class="popup-actions">
-                                <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
-                                <button class="view-store-btn" onclick="viewStore()">View Store</button>
-                            </div>
+                            <button class="add-to-cart-btn" onclick="addToCart('Product Name', 'product_image_url', 100.00, 1, 'Best Before Date', 4.5, 'Store Name', 'Store Location')">
+                                Add to Cart
+                            </button>
+
+
 
                         </div>
                     </div>
                 </div>
-
+            </div>
+            <div id="confirmationPopup" class="popup-overlay" style="display: none;">
+                <div class="confirmation-popup">
+                    <span class="check-icon">&#10004;</span>
+                    <p class="confirmation-text">Added to Cart</p>
+                </div>
             </div>
         </div>
+        <!-- Food 1 Section End -->
 
         <div id="confirmationPopup" class="popup-overlay" style="display: none;">
             <div class="confirmation-popup">
@@ -935,7 +533,8 @@ try {
     </div>
 
     <script>
-       // Function to show the popup with product details
+        // Function to show the popup with product details
+        // Function to show the popup with product details
         function showPopup(image, qty, name, date, price, rating, store, location, storeUrl) {
             document.getElementById('popupImage').src = image;
             document.getElementById('popupQty').innerHTML = '<strong>Quantity: </strong>' + qty;
@@ -962,8 +561,9 @@ try {
         }
 
         // Function to add the product to the cart
-        function addToCart(name, image, price, qty, date, rating, store, location) {
+        function addToCart(product_id, name, image, price, qty, date, rating, store, location) {
             const product = {
+                product_id: product_id, // Add product_id here
                 name: name,
                 image: image,
                 price: price,
@@ -986,35 +586,48 @@ try {
             // Close the popup
             closePopup();
 
-            // Redirect to the cart page
-            window.location.href = 'Buyer_cart.php';
+            // Optionally, show a confirmation
+            showConfirmation();
         }
+
 
         // Function to close the popup
         function closePopup() {
             document.getElementById('popupOverlay').style.display = 'none';
         }
 
-    
-        </script>
+        // Function to show the confirmation popup
+        function showConfirmation() {
+            // Show the confirmation popup
+            const confirmationPopup = document.getElementById('confirmationPopup');
+            confirmationPopup.style.display = 'flex';
 
-        <script>
-            function showConfirmation() {
-                // Show the confirmation popup
-                const confirmationPopup = document.getElementById('confirmationPopup');
-                confirmationPopup.style.display = 'flex';
+            // Hide the confirmation popup after 3 seconds
+            setTimeout(() => {
+                confirmationPopup.style.display = 'none';
+            }, 3000);
+        }
+    </script>
 
-                // Hide the confirmation popup after 3 seconds
-                setTimeout(() => {
-                    confirmationPopup.style.display = 'none';
-                }, 3000);
-            }
+    <script>
+        function showConfirmation() {
+            // Show the confirmation popup
+            const confirmationPopup = document.getElementById('confirmationPopup');
+            confirmationPopup.style.display = 'flex';
 
-            function closePopup() {
-                // Hide the main popup
-                document.getElementById('popupOverlay').style.display = 'none';
-            }
-        </script>
+            // Hide the confirmation popup after 3 seconds
+            setTimeout(() => {
+                confirmationPopup.style.display = 'none';
+            }, 3000);
+        }
+
+        function closePopup() {
+            // Hide the main popup
+            document.getElementById('popupOverlay').style.display = 'none';
+        }
+    </script>
+
+
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
