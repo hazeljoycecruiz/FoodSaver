@@ -43,17 +43,6 @@ try {
 } catch (Exception $e) {
     echo "Error: " . $e->getMessage(); // Display the error message for debugging
 }
-
-try {
-    // Fetch products from the database (using the products table)
-    $sql = "SELECT * FROM products";
-    $result = mysqli_query($conn, $sql);
-    if (!$result) {
-        throw new Exception("Failed to fetch products: " . mysqli_error($conn));
-    }
-} catch (Exception $e) {
-    echo "Error: " . $e->getMessage(); // Display the error message for debugging
-}
 ?>
 
 
@@ -177,80 +166,6 @@ try {
         </div>
         <!-- Navbar & Hero End -->
 
-        <!-- Food Section Start -->
-        <div class="container-xxl py-5" id="food-section1">
-            <div class="container text-center">
-                <h1><span style="color: #E95F5D;">On Sale!</span></h1>
-                <div class="d-flex justify-content-center">
-                    <div class="menu-box rounded p-4 border text-center" style="width: 80%; background-color: #f8f9fa;">
-                        <!-- Row 1 -->
-                        <div class="row justify-content-center mb-4">
-                            <!-- Image 1 -->
-                            <div class="col-3">
-                                <img src="img/corned beef.png" alt="Corned Beef" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
-                                <p class="name mb-1" style="font-weight: bold;">Corned Beef</p>
-                                <p class="price">Php 15.00</p>
-                            </div>
-                            <!-- Image 2 -->
-                            <div class="col-3">
-                                <img src="img/moist cake.jpg" alt="Moist Cake" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
-                                <p class="name mb-1" style="font-weight: bold;">Moist Cake</p>
-                                <p class="price">Php 5.00</p>
-                            </div>
-                            <!-- Image 3 -->
-                            <div class="col-3">
-                                <img src="img/pancit canton.jpg" alt="Eggplant" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
-                                <p class="name mb-1" style="font-weight: bold;">Pancit Canton</p>
-                                <p class="price">Php 6.00</p>
-                            </div>
-                            <!-- Image 4 -->
-                            <div class="col-3">
-                                <img src="img/ensaymada.jpg" alt="Ensaymada" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
-                                <p class="name mb-1" style="font-weight: bold;">Ensaymada</p>
-                                <p class="price">Php 3.00</p>
-                            </div>
-                        </div>
-                        <!-- Row 2 -->
-                        <div class="row justify-content-center">
-                            <!-- Image 5 -->
-                            <div class="col-3">
-                                <img src="img/pinakbet.jpg" alt="Pinakbet" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
-                                <p class="name mb-1" style="font-weight: bold;">Pinakbet</p>
-                                <p class="price">Php 10.00</p>
-                            </div>
-                            <!-- Image 6 -->
-                            <div class="col-3">
-                                <img src="img/centurytuna.jpg" alt="Adobong Pusit" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
-                                <p class="name mb-1" style="font-weight: bold;">Century Tuna</p>
-                                <p class="price">Php 15.00</p>
-                            </div>
-                            <!-- Image 7 -->
-                            <div class="col-3">
-                                <img src="img/ginataangGulay.jpg" alt="Ginataang Gulay" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
-                                <p class="name mb-1" style="font-weight: bold;">Ginataang Gulay</p>
-                                <p class="price">Php 10.00</p>
-                            </div>
-                            <!-- Image 8 -->
-                            <div class="col-3">
-                                <img src="img/mango.jpg" alt="Cheese Cupcake" class="img-fluid rounded-pill mb-2" style="border: 3px solid #E95F5D; width: 130px; height: 130px; object-fit: cover;">
-                                <p class="name mb-1" style="font-weight: bold;">Mango</p>
-                                <p class="price">Php 10.00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Food Section End -->
-
-        <style>
-            .price {
-                color: #E95F5D;
-                font-weight: bold;
-            }
-        </style>
-
-
         <!-- Food 1 Section Start -->
         <div class="container-xxl py-5" id="food-section">
             <div class="container">
@@ -353,7 +268,6 @@ try {
     </div>
 
     <script>
-        // Function to show the popup with product details
         // Function to show the popup with product details
         function showPopup(image, qty, name, date, price, rating, store, location, storeUrl) {
             document.getElementById('popupImage').src = image;

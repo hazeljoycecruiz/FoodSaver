@@ -1,0 +1,176 @@
+
+    .btn {
+        background-color: #E95F5D;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: #ff4040;
+    }
+
+
+    /* Popup Overlay */
+    .popup-overlay {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Semi-transparent background */
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    /* Popup Box */
+    .popup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        background-color: #f9dbba;
+        border: 2px solid #ff4040;
+        color: #E95F5D;
+        border-radius: 20px;
+        width: 500px;
+        /* Normal size */
+        max-width: 90%;
+        /* Responsive */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        box-sizing: border-box;
+        padding: 30px;
+        /* Add space between square and the popup edges */
+    }
+
+    /* Square Styling */
+    .popup-square {
+        background-color: #ffffff;
+        border: 2px solid #E95F5D;
+        border-radius: 30px;
+        /* Optional for rounded corners */
+        width: 90%;
+        /* Same width as the popup */
+
+        padding: 20px;
+        /* Inner padding for content */
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* Centered Image */
+    .popup-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 4px solid #E95F5D;
+        object-fit: cover;
+    }
+
+
+    /* Information Text */
+    .popup-info {
+        font-size: 15px;
+        color: #333;
+        text-align: left;
+        width: 100%;
+        margin-left: 50px;
+    }
+
+    .popup-info p {
+        margin: 5px 0;
+    }
+
+    /* Add to Cart Button */
+    .popup-actions {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .add-to-cart-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        background-color: #E95F5D;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        max-width: 150px;
+    }
+
+    .add-to-cart-btn:hover {
+        background-color: #E95F5D;
+    }
+
+    .popup-divider {
+        border: none;
+        color: #000000;
+        border-top: 1px solid #000000;
+        /* Adjust color to match your design */
+        margin: 10px 0;
+        /* Adjust spacing */
+        width: 90%;
+        /* Ensures the line spans the full width */
+    }
+
+    /* Popup Header for Close Button */
+    .popup-header {
+        position: relative;
+        /* Ensure the close button can be positioned relative to this container */
+    }
+
+    /* Close Button */
+    .close-x {
+        position: absolute;
+        /* Ensure it's positioned relative to the container */
+        top: -26px;
+        /* Adjust the distance from the top */
+        right: -185px;
+        /* Align it to the right side of the container */
+        font-size: 30px;
+        cursor: pointer;
+        color: #E95F5D;
+        /* Optional: match the color scheme */
+    }
+
+    .close-x:hover {
+        color: #ff4040;
+        /* Optional: hover effect */
+    }
+
+    .confirmation-popup {
+        background: #ffe6e2;
+        border-radius: 50%;
+        text-align: center;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        width: 200px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .check-icon {
+        font-size: 145px;
+        color: #28a745;
+        margin: -40px;
+        /* Ensures no extra margin above or below */
+    }
+
+    .confirmation-text {
+        font-size: 18px;
+        color: #333;
+    }

@@ -49,7 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 <!-- You can output the error message on the page as well -->
-<?php if ($error) { echo "<p>Error: $error</p>"; } ?>
 
 
 
@@ -67,16 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body class="login">
 
- <!-- Display error if it exists -->
- <?php if (!empty($error)): ?>
-        <div class="alert alert-danger">
-            <?php echo htmlspecialchars($error); ?>
-        </div>
-    <?php endif; ?>
-
     <div class="container vh-100 d-flex justify-content-center align-items-center">
         <div class="row w-100 shadow-lg rounded-4 overflow-hidden" style="max-width: 900px;">
-            
+
             <!-- Left Column with Image -->
             <div class="col-md-5 p-0 d-none d-md-block">
                 <div class="h-100 bg-image" style="background-image: url('img/bcd.png'); background-size: cover; background-position: center;">
@@ -101,18 +93,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <form method="POST" action="index_login.php" class="d-flex flex-column align-items-center" style="width: 75%; margin: auto;">
                     <!-- Email Input -->
                     <div class="mb-3 w-100">
-                        <input type="email" 
-                               class="form-control border-danger" 
-                               id="email" name="email" 
-                               placeholder="Email"  required>
+                        <input type="email"
+                            class="form-control border-danger"
+                            id="email" name="email"
+                            placeholder="Email" required>
                     </div>
 
                     <!-- Password Input -->
                     <div class="mb-4 w-100">
-                        <input type="password" 
-                               class="form-control border-danger" 
-                               id="password" name="password" 
-                               placeholder="Password" required>
+                        <input type="password"
+                            class="form-control border-danger"
+                            id="password" name="password"
+                            placeholder="Password" required>
                     </div>
 
                     <!-- Submit Button -->
@@ -125,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <!-- Sign Up Link -->
                     <div class="text-center">
-                        <span>Don't have an account? 
+                        <span>Don't have an account?
                             <a href="index_signup.php" class="text-decoration-none fw-bold">Sign Up</a>
                         </span>
                     </div>
