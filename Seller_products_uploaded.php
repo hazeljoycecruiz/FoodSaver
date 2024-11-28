@@ -11,6 +11,54 @@ if ($conn->connect_error) {
 // Fetch products from the database
 $sql = "SELECT * FROM products";
 $result = $conn->query($sql);
+
+
+// Check if update was successful
+if (isset($_GET['update']) && $_GET['update'] === 'success') {
+    echo '<script>
+        window.addEventListener("DOMContentLoaded", function() {
+            const notification = document.createElement("div");
+            notification.className = "alert alert-success alert-dismissible fade show";
+            notification.style.position = "fixed";
+            notification.style.top = "20px";
+            notification.style.right = "20px";
+            notification.style.zIndex = "9999";
+            notification.innerHTML = `
+                <strong>Success!</strong> Product updated successfully.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                notification.classList.remove("show");
+                notification.remove();
+            }, 5000);
+        });
+    </script>';
+}
+
+// Check if product_id is passed
+if (isset($_POST['product_id'])) {
+    $productId = $_POST['product_id'];
+
+    // Delete the product from the database
+    $sql = "DELETE FROM products WHERE product_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $productId);
+
+    if ($stmt->execute()) {
+        // Return success response
+        echo 'success';
+    } else {
+        // Return failure response
+        echo 'failure';
+    }
+
+    $stmt->close();
+}
+
+// Close the database connection
+$conn->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +87,7 @@ $result = $conn->query($sql);
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body>
@@ -69,15 +118,17 @@ $result = $conn->query($sql);
                         // Check if there are any products in the database
                         if ($result->num_rows > 0) {
                             // Loop through each product and display it
-                            while($row = $result->fetch_assoc()) {
+                            while ($row = $result->fetch_assoc()) {
                                 // Get image from BLOB and encode it as base64 for display
-                                $image = base64_encode($row['product_image']);
+                                $image = base64_encode($row['product_image']);  // base64 encoded image
+                                $imageSrc = 'data:image/jpeg;base64,' . $image;  // Correct format for display
+
                                 // Display each product dynamically
                                 echo '<div class="col-lg-3 col-sm-6" style="width: 250px;" id="product-' . $row['product_id'] . '">';
                                 echo '    <div class="service-item rounded pt-3">';
                                 echo '        <div class="p-4 text-center">';
-                                echo '            <img src="' . $row['product_image'] . '" alt="' . $row['product_name'] . '" class="service-image mb-3" style="width: 100%; height: 130px; object-fit: cover;">';
-                                echo '            <h5>' . $row['product_name'] . '</h5>';
+                                echo '            <img src="' . $imageSrc . '" alt="' . $row['product_name'] . '" class="service-image mb-3" style="width: 100%; height: 130px; object-fit: cover;">';
+                               
                                 echo '            <p class="price">Php ' . number_format($row['price'], 2) . '</p>';
                                 echo '            <p>Status: Uploaded</p>';
                                 echo '            <button class="btn btn-danger" onclick="removeProduct(\'' . $row['product_id'] . '\')">Remove</button>';
@@ -94,6 +145,7 @@ $result = $conn->query($sql);
                     </div>
                 </div>
             </div>
+
             <br>
         </div>
 
@@ -126,12 +178,14 @@ $result = $conn->query($sql);
                             </div>
                             <div class="mb-3">
                                 <label for="bestBefore" class="form-label">Best Before</label>
-                                <input type="text" class="form-control" id="bestBefore" name="best_before" required>
+                                <input type="date" class="form-control" id="bestBefore" name="best_before" required>
                             </div>
                             <div class="mb-3">
                                 <label for="productImage" class="form-label">Product Image (optional)</label>
                                 <input type="file" class="form-control" id="productImage" name="product_image">
+                    
                             </div>
+
                             <button type="submit" class="btn btn-primary">Update Product</button>
                         </form>
                     </div>
@@ -146,27 +200,45 @@ $result = $conn->query($sql);
     </div>
 
     <script>
-        // Product Removal Function
+        // Product Removal Function without confirmation prompt
         function removeProduct(productId) {
-            if (confirm('Are you sure you want to delete this product?')) {
-                $.ajax({
-                    url: 'delete_product.php',
-                    type: 'POST',
-                    data: { product_id: productId },
-                    success: function(response) {
-                        if (response === 'success') {
-                            // Remove the product element from the page
-                            $('#product-' + productId).remove();
-                        } else {
-                            alert('Failed to delete product.');
-                        }
-                    },
-                    error: function() {
-                        alert('An error occurred while deleting the product.');
+            $.ajax({
+                url: 'delete_product.php',
+                type: 'POST',
+                data: {
+                    product_id: productId
+                },
+                success: function(response) {
+                    if (response === 'success') {
+                        // Remove the product element from the page
+                        $('#product-' + productId).remove();
+
+                        // Show success notification
+                        const notification = document.createElement("div");
+                        notification.className = "alert alert-success alert-dismissible fade show";
+                        notification.style.position = "fixed";
+                        notification.style.top = "20px";
+                        notification.style.right = "20px";
+                        notification.style.zIndex = "9999";
+                        notification.innerHTML = `
+                    <strong>Success!</strong> Product removed successfully.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                `;
+                        document.body.appendChild(notification);
+                        setTimeout(() => {
+                            notification.classList.remove("show");
+                            notification.remove();
+                        }, 5000);
+                    } else {
+                        alert('Failed to delete product.');
                     }
-                });
-            }
+                },
+                error: function() {
+                    alert('An error occurred while deleting the product.');
+                }
+            });
         }
+
 
         // Function to fill the update form with existing product data
         function fillUpdateForm(productId, productName, description, bestBefore, price, stockQuantity, productImage) {
@@ -176,11 +248,9 @@ $result = $conn->query($sql);
             $('#bestBefore').val(bestBefore);
             $('#productPrice').val(price);
             $('#productStock').val(stockQuantity);
-            // If there's an image, display it
-            if (productImage) {
-                $('#productImage').val(productImage);
-            }
+
         }
     </script>
 </body>
+
 </html>

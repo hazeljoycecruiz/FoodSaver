@@ -272,9 +272,14 @@ try {
                             <div class="col-lg-3 col-sm-6">
                                 <div class="service-item rounded pt-3">
                                     <div class="p-4 text-center">
+                                        <?php
+                                        // Check if the product image is stored as binary data (BLOB)
+                                        $image = base64_encode($product['product_image']);  // Convert BLOB to base64
+                                        $imageSrc = 'data:image/jpeg;base64,' . $image;  // Use the appropriate MIME type (e.g., jpeg, png)
+                                        ?>
                                         <!-- Handle image as base64 if it's a BLOB -->
-                                        <img src="<?php echo $product['product_image']; ?>" alt="<?php echo $product['product_name']; ?>" class="service-image mb-3" style="width: 130px; height: 130px; object-fit: cover; border-radius: 50%;">
-                                        <h5><?php echo $product_name; ?></h5>
+                                        <img src="<?php echo $imageSrc; ?>" alt="<?php echo $product['product_name']; ?>" class="service-image mb-3" style="width: 130px; height: 130px; object-fit: cover; border-radius: 50%;">
+                                        <h5><?php echo $product['product_name']; ?></h5>
                                         <div class="star-rating mb-2">
                                             <span class="fa fa-star checked"></span>
                                             <span class="fa fa-star checked"></span>
@@ -282,11 +287,12 @@ try {
                                             <span class="fa fa-star"></span>
                                             <span class="fa fa-star"></span>
                                         </div>
-                                        <p class="price">Php <?php echo $product_price; ?></p>
-                                        <button class="btn" onclick="showPopup('<?php echo $product_image; ?>', '5', '<?php echo $product_name; ?>', '<?php echo $product_best_before; ?>', 'Php <?php echo $product_price; ?>', '3', 'FoodSaver Convinience Store', 'Butuan City', 'Buyer_seller_store.php?id=<?php echo $product_id; ?>')">Add to Cart</button>
+                                        <p class="price">Php <?php echo number_format($product['price'], 2); ?></p>
+                                        <button class="btn" onclick="showPopup('<?php echo $imageSrc; ?>', '5', '<?php echo $product['product_name']; ?>', '<?php echo $product['best_before']; ?>', 'Php <?php echo number_format($product['price'], 2); ?>', '3', 'FoodSaver Convenience Store', 'Butuan City', 'Buyer_seller_store.php?id=<?php echo $product['product_id']; ?>')">Add to Cart</button>
                                     </div>
                                 </div>
                             </div>
+
 
                     <?php
                         }
