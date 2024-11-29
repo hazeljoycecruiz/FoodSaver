@@ -20,20 +20,23 @@ if (!$conn) {
     die("Database connection failed: " . mysqli_connect_error());
 }
 
+
 try {
-    // Fetch user details (example query)
     $sql = "SELECT * FROM users WHERE user_id = ?";
     $stmt = $conn->prepare($sql);
-    if (!$stmt) {
-        throw new Exception("Failed to prepare statement: " . $conn->error);
-    }
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
+        // Fetch user data
         $user = $result->fetch_assoc();
-        $first_name = htmlspecialchars($user['first_name']); // Use data securely
+        $stmt->close();
+
+        // Check if bussiness_name exists and is not NULL
+       
+        $first_name = htmlspecialchars($user['first_name']);
+      
     } else {
         // User not found
         session_destroy(); // Clear session
@@ -41,21 +44,11 @@ try {
         exit();
     }
 } catch (Exception $e) {
-    echo "Error: " . $e->getMessage(); // Display the error message for debugging
+    echo "Error fetching user details: " . $e->getMessage();
 }
 
-try {
-    // Fetch products from the database (using the products table)
-    $sql = "SELECT * FROM products";
-    $result = mysqli_query($conn, $sql);
-    if (!$result) {
-        throw new Exception("Failed to fetch products: " . mysqli_error($conn));
-    }
-} catch (Exception $e) {
-    echo "Error: " . $e->getMessage(); // Display the error message for debugging
-}
+
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -150,7 +143,7 @@ try {
                         <div class="col-lg-6 text-center text-lg-start">
                             <h1 class="display-3 animated slideInLeft" style="color: #E95F5D;">Rescue, Savor, and Share</h1>
                             <p class="animated slideInLeft mb-4 pb-2" style="color: #E95F5D;">Cuts waste and will delight your plate!</p>
-                            <h3>Welcome Buyer! <?php echo $first_name; ?></h3>
+                            <h3>Welcome Buyer! <?php echo htmlspecialchars($first_name); ?></h3>
                             <!-- Search Bar -->
                             <div class="d-flex">
                                 <div class="form-outline flex-grow-1">
@@ -272,14 +265,9 @@ try {
                             <div class="col-lg-3 col-sm-6">
                                 <div class="service-item rounded pt-3">
                                     <div class="p-4 text-center">
-                                        <?php
-                                        // Check if the product image is stored as binary data (BLOB)
-                                        $image = base64_encode($product['product_image']);  // Convert BLOB to base64
-                                        $imageSrc = 'data:image/jpeg;base64,' . $image;  // Use the appropriate MIME type (e.g., jpeg, png)
-                                        ?>
                                         <!-- Handle image as base64 if it's a BLOB -->
-                                        <img src="<?php echo $imageSrc; ?>" alt="<?php echo $product['product_name']; ?>" class="service-image mb-3" style="width: 130px; height: 130px; object-fit: cover; border-radius: 50%;">
-                                        <h5><?php echo $product['product_name']; ?></h5>
+                                        <img src="<?php echo $product['product_image']; ?>" alt="<?php echo $product['product_name']; ?>" class="service-image mb-3" style="width: 130px; height: 130px; object-fit: cover; border-radius: 50%;">
+                                        <h5><?php echo $product_name; ?></h5>
                                         <div class="star-rating mb-2">
                                             <span class="fa fa-star checked"></span>
                                             <span class="fa fa-star checked"></span>
@@ -287,13 +275,11 @@ try {
                                             <span class="fa fa-star"></span>
                                             <span class="fa fa-star"></span>
                                         </div>
-                                        <p class="price">Php <?php echo number_format($product['price'], 2); ?></p>
-                                        <button class="btn add-to-cart" data-id="<?php echo $product_id; ?>">Add to Cart</button>
-
+                                        <p class="price">Php <?php echo $product_price; ?></p>
+                                        <button class="btn" onclick="showPopup('<?php echo $product_image; ?>', '5', '<?php echo $product_name; ?>', '<?php echo $product_best_before; ?>', 'Php <?php echo $product_price; ?>', '3', 'FoodSaver Convinience Store', 'Butuan City', 'Buyer_seller_store.php?id=<?php echo $product_id; ?>')">Add to Cart</button>
                                     </div>
                                 </div>
                             </div>
-
 
                     <?php
                         }
@@ -331,9 +317,7 @@ try {
                             </div>
 
                             <!-- Add to Cart Button -->
-                            <!-- <button class="btn btn-primary add-to-cart" data-id="product_id">Add to Cart</button> -->
-                            <button class="btn add-to-cart" data-id="<?php echo $product_id; ?>">Add to Cart</button>
-
+                            <button class="btn btn-primary add-to-cart" data-id="product_id">Add to Cart</button>
 
 
 
@@ -392,8 +376,7 @@ try {
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.add-to-cart').forEach(function(button) {
                 button.addEventListener('click', function() {
-                    const productId = this.getAttribute('data-id');
-
+                    const productId = this.getAttribute('data-id'); // Get product ID
                     fetch('add_to_cart.php', {
                             method: 'POST',
                             headers: {
@@ -403,52 +386,19 @@ try {
                                 product_id: productId
                             }),
                         })
-                        .then((response) => response.json())
-                        .then((data) => {
+                        .then(response => response.json())
+                        .then(data => {
                             if (data.success) {
-                                showNotification('success', 'Product added to cart!', true); // Success with redirection
+                                alert('Product added to cart!');
+                                window.location.href = 'buyer_cart.php'; // Redirect to cart
                             } else {
-                                showNotification('error', data.message || 'Failed to add to cart.');
+                                alert('Failed to add to cart.');
                             }
                         })
-                        .catch((error) => {
-                            console.error('Error:', error);
-                            showNotification('error', 'An error occurred. Please try again.');
-                        });
+                        .catch(error => console.error('Error:', error));
                 });
             });
         });
-
-        // Function to show a notification dynamically with optional redirection
-        function showNotification(type, message, redirect = false) {
-            const notification = document.createElement('div');
-            notification.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show`;
-            notification.style.position = 'fixed';
-            notification.style.top = '20px';
-            notification.style.right = '20px';
-            notification.style.zIndex = '9999';
-            notification.innerHTML = `
-        <strong>${type === 'success' ? 'Success!' : 'Error!'}</strong> ${message}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    `;
-
-            // Append notification to the body
-            document.body.appendChild(notification);
-
-            // Automatically remove the notification after 5 seconds
-            setTimeout(() => {
-                notification.classList.remove('show');
-                notification.remove();
-            }, 5000);
-
-            // Redirect to the cart page after 2 seconds (if redirect is true)
-            if (redirect) {
-                setTimeout(() => {
-                    window.location.href = 'buyer_cart.php';
-                }, 1000); // 2 seconds delay
-            }
-        }
-
 
 
 

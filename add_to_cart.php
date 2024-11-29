@@ -1,37 +1,46 @@
 <?php
 session_start();
-include 'database/db_connection.php'; // Include your database connection
+include 'database/db_connection.php'; // Replace with your DB connection script
 
-header('Content-Type: application/json');
+// Check if the product ID is sent via POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $data = json_decode(file_get_contents('php://input'), true);
+    $product_id = $data['product_id'];
 
-// Decode JSON input
-$input = json_decode(file_get_contents('php://input'), true);
+    // Check if the cart session is initialized
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = [];
+    }
 
-if (isset($input['product_id'])) {
-    $productId = intval($input['product_id']);
-    
-    // Query to fetch product details
-    $query = "SELECT * FROM products WHERE id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("i", $productId);
+    // Fetch product details from the database
+    $sql = "SELECT * FROM products WHERE product_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $product_id);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         $product = $result->fetch_assoc();
 
-        // Store product in cart (session or database)
-        if (!isset($_SESSION['products'])) {
-            $_SESSION['products'] = [];
+        // Add or update the product in the cart
+        if (isset($_SESSION['cart'][$product_id])) {
+            $_SESSION['cart'][$product_id]['quantity']++;
+        } else {
+            $_SESSION['cart'][$product_id] = [
+                'name' => $product['product_name'],
+                'price' => $product['price'],
+                'image' => base64_encode($product['product_image']),
+                'quantity' => 1
+            ];
         }
-
-        $_SESSION['products'][] = $product;
 
         echo json_encode(['success' => true]);
     } else {
-        echo json_encode(['success' => false, 'message' => 'Invalid product']);
+        echo json_encode(['success' => false, 'message' => 'Product not found.']);
     }
+
+    $stmt->close();
 } else {
-    echo json_encode(['success' => false, 'message' => 'Product ID not provided']);
+    echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
 }
 ?>

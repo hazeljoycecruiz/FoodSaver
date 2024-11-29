@@ -127,8 +127,10 @@ $conn->close();
                                 echo '<div class="col-lg-3 col-sm-6" style="width: 250px;" id="product-' . $row['product_id'] . '">';
                                 echo '    <div class="service-item rounded pt-3">';
                                 echo '        <div class="p-4 text-center">';
-                                echo '            <img src="' . $imageSrc . '" alt="' . $row['product_name'] . '" class="service-image mb-3" style="width: 100%; height: 130px; object-fit: cover;">';
-                               
+                                echo '            <img src="' . (!empty($imageSrc) ? $imageSrc : $row['product_image']) . '" alt="' . $row['product_name'] . '" class="service-image mb-3" style="width: 100%; height: 130px; object-fit: cover;">';
+                                                    // <img src="' . $imageSrc . '" alt="' . $row['product_name'] . '" class="service-image mb-3" style="width: 100%; height: 130px; object-fit: cover;">';
+                                                    // <img src="' . $row['product_image'] . '" alt="' . $row['product_name'] . '" class="service-image mb-3" style="width: 100%; height: 130px; object-fit: cover;">';
+                                echo '            <h5>' . $row['product_name'] . '</h5>';
                                 echo '            <p class="price">Php ' . number_format($row['price'], 2) . '</p>';
                                 echo '            <p>Status: Uploaded</p>';
                                 echo '            <button class="btn btn-danger" onclick="removeProduct(\'' . $row['product_id'] . '\')">Remove</button>';
